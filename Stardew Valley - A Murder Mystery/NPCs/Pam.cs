@@ -15,8 +15,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             SaveData = saveData;
         }
         public override void Chat()
-        {
-            
+        {            
 
             if (SaveData.PamCount == 0)
             {

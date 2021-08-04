@@ -11,5 +11,6 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         private SaveData SaveData { get; set; }
 
         public abstract void Chat();
+        public abstract void Gift();
     }
 }
