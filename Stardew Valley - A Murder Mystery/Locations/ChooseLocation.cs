@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stardew_Valley___A_Murder_Mystery.Locations
+namespace Stardew_Valley___A_Murder_Mystery
 {
-    public class ChooseLocation
+     class ChooseLocation
     {
         public Location ChooseLocationMethod(SaveData saveData)
         {
             while (true)
             {
-                Console.WriteLine("");
+                Console.WriteLine("Where would you like to go?");
                 var ChosenLocation = Console.ReadLine();
                                               
                 switch (ChosenLocation)
                 {
                     case "F": if (saveData.Farm == true) return new Farm(saveData); break;
-                    //case "B": return new Beach; break;
+                    case "B": if (saveData.Beach == true) return new Beach(saveData); break;
                     case "M": return new Mine(saveData); break;
-                    //case "C": return new CommunityCentre; break;
-                    //case "S": return new StardropSaloon; break;
-                    //case "D": return new DoctorsSurgery; break;
+                    case "C": return new CommunityCentre(saveData); break;
+                    case "S": return new StardropSaloon(saveData); break;
+                    case "D": return new DoctorsSurgery(saveData); break;
 
                     default: break;
                 }

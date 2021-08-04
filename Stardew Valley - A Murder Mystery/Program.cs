@@ -10,22 +10,20 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             SaveData saveData = new SaveData();
 
-            Console.WriteLine("What's your name?");
-            string PlayerName = Console.ReadLine();
-            saveData.PlayerName = PlayerName;
-            //intro. read case file. get off bus. stay at guest house on Farm
+            Intro Opening = new Intro();
+            Opening.Opening();
 
-
-            NPC newNPC = new NPC();
-            newNPC.ChatwithPam();
-           
-            
-
-            
+            Pam newNPC = new Pam(saveData);
+            newNPC.Chat();                 
+                                
+                        
             Console.WriteLine("DAY 1");
             while (true)
             {
                 if (saveData.Day1Complete == true) break;
+
+                BusStop busStop = new BusStop(saveData);
+                busStop.Enter();
 
                 ChooseLocation Location = new ChooseLocation();
                 var ChosenLocation = Location.ChooseLocationMethod(saveData);
@@ -33,6 +31,11 @@ namespace Stardew_Valley___A_Murder_Mystery
             }
 
             Console.WriteLine("DAY 2");
+            while (true)
+            {
+
+            }
+
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");

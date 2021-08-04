@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
-    class Mine : Location
+    class DoctorsSurgery : Location
     {
         private SaveData SaveData { get; set; }
 
-        public Mine (SaveData saveData)
+        public DoctorsSurgery(SaveData saveData)
         {
             SaveData = saveData;
         }

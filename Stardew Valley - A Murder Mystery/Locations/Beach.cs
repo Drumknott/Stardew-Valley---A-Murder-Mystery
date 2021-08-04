@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
-    class Mine : Location
+    class Beach : Location
     {
         private SaveData SaveData { get; set; }
 
-        public Mine (SaveData saveData)
+        public Beach(SaveData saveData)
         {
             SaveData = saveData;
         }
         public override void Enter()
         {
-            Console.WriteLine("");
+            Console.WriteLine(" You are at the beach.");
         }
     }
 }

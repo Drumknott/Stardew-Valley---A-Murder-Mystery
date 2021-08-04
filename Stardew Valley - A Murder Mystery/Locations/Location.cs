@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
-    public abstract class Location
+    abstract class Location : Program
     {
      public abstract void Enter();
         
