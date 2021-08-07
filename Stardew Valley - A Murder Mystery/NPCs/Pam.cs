@@ -19,10 +19,10 @@ namespace Stardew_Valley___A_Murder_Mystery
             if (SaveData.PamCount == 0)
             {
                 //change colour
-                Console.WriteLine("Y> Yep, that's me");
-                Console.WriteLine("H> How do you know about that?");
-                Console.WriteLine("N> Nope, don't know what you mean");
-                Console.WriteLine("D> Have you been drinking!?");
+                Console.WriteLine("Y > Yep, that's me");
+                Console.WriteLine("H > How do you know about that?");
+                Console.WriteLine("N > Nope, don't know what you mean");
+                Console.WriteLine("D > Have you been drinking!?");
 
                 var Dialogue1 = Console.ReadLine();
 

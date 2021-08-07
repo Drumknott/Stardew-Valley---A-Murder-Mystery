@@ -6,7 +6,34 @@ namespace Stardew_Valley___A_Murder_Mystery
     {
         static void Main(string[] args)
         {
-            //intro. are you ready to begin y/n game will take x hours to play etc. if yes;
+            Console.WriteLine("N > NEW GAME");
+            Console.WriteLine("L > LOAD GAME");
+            var Start = Console.ReadLine();
+
+            if (Start == "L")
+            {
+                //load game
+
+                //public static SaveData Load()
+                //{
+                //    using (var openFileStream = File.OpenRead("saveFile.dat"))
+                //    {
+                //        BinaryFormatter serializer = new BinaryFormatter();
+                //        return (SaveData)deserializer.Deserialize(openFileStream);
+                //    }
+                //}
+            }
+
+            Console.WriteLine("Welcome to STARDEW VALLEY - A MURDER MYSTERY");
+            Console.WriteLine("");
+            Console.WriteLine("Are you ready to begin? Y/N");
+            var Begin = Console.ReadLine();
+
+            if (Begin == "N")
+            {
+                Console.WriteLine("No problem. Come back when you're ready to play.");
+                //exit application
+            }
 
             SaveData saveData = new SaveData();
 
@@ -36,9 +63,11 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
+            Console.WriteLine("Day 3");
+            Console.WriteLine("DAY 4");
+            
+            Console.WriteLine("Day 5");
+            //travelling lady
         }
     }   
 }

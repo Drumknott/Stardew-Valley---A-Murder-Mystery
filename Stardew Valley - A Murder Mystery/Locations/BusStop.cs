@@ -26,6 +26,8 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                 SaveData.FreshOffTheBus = true;
                 SaveData.BusStop = true;
+                SaveData.Farm = true;
+                SaveData.PelicanTown = true;
 
             }
         }

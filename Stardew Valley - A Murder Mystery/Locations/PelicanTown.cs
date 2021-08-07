@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
-    class CommunityCentre : Location
+    class PelicanTown : Location
     {
         private SaveData SaveData { get; set; }
 
-        public CommunityCentre(SaveData saveData)
+        public PelicanTown(SaveData saveData)
         {
             SaveData = saveData;
         }
         public override void Enter()
         {
-            Console.WriteLine("You are in the Connunity Centre");
+            Console.WriteLine(" You are in the town square.");
         }
     }
 }

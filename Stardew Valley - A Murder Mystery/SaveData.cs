@@ -6,17 +6,46 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
-    public class SaveData
+    [Serializable ] public class SaveData
     {
+        //using (var SaveFileStream = File.Create("saveFile.dat"))
+        //{
+        //    BinaryFormatter serializer = new BinaryFormatter();
+        //    serializer.Serialize(SaveFileStream, saveData);
+        //    SaveFileStream.Flush();
+        //}
+        //public void Save()
+        //{
+        //    using (var SaveFileStream = File.Create("saveFile.dat"))
+        //    {
+        //        BinaryFormatter serializer = new BinaryFormatter();
+        //        serializer.Serialize(SaveFileStream, this);
+        //        SaveFileStream.Flush();
+        //    }
+        //}
+
         public string PlayerName { get; set; }
         public string FarmerName { get; set; }
 
         //Places Visited
         public bool CrimeSceneVisited { get; set; }
         public bool Farm { get; set; }
+        public bool FarmFirstVisit { get; set; }
         public bool Beach { get; set; }
         public bool FreshOffTheBus { get; set; }
         public bool BusStop { get; set; }
+        public bool Mine { get; set; }
+        public bool DoctorsSurgery { get; set; }
+        public bool CommunityCentre { get; set; }
+        public bool StardropSaloon { get; set; }
+        public bool PelicanTown { get; set; }
+        public bool Quarry { get; set; }
+        public bool TrainTracks { get; set; }
+        public bool AdventurersGuild { get; set; }
+        public bool WizardsTower { get; set; }
+        public bool JojaMart { get; set; }
+        public bool MarniesHouse { get; set; }
+        public bool HatMausHaus { get; set; }
 
         //People Met
         public int PamCount { get; set; }
