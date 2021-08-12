@@ -37,14 +37,12 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             SaveData saveData = new SaveData();
 
-            Intro Opening = new Intro();
+            Intro Opening = new Intro(saveData);
             Opening.Opening();
 
             Pam newNPC = new Pam(saveData);
-            newNPC.Chat();                 
-                                
-                        
-            Console.WriteLine("DAY 1");
+            newNPC.Chat();                       
+            
             while (true)
             {
                 if (saveData.Day1Complete == true) break;
@@ -60,13 +58,13 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("DAY 2");
             while (true)
             {
-
+                if (saveData.Day2Complete == true) break;
             }
 
-            Console.WriteLine("Day 3");
+            Console.WriteLine("DAY 3");
             Console.WriteLine("DAY 4");
             
-            Console.WriteLine("Day 5");
+            Console.WriteLine("DAY 5");
             //travelling lady
         }
     }   

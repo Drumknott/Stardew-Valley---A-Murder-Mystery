@@ -56,9 +56,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                         SaveData.PlayerName = Console.ReadLine();
                         Console.WriteLine("Pam > Well, Welcome to Pelican Town Detective " + SaveData.PlayerName,"!");
                         break;
-                    default: break;
-                }
-                
+                }                
             }
         }      
         

@@ -8,6 +8,12 @@ namespace Stardew_Valley___A_Murder_Mystery
 {
     class Intro
     {
+        private SaveData SaveData { get; set; }
+
+        public Intro(SaveData saveData)
+        {
+            SaveData = saveData;
+        }
         public void Opening()
         {
             Console.WriteLine("");
@@ -16,7 +22,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Suspected murder, but this town doesn't have any police so you need to go and investigate it? Weird.");
             Console.WriteLine("You open the file.");
             Console.WriteLine("");
-            Console.WriteLine("> Enter");
+            Console.WriteLine("Enter > Continue");
             Console.ReadKey();
             Console.WriteLine("");
             Console.WriteLine("CASE FILE #36284364");
@@ -26,8 +32,9 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("");
             Console.WriteLine("911 call from town resident Marnie reporting the discovery of a dead body, reportedly that of the town Mayor Lewis.");
             Console.WriteLine("The body is being kept at the local Doctor's Surgery. Awaiting further investigation.");
+            SaveData.Brief = true;
             Console.WriteLine("");
-            Console.WriteLine("> Enter");
+            Console.WriteLine("Enter > Continue");
             Console.ReadKey();
             Console.WriteLine("");
             Console.WriteLine("The bus driver, a woman with blonde hair, pulls the bus over and yells out 'Pelican Town!'");

@@ -23,6 +23,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("Pam > If you head left there that road will take you into town, or right will take you to Stardew Farm.");
                 Console.WriteLine("Pam > Good luck, Detective "+SaveData.PlayerName, ".");
                 Console.WriteLine("Pam locks the bus and hurries off.");
+                Console.WriteLine("");
+                Console.WriteLine("DAY 1");
 
                 SaveData.FreshOffTheBus = true;
                 SaveData.BusStop = true;

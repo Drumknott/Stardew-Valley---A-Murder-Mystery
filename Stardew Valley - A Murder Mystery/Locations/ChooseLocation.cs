@@ -12,8 +12,9 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             while (true)
             {
+                Console.WriteLine("");
                 Console.WriteLine("Where would you like to go?");
-
+                Console.WriteLine("");
                 if (saveData.Farm == true) Console.WriteLine("F > Stardew Farm");
                 if (saveData.Beach == true) Console.WriteLine("B > Beach");
                 if (saveData.Mine == true) Console.WriteLine("M > Mine");
@@ -21,8 +22,16 @@ namespace Stardew_Valley___A_Murder_Mystery
                 if (saveData.StardropSaloon == true) Console.WriteLine("S > Stardrop Saloon");
                 if (saveData.DoctorsSurgery == true) Console.WriteLine("D > Doctor's Surgery");
                 if (saveData.PelicanTown == true) Console.WriteLine("P > Pelican Town");
+                if (saveData.GeneralStore == true) Console.WriteLine("G > General Store");
+                if (saveData.MarniesHouse == true) Console.Write("A > Marnie's House");
 
-                var ChosenLocation = Console.ReadLine();
+                Console.WriteLine("");
+                Console.WriteLine("or");
+                Console.WriteLine("I > Check Inventory");
+                Console.WriteLine("N > Check Notes");
+                //Console.WriteLine("V > Save Game");
+
+                var ChosenLocation = Console.ReadLine(); 
                                               
                 switch (ChosenLocation)
                 {
@@ -33,8 +42,22 @@ namespace Stardew_Valley___A_Murder_Mystery
                     case "S": if (saveData.StardropSaloon == true) return new StardropSaloon(saveData); break;
                     case "D": if (saveData.DoctorsSurgery == true) return new DoctorsSurgery(saveData); break;
                     case "P": if (saveData.PelicanTown == true) return new PelicanTown(saveData); break;
+                    case "G": if (saveData.GeneralStore == true) return new GeneralStore(saveData); break;
+                    case "A": if (saveData.MarniesHouse == true) return new Marnies(saveData); break;
 
-                    default: break;
+                    case "I":
+                        Inventory list = new Inventory(saveData);
+                        {
+                            list.InventoryList();
+                        }
+                        break;
+
+                    case "N":
+                        CaseFile notes = new CaseFile(saveData);
+                        {
+                            notes.Notes();
+                        }
+                        break;
                 }
             }
         }
