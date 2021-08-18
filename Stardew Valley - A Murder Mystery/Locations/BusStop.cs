@@ -29,6 +29,9 @@ namespace Stardew_Valley___A_Murder_Mystery
                 SaveData.BusStop = true;
                 SaveData.Farm = true;
                 SaveData.PelicanTown = true;
+                Console.WriteLine("[BusStop] added to location list");
+                Console.WriteLine("[Farm] added to Location list");
+                Console.WriteLine("Pelican [Town] added to location list");
             }
         }
 

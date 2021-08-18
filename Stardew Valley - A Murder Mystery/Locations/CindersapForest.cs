@@ -6,23 +6,17 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
-    class PelicanTown : Location
+    class CindersapForest : Location
     {
         private SaveData SaveData { get; set; }
 
-        public PelicanTown(SaveData saveData)
+        public CindersapForest(SaveData saveData)
         {
             SaveData = saveData;
         }
         public override void Enter()
         {
-            if (SaveData.TownFirstVisit == false)
-            {
-                ExploreTown exploreTown = new(SaveData);
-                exploreTown.Enter();               
-            }
-
-            Console.WriteLine("You are in the town square.");
+            Console.WriteLine("You are in Cindersap Forest.");
         }
 
         public override void Forage()

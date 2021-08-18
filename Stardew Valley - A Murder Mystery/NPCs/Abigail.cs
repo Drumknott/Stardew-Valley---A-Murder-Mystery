@@ -45,6 +45,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                     amethystCount--;
                     SaveData.MyInventory[Enums.Items.Amethyst] = amethystCount;
                 }
+
                 if (gift == "Horseradish" && Enums.Items.Horseradish > 0)
                 {
                     Console.WriteLine("Abigail > What am I supposed to do with this ?"); //Abi hates

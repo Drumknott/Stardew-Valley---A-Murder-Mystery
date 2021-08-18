@@ -37,7 +37,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public override void Forage()
         {
             Random forage = new();
-            int random = forage.Next(0, 2);
+            int random = forage.Next(0, 6);
             switch (random)
             {
                 case 0:
@@ -52,8 +52,30 @@ namespace Stardew_Valley___A_Murder_Mystery
                     leekCount++;
                     SaveData.MyInventory[Enums.Items.Leek] = leekCount;
                     break;
-
-
+                case 2:
+                    Console.WriteLine("You spot a strange back egg by the chicken coop.");
+                    SaveData.MyInventory.TryGetValue(Enums.Items.VoidEgg, out var voideggCount);
+                    voideggCount++;
+                    SaveData.MyInventory[Enums.Items.VoidEgg] = voideggCount;
+                    break;
+                case 3:
+                    Console.WriteLine("Some amaranth is growing by the path.");
+                    SaveData.MyInventory.TryGetValue(Enums.Items.Amaranth, out var amaranthCount);
+                    amaranthCount++;
+                    SaveData.MyInventory[Enums.Items.Amaranth] = amaranthCount;
+                    break;
+                case 4:
+                    Console.WriteLine("It's a bit late, but there's a holly bush in bloom near the Farmhouse.");
+                    SaveData.MyInventory.TryGetValue(Enums.Items.Holly, out var hollyCount);
+                    hollyCount++;
+                    SaveData.MyInventory[Enums.Items.Holly] = hollyCount;
+                    break;
+                case 5:
+                    Console.WriteLine("");
+                    SaveData.MyInventory.TryGetValue(Enums.Items.Daffodil, out var daffodilCount);
+                    daffodilCount++;
+                    SaveData.MyInventory[Enums.Items.Daffodil] = daffodilCount;
+                    break;
             }
         }
     }

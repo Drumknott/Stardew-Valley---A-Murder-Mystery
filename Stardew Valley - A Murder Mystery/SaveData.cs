@@ -26,6 +26,11 @@ namespace Stardew_Valley___A_Murder_Mystery
         public string TheMurderer { get; set; }
         public bool TravellingLady { get; set; }
         public bool Homeless { get; set; }
+        public bool ExploredNorth { get; set; }
+        public bool ExploredSouth { get; set; }
+        public bool ExploredEast { get; set; }
+        public bool ExploredWest { get; set; }
+
 
         //Places Visited
         public string LastVisited { get; set; }
@@ -51,6 +56,13 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool HatMausHaus { get; set; }
         public bool GeneralStore { get; set; }
         public bool Cabin { get; set; }
+        public bool WillysShack { get; set; }
+        public bool ElliottsCabin { get; set; }
+        public bool Blacksmith { get; set; }
+        public bool Museum { get; set; }
+        public bool Robins { get; set; }
+        public bool Cindersap { get; set; }
+        public bool LeahsHouse { get; set; }
 
         //People Met
         public int PamCount { get; set; }

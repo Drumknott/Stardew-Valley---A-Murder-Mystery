@@ -60,6 +60,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 BusStop busStop = new(saveData);
                 busStop.Enter();
 
+                Console.WriteLine("");
                 Console.WriteLine("What would you like to do?");
                 var response = Console.ReadLine();
 
@@ -88,6 +89,12 @@ namespace Stardew_Valley___A_Murder_Mystery
                         CaseFile notes = new(saveData);
                         notes.Notes();
                     }
+
+                    if (parsedcheckable == Checkables.Locations)
+                    {
+                        AvailablePlaces check = new(saveData);
+                        check.ViewLocations();
+                    }
                 }
 
                 if (commandType == Commands.Forage)
@@ -112,8 +119,8 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                 if (commandType == Commands.Help)
                 {
-                    PlayerHelp Tips = new();
-                    Tips.Help();
+                    PlayerHelp tips = new();
+                    tips.Help();
                 }
             }
                         

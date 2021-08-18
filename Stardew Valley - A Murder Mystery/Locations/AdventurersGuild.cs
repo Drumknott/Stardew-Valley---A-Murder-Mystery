@@ -6,23 +6,17 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
-    class PelicanTown : Location
+    class AdventurersGuild : Location
     {
         private SaveData SaveData { get; set; }
 
-        public PelicanTown(SaveData saveData)
+        public AdventurersGuild(SaveData saveData)
         {
             SaveData = saveData;
         }
         public override void Enter()
         {
-            if (SaveData.TownFirstVisit == false)
-            {
-                ExploreTown exploreTown = new(SaveData);
-                exploreTown.Enter();               
-            }
-
-            Console.WriteLine("You are in the town square.");
+            Console.WriteLine("");
         }
 
         public override void Forage()

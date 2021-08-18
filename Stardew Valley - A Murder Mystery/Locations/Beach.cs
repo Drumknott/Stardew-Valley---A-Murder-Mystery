@@ -16,6 +16,16 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
+            if (SaveData.Beach == false)
+            {
+                SaveData.Beach = true;
+                SaveData.ElliottsCabin = true;
+                SaveData.WillysShack = true;
+                Console.WriteLine("[Beach] added to location list");
+                Console.WriteLine("[Elliots] Cabin added to location list");
+                Console.WriteLine("[Willys] Shack added to location list");
+                Console.WriteLine("");
+            }
             Console.WriteLine(" You are at the beach.");
         }
 

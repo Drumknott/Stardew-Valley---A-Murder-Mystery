@@ -58,7 +58,7 @@ namespace Stardew_Valley___A_Murder_Mystery.CommandUtilities
             
             if (commandType == Commands.Chat)
             {
-                return Enum.Parse(typeof(People), commandArgumentPart).ToString();
+                return Enum.Parse(typeof(Enums.People), commandArgumentPart).ToString();
             }
 
             else throw new Exception("Ya dun goofed");

@@ -25,7 +25,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             if (SaveData.ShaneCount == 1)
             {
                 Random dialogue = new();
-                int random = dialogue.Next(1, 14);
+                int random = dialogue.Next(1, 15);
 
                 switch (random)
                 {
