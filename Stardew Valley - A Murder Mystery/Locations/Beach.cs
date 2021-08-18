@@ -18,5 +18,10 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             Console.WriteLine(" You are at the beach.");
         }
+
+        public override void Forage()
+        {
+
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData = saveData;
         }
         public override void Enter()
-        {
+        {          
             if (SaveData.FreshOffTheBus == false)
             {
                 SaveData.PamCount += 1;
@@ -24,14 +24,20 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("Pam > Good luck, Detective "+SaveData.PlayerName, ".");
                 Console.WriteLine("Pam locks the bus and hurries off.");
                 Console.WriteLine("");
-                Console.WriteLine("DAY 1");
-
+                
                 SaveData.FreshOffTheBus = true;
                 SaveData.BusStop = true;
                 SaveData.Farm = true;
                 SaveData.PelicanTown = true;
-
             }
+        }
+
+        public override void Forage()
+        {        
+            Console.WriteLine("You find a Red Mushroom hiding under a bush."); 
+            SaveData.MyInventory.TryGetValue(Enums.Items.RedMushroom, out var mushroomCount);
+            mushroomCount++;
+            SaveData.MyInventory[Enums.Items.RedMushroom] = mushroomCount;            
         }
     }
 }

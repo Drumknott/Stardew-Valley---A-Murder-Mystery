@@ -24,7 +24,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("N > Nope, don't know what you mean");
                 Console.WriteLine("D > Have you been drinking!?");
 
-                var Dialogue1 = Console.ReadLine();
+                var Dialogue1 = Console.ReadLine().Substring(0, 1).ToUpper();
 
                 switch (Dialogue1)
                 {
