@@ -42,7 +42,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                         Console.WriteLine("It's a Farmer's Lunch. Smells great!");
                         SaveData.MyInventory.TryGetValue(Enums.Items.FarmersLunch, out var farmerslunchCount);
                         farmerslunchCount++;
-                        SaveData.MyInventory[Enums.Items.Leek] = farmerslunchCount;
+                        SaveData.MyInventory[Enums.Items.FarmersLunch] = farmerslunchCount;
                         break;                       
                     case "N": 
                         Console.WriteLine("You > Um, I thought I'd be staying in town. I'm not really a country person...");

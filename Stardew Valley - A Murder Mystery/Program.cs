@@ -61,7 +61,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 busStop.Enter();
 
                 Console.WriteLine("What would you like to do?");
-                var response = Console.ReadLine().Substring(0, 1).ToUpper();
+                var response = Console.ReadLine();
 
                 var commandParser = new CommandParser();
                 var (commandType, commandArgument) = commandParser.ParseWhatTheUserTyped(response);

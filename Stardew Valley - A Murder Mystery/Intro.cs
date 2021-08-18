@@ -18,6 +18,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             PlayerHelp Tips = new();
             Tips.Help();
+            Console.WriteLine("");
             Console.WriteLine("DAY 1");
             Console.WriteLine("");
             Console.WriteLine("You're the only passenger on this bus. This place clearly doesn't get many visitors.");

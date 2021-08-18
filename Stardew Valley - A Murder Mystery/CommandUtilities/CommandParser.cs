@@ -61,7 +61,7 @@ namespace Stardew_Valley___A_Murder_Mystery.CommandUtilities
                 return Enum.Parse(typeof(People), commandArgumentPart).ToString();
             }
 
-            throw new Exception("Ya dun goofed");
+            else throw new Exception("Ya dun goofed");
 
         }
 
