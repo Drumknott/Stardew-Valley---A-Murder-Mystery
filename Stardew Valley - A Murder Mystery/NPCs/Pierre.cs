@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stardew_Valley___A_Murder_Mystery
+namespace Stardew_Valley___A_Murder_Mystery.NPCs
 {
-    class Marnie : NPC
+    class Pierre : NPC
     {
         private SaveData SaveData { get; set; }
 
-        public Marnie(SaveData saveData)
+        public Pierre(SaveData saveData)
         {
             SaveData = saveData;
         }

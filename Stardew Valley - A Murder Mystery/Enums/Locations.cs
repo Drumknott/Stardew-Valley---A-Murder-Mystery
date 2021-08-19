@@ -31,5 +31,10 @@ namespace Stardew_Valley___A_Murder_Mystery.Enums
         ExploreNorth,
         Robins,
         Cabin,
+        Mayors,
+        Train,
+        Hat,
+        Leahs,
+
     }
 }

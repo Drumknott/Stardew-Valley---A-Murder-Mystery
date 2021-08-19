@@ -66,9 +66,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 			//if (SaveData.Corn > 0) Console.WriteLine("Corn x" + SaveData.Corn);
 			//if (SaveData.VoidEssence > 0) Console.WriteLine("Void Essence x" + SaveData.VoidEssence);
 			//if (SaveData.RedMushroom > 0) Console.WriteLine("Red Mushroom x" + SaveData.RedMushroom);
-			Console.WriteLine("");
-			Console.WriteLine("Enter > Back");
-			Console.ReadKey();
+			Console.WriteLine("");			
 		}
 
 	}

@@ -95,6 +95,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int LeahCount { get; set; }
         public int ElliotCount { get; set; }
         public int FarmerCount { get; set; }
+        public int MarlonCount { get; set; }
 
         //Friendship/Romance
         public int AbigailFriendship { get; set; }

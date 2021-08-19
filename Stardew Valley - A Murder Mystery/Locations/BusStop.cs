@@ -15,7 +15,9 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData = saveData;
         }
         public override void Enter()
-        {          
+        {
+            SaveData.LastVisited = "Bus";
+
             if (SaveData.FreshOffTheBus == false)
             {
                 SaveData.PamCount += 1;

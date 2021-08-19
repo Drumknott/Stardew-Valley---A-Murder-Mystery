@@ -53,7 +53,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             Pam newNPC = new(saveData);
             newNPC.Chat();
 
-            while (true) //DAY 1
+            while (true) //DAY 0
             {
                 if (saveData.DayCount == 1) break;
 
@@ -71,6 +71,23 @@ namespace Stardew_Valley___A_Murder_Mystery
                 {
                     ChooseLocation Location = new();
                     var ChosenLocation = Location.ChooseLocationMethod(commandArgument, saveData);
+                    Random travel = new();
+                    int description = travel.Next(0, 3);
+                    switch (description)
+                    {
+                        case 0:
+                            Console.WriteLine("");
+                            Console.WriteLine("The weather is lovely as you head towards your destination."); 
+                            break;
+                        case 1:
+                            Console.WriteLine("");
+                            Console.WriteLine("The sun beams down on you as you walk, and birds sing in the trees."); 
+                            break;
+                        case 2:
+                            Console.WriteLine("");
+                            Console.WriteLine("Clouds gather overhead, and you're afraid it might rain soon."); 
+                            break;
+                    }
                     ChosenLocation.Enter();
                 }
 
@@ -106,7 +123,9 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                 if (commandType == Commands.Gift)
                 {
-
+                    ChooseNPC npc = new();
+                    var chosenNPC = npc.ChooseNPCMethod(saveData.LastChat, saveData);
+                    chosenNPC.Gift();
                 }
 
                 if (commandType == Commands.SaveGame)

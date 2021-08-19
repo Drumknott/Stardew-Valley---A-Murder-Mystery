@@ -46,6 +46,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("V > Visit one of the town buildings");
 
                 var Choice = Console.ReadLine().Substring(0, 1).ToUpper();
+                if (Choice == "V") break;
 
                 switch (Choice)
                 {
@@ -105,7 +106,6 @@ namespace Stardew_Valley___A_Murder_Mystery
                         travel.Enter();
                         SaveData.ExploredWest = true;
                         break;
-                    case "V": break; //back to main method
                     default: break;
                 }
             }

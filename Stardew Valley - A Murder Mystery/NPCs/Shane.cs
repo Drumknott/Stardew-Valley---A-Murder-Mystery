@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stardew_Valley___A_Murder_Mystery.NPCs
+namespace Stardew_Valley___A_Murder_Mystery
 {
     class Shane : NPC
     {
         private SaveData SaveData { get; set; }
+        bool caseW { get; set; }
+        bool caseH { get; set; }
+        bool caseM { get; set; }
 
         public Shane(SaveData saveData)
         {
@@ -16,13 +19,71 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Chat()
         {
-            if (SaveData.ShaneCount == 0) //First meeting
+            SaveData.LastChat = "Shane";
+
+            if (SaveData.ShaneFriendship >1)
+            {
+                while (true)
+                {
+                    if (caseH == true && caseM == true && caseW == true) break;
+
+                    Console.WriteLine("W > What were you doing the evening Mayor Lewis was found dead?");
+                    Console.WriteLine("H > How well did you know Mayor Lewis?");
+                    Console.WriteLine("M > You live with Marnie? Can you tell me about her relationship with Mayor Lewis?");
+                    Console.WriteLine("L > Leave");
+                    Console.WriteLine("");
+                    var question = Console.ReadLine();
+                    switch (question)
+                    {
+                        case "W":
+                            Console.WriteLine("Me > What were you doing the evening Mayor Lewis was found dead?");
+                            Console.WriteLine("Shane > I'd had a busy day at work, you know? So I was just chilling at home with a few beers.");
+                            caseW = true;
+                            break;
+                        case "H":
+                            Console.WriteLine("Me > How well did you know Mayor Lewis?");
+                            Console.WriteLine("Shane > Not that well. I see him at town events and stuff. Sometimes in the Saloon.");
+                            Console.WriteLine("Me > Do you go to the Saloon often?");
+                            Console.WriteLine("Shane > Not really. Most Fridays, but other than that not much.");
+                            Console.WriteLine("Me > What happens on Fridays?");
+                            Console.WriteLine("Shane > Oh, it's just the night everyone goes out. It's the end of the week, you know?");
+                            caseH = true;
+                            break;
+                        case "M": 
+                            Console.WriteLine("Me > You live with Marnie? Can you tell me about her relationship with Mayor Lewis?");
+                            Console.WriteLine("Shane > Yeah I live with Marnie. She, uh, her and Lewis were friends, I guess?");
+                            Console.WriteLine("Me > Good friends? Do you know why she was at his house when she found his body?");
+                            Console.WriteLine("Shane > Uh...");
+                            if (SaveData.ShaneFriendship > 3)
+                            {
+                                Console.WriteLine("Shane > Well, Marnie and Lewis were kinda having a relationship... it was a secret though, they didn't tell anyone.");
+                                Console.WriteLine("Me > So how did you know about it?");
+                                Console.WriteLine("Shane > Well I live with Marnie, you know. It's hard to keep that stuff a secret when you live together.");
+                                Console.WriteLine("Me > Ok. And how did Marnie feel about it being a secret?");
+                                Console.WriteLine("Shane > Um, not great. She wanted to tell people, I think, but he didn't want to. He was kinda a jerk to her, to be honest.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Shane > No. No idea.");
+                                Console.WriteLine("Me > Ok. Thanks Shane.");
+                            }
+                            caseM = true;
+                            break;
+                        case "L":
+                            break;
+                        default: break;
+                    }
+
+                }
+            }
+
+            else if (SaveData.ShaneCount == 0) //First meeting
             {
                 Console.WriteLine("Shane > I don't know you. Why are you talking to me?");
                 SaveData.ShaneCount += 1;
             }
 
-            if (SaveData.ShaneCount == 1)
+            else if (SaveData.ShaneCount >0)
             {
                 Random dialogue = new();
                 int random = dialogue.Next(1, 15);
