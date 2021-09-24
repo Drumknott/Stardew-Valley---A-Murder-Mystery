@@ -30,6 +30,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool ExploredSouth { get; set; }
         public bool ExploredEast { get; set; }
         public bool ExploredWest { get; set; }
+        public bool PierreLied { get; set; }
 
 
         //Places Visited
@@ -162,6 +163,9 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool Clue { get; set; }
         //time
         public int DayCount { get; set; } 
+
+        //Investigations
+        public int AbigailInvestigated { get; set; }
 
     }
 }

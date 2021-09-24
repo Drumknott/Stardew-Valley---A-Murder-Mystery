@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery.NPCs
 {
-    class Elliot : NPC
+    class Harvey : NPC
     {
         private SaveData SaveData { get; set; }
 
-        public Elliot (SaveData saveData)
+        public Harvey (SaveData saveData)
         {
             SaveData = saveData;
         }
         public override void Chat()
-        {
-
+        { 
+        
         }
-
         public override void Gift()
         {
 
