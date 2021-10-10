@@ -16,7 +16,12 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
-            Console.WriteLine("You are in the Connunity Centre");
+            Console.WriteLine("You are in the Community Centre");
+        }
+
+        public override void Forage()
+        {
+
         }
     }
 }

@@ -6,22 +6,17 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
-    class StardropSaloon : Location
+    class AdventurersGuild : Location
     {
         private SaveData SaveData { get; set; }
 
-        public StardropSaloon(SaveData saveData)
+        public AdventurersGuild(SaveData saveData)
         {
             SaveData = saveData;
         }
         public override void Enter()
         {
-            Gus newNPC = new Gus(SaveData);
-            newNPC.Chat();
-
             Console.WriteLine("");
-            
-
         }
 
         public override void Forage()

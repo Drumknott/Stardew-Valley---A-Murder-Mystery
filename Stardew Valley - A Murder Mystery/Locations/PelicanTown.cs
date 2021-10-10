@@ -18,16 +18,22 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             if (SaveData.TownFirstVisit == false)
             {
-                Console.WriteLine(" You are in the town square. To the north, you can see a Doctor's Surgery next to a general store called Pierre's.");
-                SaveData.DoctorsSurgery = true;
-                SaveData.GeneralStore = true;
-                Console.WriteLine("A path next to Pieree's leads further north. To the east is a tavern, a small graveyard and a couple of houses and a trailer.");
-                Console.WriteLine("To the south are some more houses and a path that looks like it heads towards the beach.");
-
-                SaveData.TownFirstVisit = true;
+                ExploreTown exploreTown = new(SaveData);
+                exploreTown.Enter();               
             }
 
-            Console.WriteLine("You are in the twon square.");
+            if (SaveData.DayCount >0)
+            {
+                Console.WriteLine("You are in the town square. Posters have been put up on every available surface: VOTE KENT TO SERVE THE COMMUNITY.");
+                Console.WriteLine("Over these, rival posters have been stuck haphazardly: Vote Pierre, Joja OUT! And lastly, covering an entire wall of the Stardrop Saloon,");
+                Console.WriteLine("is one giant billboard in Joja blue: For Modern Progress vote for Mayor Morris");
+                Console.WriteLine("These people don't waste any time.");
+            }                       
+        }
+
+        public override void Forage()
+        {
+
         }
     }
 }
