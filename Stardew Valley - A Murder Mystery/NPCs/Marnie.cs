@@ -16,6 +16,9 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
 
         bool caseP { get; set; }
+        bool caseI { get; set; }
+        bool caseK { get; set; }
+        bool caseS { get; set; }
 
         public override void Chat()
         {
@@ -92,28 +95,75 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             while (true)
             {
+                if (caseP == true && caseK == true && caseI == true && caseS == true) break;
+
                 Console.WriteLine("P > You called the Police?");
-                Console.WriteLine("");
+                Console.WriteLine("K > Did you kill Lewis?");
                 if (SaveData.MarnieAndLewis == true)
                 {
                     Console.WriteLine("I > Is it true you were having a relationship with Lewis?");
                 }
+                
+                SaveData.MyInventory.TryGetValue(Enums.Items.LewisStatue, out int lewisStatue);
+                if (lewisStatue > 0)
+                {
+                    Console.WriteLine("S > Have you ever seen this before?");
+                }
                 Console.WriteLine("L > Leave");
 
                 var answer = Console.ReadLine();
-
                 if (answer == "L") break;
-                if (caseP == true) break;
-
+                
                 else switch (answer)
                 {
                     case "P":
                         Console.WriteLine("Firstly, according to my case notes it was you who discovered Lewis' body and called the police. Can you tell me about the events of that evening?");
-                        caseP = true;
+                            Console.WriteLine("");
+                            caseP = true;
                         break;
+
+                    case "K": 
+                            Console.WriteLine("Did you kill Lewis?");
+                            if (SaveData.TheMurderer == "Marnie" && SaveData.MarnieAndLewis == true) //She murdered him because he was a jerk
+                            {
+
+                            }
+                            else if (SaveData.TheMurderer == "Marnie") //she killed him... BUT WHY!>
+                            {
+
+                            }
+                            else if (SaveData.TheMurderer != "Marnie" && SaveData.MarnieAndLewis == true) //didn't kill him, sad he's gone
+                            {
+
+                            }
+                            else //didn't kill him, has to pretend shes not personally invested (that's really sad! ):  )
+                            {
+
+                            }
+                           
+                            caseK = true;
+                        break;
+
                     case "I":
-                        Console.WriteLine("Is it true that you and Lewis were in a relationship? Why was it a secret?");
-                        break;
+                    Console.WriteLine("Is it true that you and Lewis were in a relationship? Why was it a secret?");
+                        Console.WriteLine("Marnie gasps.");
+                        Console.WriteLine("Marnie > How do you know about that...?");
+                        if (SaveData.ShaneFriendship >4)
+                        {
+                            Console.WriteLine("I can't disclose that I'm afraid.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Shane mentioned it. He said Lewis wasn't treating you very well.");
+                        }
+                        Console.WriteLine("Marnie > ");
+                        caseI = true;
+                    break;
+
+                        case "S": Console.WriteLine("");
+                            caseS = true;
+                            break;
+
                     default: break;
                 }
             }
