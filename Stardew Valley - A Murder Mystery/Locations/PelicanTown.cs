@@ -22,7 +22,13 @@ namespace Stardew_Valley___A_Murder_Mystery
                 exploreTown.Enter();               
             }
 
-            Console.WriteLine("You are in the town square.");
+            if (SaveData.DayCount >0)
+            {
+                Console.WriteLine("You are in the town square. Posters have been put up on every available surface: VOTE KENT TO SERVE THE COMMUNITY.");
+                Console.WriteLine("Over these, rival posters have been stuck haphazardly: Vote Pierre, Joja OUT! And lastly, covering an entire wall of the Stardrop Saloon,");
+                Console.WriteLine("is one giant billboard in Joja blue: For Modern Progress vote for Mayor Morris");
+                Console.WriteLine("These people don't waste any time.");
+            }                       
         }
 
         public override void Forage()

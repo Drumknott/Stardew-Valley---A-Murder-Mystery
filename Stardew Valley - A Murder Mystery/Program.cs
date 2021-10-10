@@ -55,11 +55,56 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             while (true) //DAY 0
             {
-                if (saveData.DayCount == 1) break;
+                if (saveData.DayCount >0) break;
 
                 BusStop busStop = new(saveData);
                 busStop.Enter();
 
+                DoStuffMethod();
+            }
+                        
+            while (true)
+            {
+                if (saveData.DayCount == 1)
+                {
+                    Console.WriteLine("DAY 2");
+                    DoStuffMethod();
+                }
+
+                if (saveData.DayCount == 2) 
+                {
+                    Console.WriteLine("DAY 3");
+                    DoStuffMethod();
+                }
+
+                if (saveData.DayCount == 3) 
+                {
+                    Console.WriteLine("DAY 4");
+                    DoStuffMethod();
+                }
+
+                if (saveData.DayCount == 4) 
+                {
+                    Console.WriteLine("DAY 5"); 
+                    saveData.TravellingLady = true;
+                    DoStuffMethod();
+                }
+
+                if (saveData.DayCount == 5)
+                {
+                    Console.WriteLine("DAY 6");
+                    DoStuffMethod();
+                }
+
+                if (saveData.DayCount == 6)
+                {
+                    Console.WriteLine("DAY 7: ELECTION DAY");
+                    DoStuffMethod();
+                }
+            }
+
+            void DoStuffMethod()
+            {
                 Console.WriteLine("");
                 Console.WriteLine("What would you like to do?");
                 var response = Console.ReadLine();
@@ -71,21 +116,22 @@ namespace Stardew_Valley___A_Murder_Mystery
                 {
                     ChooseLocation Location = new();
                     var ChosenLocation = Location.ChooseLocationMethod(commandArgument, saveData);
+                    
                     Random travel = new();
                     int description = travel.Next(0, 3);
                     switch (description)
                     {
                         case 0:
                             Console.WriteLine("");
-                            Console.WriteLine("The weather is lovely as you head towards your destination."); 
+                            Console.WriteLine("The weather is lovely as you head towards your destination.");
                             break;
                         case 1:
                             Console.WriteLine("");
-                            Console.WriteLine("The sun beams down on you as you walk, and birds sing in the trees."); 
+                            Console.WriteLine("The sun beams down on you as you walk, and birds sing in the trees.");
                             break;
                         case 2:
                             Console.WriteLine("");
-                            Console.WriteLine("Clouds gather overhead, and you're afraid it might rain soon."); 
+                            Console.WriteLine("Clouds gather overhead, and you're afraid it might rain soon.");
                             break;
                     }
                     ChosenLocation.Enter();
@@ -142,14 +188,6 @@ namespace Stardew_Valley___A_Murder_Mystery
                     tips.Help();
                 }
             }
-                        
-            while (true)
-            {
-                if (saveData.DayCount == 1) Console.WriteLine("DAY 2");
-                if (saveData.DayCount == 2) Console.WriteLine("DAY 3");
-                if (saveData.DayCount == 3) Console.WriteLine("DAY 4");
-                if (saveData.DayCount == 4) Console.WriteLine("DAY 5"); saveData.TravellingLady = true;                
-            }            
         }
-    }   
+    }        
 }

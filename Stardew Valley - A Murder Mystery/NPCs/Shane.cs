@@ -61,6 +61,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                                 Console.WriteLine("Shane > Well I live with Marnie, you know. It's hard to keep that stuff a secret when you live together.");
                                 Console.WriteLine("Me > Ok. And how did Marnie feel about it being a secret?");
                                 Console.WriteLine("Shane > Um, not great. She wanted to tell people, I think, but he didn't want to. He was kinda a jerk to her, to be honest.");
+                                SaveData.MarnieAndLewis = true;
                             }
                             else
                             {

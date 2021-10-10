@@ -111,6 +111,8 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int SamFriendship { get; set; }
         public int SebastianFriendship { get; set; }
         public int ShaneFriendship { get; set; }
+        public bool MarnieAndMarlon { get; set; }
+        public bool MarnieAndLewis { get; set; }
 
 
         //Items Collected
