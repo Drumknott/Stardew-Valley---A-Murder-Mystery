@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery.NPCs
 {
-    class Elliot : NPC
+    class TemplateNPC : NPC
     {
         private SaveData SaveData { get; set; }
 
-        public Elliot (SaveData saveData)
+        public TemplateNPC (SaveData saveData)
         {
             SaveData = saveData;
         }
+
         public override void Chat()
         {
             SaveData.LastChat = "NPCname";
@@ -52,24 +53,26 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 switch (dialogue1)
                 {
-                    case "chat": Console.WriteLine("");
+                    case "chat":
+                        Console.WriteLine("");
                         SaveData.ElliotCount++;
                         break;
-                    case "gift": Console.WriteLine("");
+                    case "gift":
+                        Console.WriteLine("");
                         Gift();
                         break;
-                    case "investigate": Console.WriteLine("");
+                    case "investigate":
+                        Console.WriteLine("");
                         Investigate();
                         break;
                     default: break;
                 }
-
             }
         }
 
         public override void Gift()
         {
-
+            
         }
 
         void Investigate()
