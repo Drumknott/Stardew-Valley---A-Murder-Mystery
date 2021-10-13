@@ -29,16 +29,35 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("[Willys] Shack added to location list");
                 Console.WriteLine("");
             }
-            Console.WriteLine(" You are at the beach.");
 
-            if (SaveData.DayCount == 1 || SaveData.DayCount == 2)
+            else if (SaveData.DayCount == 0 || SaveData.DayCount == 3)
             {
+
+            }
+            
+            else if (SaveData.DayCount == 1 || SaveData.DayCount == 2)
+            {
+                Console.WriteLine(" You are at the beach.");
                 Console.WriteLine("");
                 Console.WriteLine("Elliot is standing outside his house, admiring the waves rolling in.");              
                 Console.WriteLine("Further down you can see Willy fishing off the quay.");
 
                 Elliot elliot = new(SaveData);
                 Willy willy = new (SaveData);
+            }
+
+            else if (SaveData.DayCount == 4 || SaveData.DayCount == 6)
+            {
+                Console.WriteLine("You are at the beach. You can't see anybody else here.");
+            }
+
+            else if (SaveData.DayCount == 5)
+            {
+                Console.WriteLine("You are at the beach.");
+                Console.WriteLine("");
+                Console.WriteLine("Elliot is standing on the quay, staring out to sea as if lost in thought.");
+
+                Elliot elliot = new(SaveData);
             }
         }
 

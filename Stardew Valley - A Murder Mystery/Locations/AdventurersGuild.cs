@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stardew_Valley___A_Murder_Mystery.NPCs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,18 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
-            Console.WriteLine("");
+            if (SaveData.DayCount <6)
+            {
+                Console.WriteLine("You are in the Adventurer's Guild. Marlon is behind the counter.");
+                Marlon marlon = new Marlon(SaveData);
+
+
+            }
+
+            else if (SaveData.DayCount == 6)
+            {
+                Console.WriteLine("You are in the Adventurer's Guild. There's no one here.");
+            }
         }
 
         public override void Forage()

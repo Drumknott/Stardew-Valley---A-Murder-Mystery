@@ -87,10 +87,10 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int GuntherCount { get; set; }
         public int WillyCount { get; set; }
         public int SamCount { get; set; }
-        public int JodieCount { get; set; }
+        public int JodiCount { get; set; }
         public int KentCount { get; set; }
         public int EmilyCount { get; set; }
-        public int HayleyCount { get; set; }
+        public int HaleyCount { get; set; }
         public int MarnieCount { get; set; }
         public int ShaneCount { get; set; }
         public int LeahCount { get; set; }
@@ -103,7 +103,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int AlexFriendship { get; set; }
         public int ElliotFriendship { get; set; }
         public int EmilyFriendship { get; set; }
-        public int HayleyFriendship { get; set; }
+        public int HaleyFriendship { get; set; }
         public int HarveyFriendship { get; set; }
         public int LeahFriendship { get; set; }
         public int MaruFriendship { get; set; }
@@ -113,6 +113,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int ShaneFriendship { get; set; }
         public bool MarnieAndMarlon { get; set; }
         public bool MarnieAndLewis { get; set; }
+        public int KrobusFriendship { get; set; }
 
 
         //Items Collected

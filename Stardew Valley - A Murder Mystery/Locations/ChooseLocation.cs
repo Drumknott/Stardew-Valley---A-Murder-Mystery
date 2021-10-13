@@ -10,30 +10,7 @@ namespace Stardew_Valley___A_Murder_Mystery
     class ChooseLocation
     {
         public Location ChooseLocationMethod(string chosenLocation, SaveData saveData)
-        {
-            //while (true)
-            //{
-            //    if (saveData.Farm == true) Console.WriteLine("F > Stardew Farm");
-            //    if (saveData.Beach == true) Console.WriteLine("B > Beach");
-            //    if (saveData.Mine == true) Console.WriteLine("M > Mine");
-            //    if (saveData.CommunityCentre == true) Console.WriteLine("C > Community Centre");
-            //    if (saveData.StardropSaloon == true) Console.WriteLine("S > Stardrop Saloon");
-            //    if (saveData.DoctorsSurgery == true) Console.WriteLine("D > Doctor's Surgery");
-            //    if (saveData.PelicanTown == true) Console.WriteLine("T > Pelican Town");
-            //    if (saveData.GeneralStore == true) Console.WriteLine("P > Pierre's General Store");
-            //    if (saveData.MarniesHouse == true) Console.Write("A > Marnie's House");
-            //    if (saveData.BusStop == true) Console.WriteLine("U > Bus Stop");
-
-            //    Console.WriteLine("");
-            //    Console.WriteLine("or");
-            //    Console.WriteLine("L > Look Around/Forage/Search Area");
-            //    Console.WriteLine("I > Check Inventory");
-            //    Console.WriteLine("N > Check Notes");
-            //    //Console.WriteLine("V > Save Game");
-
-            //    var ChosenLocation = Console.ReadLine().Substring(0, 1).ToUpper();
-
-
+        {        
             var parsedLocation = (Locations)Enum.Parse(typeof(Locations), chosenLocation);
 
             Location location;
