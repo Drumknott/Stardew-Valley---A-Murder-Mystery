@@ -10,7 +10,6 @@ namespace Stardew_Valley___A_Murder_Mystery.Enums
     {
         Amethyst, //Abi loves, Clint loves
         Horseradish, // Abi hates
-        LewisStatue,
         CompleteBreakfast, // Alex loves
         Holly, // Alex Hates, Clint hates, Demetrius hates, Kent hates, Robin hates
         CrabCakes, //Elliot loves
@@ -49,5 +48,6 @@ namespace Stardew_Valley___A_Murder_Mystery.Enums
         VoidEssence, //Wizard loves
         RedMushroom, //Wizard hates
         JojaCola,
+        LewisStatue,
     }
 }

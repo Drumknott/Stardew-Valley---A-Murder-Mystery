@@ -63,6 +63,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Forage()
         {
+            
 
         }
     }

@@ -15,6 +15,13 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData = saveData;
         }
         
-        
+        public int ForageRandomiser()
+        {                     
+            Random forage = new();
+            int random = forage.Next(0, 39);
+
+            var randomForage = (Enums.Items)random;
+            return (int)randomForage;
+        }
     }
 }

@@ -80,6 +80,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                     case "L": Console.WriteLine("Hi Marnie. I'm here on official business I'm afraid. Can I ask you a few questions about Mayor Lewis?");
                         Console.WriteLine("Marnie > Oh, um, yes I suppose.");
                         Investigate();
+                        Console.WriteLine("Well, thank you for talking with me Marnie. This has been very informative.");
                         break;
                     default: break;
                 }
