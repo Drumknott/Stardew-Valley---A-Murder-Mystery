@@ -34,9 +34,9 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("[BusStop] added to location list");
                 Console.WriteLine("[Farm] added to Location list");
                 Console.WriteLine("Pelican [Town] added to location list");
-            }
+                }
 
-            if (SaveData.DayCount == 0 || SaveData.DayCount == 1 || SaveData.DayCount == 2 || SaveData.DayCount == 3 || SaveData.DayCount == 5)
+            else if (SaveData.DayCount <4 || SaveData.DayCount == 5)
             {
                 Pam pam = new(SaveData);
 
@@ -56,7 +56,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 }
             }
 
-            if (SaveData.DayCount == 4 || SaveData.DayCount == 6)
+            else if (SaveData.DayCount == 4 || SaveData.DayCount == 6)
             {
                 Console.WriteLine("You are at the bus stop.");
                 Console.WriteLine("");
@@ -65,7 +65,9 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
 
         public override void Forage()
-        {        
+        {
+            
+
             Console.WriteLine("You find a Red Mushroom hiding under a bush."); 
             SaveData.MyInventory.TryGetValue(Enums.Items.RedMushroom, out var mushroomCount);
             mushroomCount++;

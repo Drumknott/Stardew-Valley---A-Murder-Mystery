@@ -58,7 +58,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 if (saveData.DayCount >0) break;
 
                 BusStop busStop = new(saveData);
-                busStop.Enter();
+                if (saveData.FreshOffTheBus == false) busStop.Enter();
 
                 DoStuffMethod();
             }

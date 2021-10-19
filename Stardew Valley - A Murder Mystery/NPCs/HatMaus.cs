@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery.NPCs
 {
-    class HatMaus : NPC
+    class HatMaus : NPC //okay poke?
     {
         private SaveData SaveData { get; set; }
 

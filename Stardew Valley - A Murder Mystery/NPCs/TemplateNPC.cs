@@ -55,7 +55,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 {
                     case "chat":
                         Console.WriteLine("");
-                        SaveData.ElliotCount++;
+                        SaveData.ElliotFriendship++;
                         break;
                     case "gift":
                         Console.WriteLine("");
@@ -67,6 +67,8 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         break;
                     default: break;
                 }
+
+                SaveData.ElliotCount++;
             }
         }
 

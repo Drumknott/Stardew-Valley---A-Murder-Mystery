@@ -19,7 +19,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData.LastChat = "Alex";
 
             Random dialogue = new();
-            int random = dialogue.Next(0, 9);
+            int random = dialogue.Next(0, 7);
 
             switch (random) // generic chat
             {
@@ -27,12 +27,35 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case 1: Console.WriteLine("Alex > The air's starting to warm up... I'm feeling pumped."); break;
                 case 2: Console.WriteLine("Alex > My arms are really sore, but that's the sign of progress for a guy like me. I must've done a thousand push - ups yesterday."); break;
                 case 3: Console.WriteLine("Alex > Hey.What, you wanna talk to me? I'm busy."); break;
-                case 4: Console.WriteLine("Alex > Hey, "+SaveData.PlayerName+".That's right, I remember your name."); break;
-                case 5: Console.WriteLine("Alex > Hey, "+ SaveData.PlayerName +".How's your day going?"); break;
-                case 6: Console.WriteLine("Alex > Hey, "+ SaveData.PlayerName +".I'm glad you stopped by. I'm not ashamed to say that I love my Grandma! Now Grandpa, on the other hand... Just kidding."); break;
+                case 4: Console.WriteLine("Alex > Hey, " + SaveData.PlayerName + ".That's right, I remember your name."); break;
+                case 5: Console.WriteLine("Alex > Hey, " + SaveData.PlayerName + ".How's your day going?"); break;
+                case 6: Console.WriteLine("Alex > Hey, " + SaveData.PlayerName + ".I'm glad you stopped by. I'm not ashamed to say that I love my Grandma! Now Grandpa, on the other hand... Just kidding."); break;
                 default: break;
             }
 
+            //player dialogue options
+            Console.WriteLine(""); //chat
+            Console.WriteLine(""); //gift
+            Console.WriteLine(""); //investigate
+
+            var dialogue1 = Console.ReadLine();
+
+            switch (dialogue1)
+            {
+                case "chat":
+                    Console.WriteLine("");
+                    SaveData.AlexCount++;
+                    break;
+                case "gift":
+                    Console.WriteLine("");
+                    Gift();
+                    break;
+                case "investigate":
+                    Console.WriteLine("");
+                    Investigate();
+                    break;
+                default: break;
+            }
         }
 
         public override void Gift()
