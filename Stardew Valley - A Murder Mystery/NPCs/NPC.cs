@@ -8,6 +8,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 {
     public abstract class NPC
     {        
+
         public abstract void Chat();
         public abstract void Gift();
     }

@@ -27,7 +27,10 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("D > Have you been drinking!?");
                 SaveData.PamCount++;
 
-                var Dialogue1 = Console.ReadLine().Substring(0, 1).ToUpper();
+                var Dialogue1 = Console.ReadLine();
+
+
+                Dialogue1 = Dialogue1.Substring(0, 1).ToUpper();
 
                 switch (Dialogue1)
                 {

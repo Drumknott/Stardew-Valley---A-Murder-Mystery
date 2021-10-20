@@ -18,40 +18,39 @@ namespace Stardew_Valley___A_Murder_Mystery
                 //load game
                 saveData = SaveManager.Load();
             }
-
             else 
             {
                 saveData = new();
+
+                Console.WriteLine("Welcome to STARDEW VALLEY - A MURDER MYSTERY");
+                Console.WriteLine("");
+                Console.WriteLine("Are you ready to begin? Y/N");
+                var Begin = Console.ReadLine().Substring(0, 1).ToUpper();
+
+                if (Begin == "N")
+                {
+                    Console.WriteLine("No problem. Come back when you're ready to play.");
+                    Console.ReadKey();
+                    return;                
+                }
+
+
+                Random Murderer = new();
+                int random = Murderer.Next(0, 2);
+
+                switch (random)
+                {
+                    case 0: saveData.TheMurderer = "Pierre"; break;
+                    case 1: saveData.TheMurderer = "Marnie"; break;
+                    case 2: saveData.TheMurderer = "Kent"; break;
+                }
+
+                Intro Opening = new(saveData);
+                Opening.Opening();
+
+                Pam newNPC = new(saveData);
+                newNPC.Chat();
             }
-
-            Console.WriteLine("Welcome to STARDEW VALLEY - A MURDER MYSTERY");
-            Console.WriteLine("");
-            Console.WriteLine("Are you ready to begin? Y/N");
-            var Begin = Console.ReadLine().Substring(0, 1).ToUpper();
-
-            if (Begin == "N")
-            {
-                Console.WriteLine("No problem. Come back when you're ready to play.");
-                //exit application (throw exception, catch at the end)
-                
-            }
-
-
-            Random Murderer = new();
-            int random = Murderer.Next(0, 2);
-
-            switch (random)
-            {
-                case 0: saveData.TheMurderer = "Pierre"; break;
-                case 1: saveData.TheMurderer = "Marnie"; break;
-                case 2: saveData.TheMurderer = "Kent"; break;
-            }
-
-            Intro Opening = new(saveData);
-            Opening.Opening();
-
-            Pam newNPC = new(saveData);
-            newNPC.Chat();
 
             while (true) //DAY 0
             {
@@ -105,12 +104,25 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             void DoStuffMethod()
             {
-                Console.WriteLine("");
-                Console.WriteLine("What would you like to do?");
-                var response = Console.ReadLine();
+                Commands commandType;
+                string commandArgument;
+                while (true)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("What would you like to do?");
+                    var response = Console.ReadLine();
 
-                var commandParser = new CommandParser();
-                var (commandType, commandArgument) = commandParser.ParseWhatTheUserTyped(response);
+                    var commandParser = new CommandParser();
+                    try
+                    {
+                        (commandType, commandArgument) = commandParser.ParseWhatTheUserTyped(response);
+                        break;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("I'm sorry, I didn't understand that. Try again?");
+                    }
+                }
 
                 if (commandType == Commands.Go)
                 {
@@ -174,7 +186,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                     chosenNPC.Gift();
                 }
 
-                if (commandType == Commands.SaveGame)
+                if (commandType == Commands.Save)
                 {
                     saveData.Save();
                     Console.WriteLine("The game has been saved.");

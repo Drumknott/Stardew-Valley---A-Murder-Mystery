@@ -27,7 +27,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 SaveData.AbigailCount ++;
             }
 
-            if (SaveData.AbigailCount > 0)
+            else
             {
                 Random dialogue = new();
                 int random = dialogue.Next(0, 9);

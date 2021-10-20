@@ -34,16 +34,16 @@ namespace Stardew_Valley___A_Murder_Mystery
             {
 
             }
-            
+
             else if (SaveData.DayCount == 1 || SaveData.DayCount == 2)
             {
                 Console.WriteLine(" You are at the beach.");
                 Console.WriteLine("");
-                Console.WriteLine("Elliot is standing outside his house, admiring the waves rolling in.");              
+                Console.WriteLine("Elliot is standing outside his house, admiring the waves rolling in.");
                 Console.WriteLine("Further down you can see Willy fishing off the quay.");
 
                 Elliot elliot = new(SaveData);
-                Willy willy = new (SaveData);
+                Willy willy = new(SaveData);
             }
 
             else if (SaveData.DayCount == 4 || SaveData.DayCount == 6)
@@ -63,8 +63,19 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Forage()
         {
-            
+            Forage_Randomiser randomiser = new(SaveData);
+            var randomItem = randomiser.ForageRandomiser();
 
+            Console.WriteLine("You have found " + randomItem);
+            if (SaveData.MyInventory.TryGetValue(randomItem, out var randomItemCount))
+            {
+                randomItemCount++;                
+            }
+            else
+            {
+                randomItemCount = 1;
+            }
+            SaveData.MyInventory[randomItem] = randomItemCount;
         }
     }
 }

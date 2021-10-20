@@ -13,15 +13,16 @@ namespace Stardew_Valley___A_Murder_Mystery.CommandUtilities
         {
             var parts = input.Split(' ', StringSplitOptions.TrimEntries);
 
-            if(parts.Length != 1 && parts.Length != 2)
+            if (IsInvalidCommand(parts))
             {
                 throw new Exception("Ya dun goofed");
+
             }
 
-            if(parts.Length == 1)
+            if (parts.Length == 1)
             {
                 var parsedCommand = ParseCommandType(parts[0]);
-                if (parsedCommand != Commands.Forage && parsedCommand != Commands.Gift && parsedCommand !=Commands.SaveGame && parsedCommand !=Commands.Help)
+                if (parsedCommand != Commands.Forage && parsedCommand != Commands.Gift && parsedCommand != Commands.Save && parsedCommand != Commands.Help)
                 {
                     throw new Exception("Ya dun goofed");
                 }
@@ -35,6 +36,16 @@ namespace Stardew_Valley___A_Murder_Mystery.CommandUtilities
 
                 return (commandType, commandArgument);
             }
+        }
+
+        private static bool IsInvalidCommand(string[] parts)
+        {
+            return CommandContainsInvalidParts(parts) || string.IsNullOrWhiteSpace(parts[0]);
+        }
+
+        private static bool CommandContainsInvalidParts(string[] parts)
+        {
+            return parts.Length > 2;
         }
 
         private Commands ParseCommandType(string commandTypePart)
