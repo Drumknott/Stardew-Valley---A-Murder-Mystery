@@ -22,7 +22,7 @@ namespace Stardew_Valley___A_Murder_Mystery.CommandUtilities
             if (parts.Length == 1)
             {
                 var parsedCommand = ParseCommandType(parts[0]);
-                if (parsedCommand != Commands.Forage && parsedCommand != Commands.Gift && parsedCommand != Commands.Save && parsedCommand != Commands.Help)
+                if (parsedCommand != Commands.Forage && parsedCommand != Commands.Gift && parsedCommand != Commands.Save && parsedCommand != Commands.Help && parsedCommand != Commands.AdminHack)
                 {
                     throw new Exception("Ya dun goofed");
                 }
@@ -76,5 +76,6 @@ namespace Stardew_Valley___A_Murder_Mystery.CommandUtilities
 
         }
 
+       
     }
 }

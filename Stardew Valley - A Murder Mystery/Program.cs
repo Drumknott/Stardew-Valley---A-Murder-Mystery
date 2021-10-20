@@ -159,7 +159,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                         checkList.InventoryList();
                     }
 
-                    if (parsedcheckable == Checkables.CaseFile)
+                    if (parsedcheckable == Checkables.Casefile)
                     {
                         CaseFile notes = new(saveData);
                         notes.Notes();
@@ -198,6 +198,19 @@ namespace Stardew_Valley___A_Murder_Mystery
                 {
                     PlayerHelp tips = new();
                     tips.Help();
+                }
+
+                if (commandType == Commands.Chat)
+                {
+                    ChooseNPC chooseNPC = new();
+                    var chatNPC = chooseNPC.ChooseNPCMethod(commandArgument, saveData);
+                    chatNPC.Chat();
+                }
+
+                if (commandType == Commands.AdminHack)
+                {
+                    string murderer = saveData.TheMurderer;
+                    Console.WriteLine(murderer);
                 }
             }
         }

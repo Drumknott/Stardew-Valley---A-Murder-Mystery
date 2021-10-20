@@ -88,7 +88,6 @@ namespace Stardew_Valley___A_Murder_Mystery
                 {
                     case "chat":
                         Console.WriteLine("");
-                        SaveData.ElliotFriendship++;
                         break;
                     case "gift":
                         Console.WriteLine("");

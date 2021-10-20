@@ -18,57 +18,73 @@ namespace Stardew_Valley___A_Murder_Mystery
         public override void Chat()
         {
             SaveData.LastChat = "Abigail";
-
+                     
             if (SaveData.AbigailCount == 0)
             {
                 //first meeting with Abigail
                 Console.WriteLine("Abigail > Oh that's right...I heard someone was coming to investigate...");
                 Console.WriteLine("Abigail > It's kind of a shame, really. I was hoping to solve the mystery myself.");
-                SaveData.AbigailCount ++;
+                SaveData.AbigailCount++;
             }
 
             else
             {
-                Random dialogue = new();
-                int random = dialogue.Next(0, 9);
-
-                switch (random) // generic chat
+                while (true)
                 {
-                    case 0: Console.WriteLine("Abigail > Oh, hey. Taking a break from work?"); break;
-                    case 1: Console.WriteLine("Abigail > Oh, hi! Do you ever hang out at the cemetery? It's a peaceful place to spend some time alone."); break;
-                    case 2: Console.WriteLine("Abigail > I'm not in a good mood right now... what do you want?"); break;
-                    case 3: Console.WriteLine("Abigail > ...*sigh*... I know my parents mean well, but sometimes they just cannot understand my point of view.");
+
+                    Random dialogue = new();
+                    int random = dialogue.Next(0, 9);
+
+                    switch (random) // generic chat
+                    {
+                        case 0: Console.WriteLine("Abigail > Oh, hey. Taking a break from work?"); break;
+                        case 1: Console.WriteLine("Abigail > Oh, hi! Do you ever hang out at the cemetery? It's a peaceful place to spend some time alone."); break;
+                        case 2: Console.WriteLine("Abigail > I'm not in a good mood right now... what do you want?"); break;
+                        case 3:
+                            Console.WriteLine("Abigail > ...*sigh*... I know my parents mean well, but sometimes they just cannot understand my point of view.");
                             Console.WriteLine("Abigail > Weren't they ever young?"); break;
-                    case 4: Console.WriteLine("Abigail > Hey. Sorry in advance if I say anything rude. I didn't get much sleep last night. What do you want?"); break;
-                    case 5: Console.WriteLine("Abigail > Oh no, I think my Dad's going to cook dinner tonight... I don't feel like doing anything today..."); break;
-                    case 6: Console.WriteLine("Abigail > The fresh mountain air is nice on a day like this. I wonder if the frogs will make an appearance soon."); break;
-                    case 7: Console.WriteLine("Abigail > Oh, hi Detective " + SaveData.PlayerName + ". Taking a break from your work? Me too. Oh! Nothing physical... ");
+                        case 4: Console.WriteLine("Abigail > Hey. Sorry in advance if I say anything rude. I didn't get much sleep last night. What do you want?"); break;
+                        case 5: Console.WriteLine("Abigail > Oh no, I think my Dad's going to cook dinner tonight... I don't feel like doing anything today..."); break;
+                        case 6: Console.WriteLine("Abigail > The fresh mountain air is nice on a day like this. I wonder if the frogs will make an appearance soon."); break;
+                        case 7:
+                            Console.WriteLine("Abigail > Oh, hi Detective " + SaveData.PlayerName + ". Taking a break from your work? Me too. Oh! Nothing physical... ");
                             Console.WriteLine("just some online classes I'm taking."); break;
-                    case 8: Console.WriteLine("Abigail > Hi, I'm glad to see you. I want to take my mind off things for a while... how is your day going?"); break;
-                    default: break;
-                }
+                        case 8: Console.WriteLine("Abigail > Hi, I'm glad to see you. I want to take my mind off things for a while... how is your day going?"); break;
+                        default: break;
+                    }
 
-                Console.WriteLine("H > Just wanted to say Hi.");
-                Console.WriteLine("G > Here, I have something for you (Gift)");
-                Console.WriteLine("M > I was hoping I could ask you about the murder?");
-                var choice = Console.ReadLine();
+                    Console.WriteLine("H > Just wanted to say Hi.");
+                    Console.WriteLine("G > Here, I have something for you (Gift)");
+                    Console.WriteLine("M > I was hoping I could ask you about the murder?");
+                    Console.WriteLine("L > Leave");
+                    var choice = Console.ReadLine();
 
-                switch (choice)
-                {
-                    case "H": Console.WriteLine("Hi Abigail, just wanted to see how you're doing.");
-                        SaveData.AbigailFriendship++;
+                    if (choice == "L")
+                    {
+                        Console.WriteLine("It was nice to see you Abby. Talk soon!");
                         break;
-                    case "G": Console.WriteLine("Oh here, I wanted to give you this.");
-                        Gift();
-                        break;
-                    case "M": Console.WriteLine("I was hoping I could ask you about Mayor Lewis?");
-                        Console.WriteLine("Abigail > Oh, sure. What about him?");
-                        Investigate();
-                        Console.WriteLine("Ok, I think I've got what I need. Thanks, Abigail.");
-                        break;
-                    default: break;
+                    }
+
+                    switch (choice)
+                    {
+                        case "H":
+                            Console.WriteLine("Hi Abigail, just wanted to see how you're doing.");
+                            SaveData.AbigailFriendship++;
+                            break;
+                        case "G":
+                            Console.WriteLine("Oh here, I wanted to give you this.");
+                            Gift();
+                            break;
+                        case "M":
+                            Console.WriteLine("I was hoping I could ask you about Mayor Lewis?");
+                            Console.WriteLine("Abigail > Oh, sure. What about him?");
+                            Investigate();
+                            Console.WriteLine("Ok, I think I've got what I need. Thanks, Abigail.");
+                            break;
+                        default: break;
+                    }
                 }
-            }
+            }            
         }
 
         public override void Gift()
@@ -100,19 +116,32 @@ namespace Stardew_Valley___A_Murder_Mystery
                     horseradishCount--;
                     SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
                 }
-                //else if [neutral gift]
-                    
-            }
-
-            Console.WriteLine("Abigail > You brought me a present ? Thanks."); //Abi neutral
-            
-
+                else //neutral
+                {
+                    Console.WriteLine("Abigail > You brought me a present? Thanks.");
+                    //var giftName = (Enums.Items)gift;
+                    //SaveData.MyInventory.TryGetValue(giftName , out var giftCount);
+                    //giftCount--;                    
+                    Console.WriteLine(gift + " removed from Inventory.");
+                }             
+            }   
         }
+
+        bool caseH { get; set; }
+        bool caseW { get; set; }
+        bool caseP { get; set; }
+        bool caseS { get; set; }
 
         void Investigate() // Questioning about the murder
         {
-            while (SaveData.AbigailInvestigated < 5)
+            while (true)
             {
+                if (caseH == true && caseW == true && caseP == true && caseS == true)
+                {
+                    break;
+                }
+
+                Console.WriteLine("");
                 Console.WriteLine("H > How well did you know him?");
                 Console.WriteLine("W > Where were you on the night he was murdered?");
                 if (SaveData.PierreLied == true)
@@ -135,11 +164,11 @@ namespace Stardew_Valley___A_Murder_Mystery
                 else switch (askAbigail)
                 {
                     case "H":
-                            Console.WriteLine("");
+                            Console.WriteLine("How well did you know him?");
                             SaveData.AbigailInvestigated++;
                             break;
                     case "W":
-                            Console.WriteLine("");
+                            Console.WriteLine("Where were you on the night he was murdered?");
                             SaveData.AbigailInvestigated++;
                             break;
                     case "P":

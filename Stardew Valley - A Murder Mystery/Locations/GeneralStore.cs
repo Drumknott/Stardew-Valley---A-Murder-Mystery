@@ -28,6 +28,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Pierre pierre = new(SaveData);
                 Marnie marnie = new(SaveData);
                 Leah leah = new(SaveData);
+
+                //Abby is home
             }
 
             if (SaveData.DayCount == 1)
@@ -55,11 +57,23 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Forage()
         {
-            Console.WriteLine("When Pierre's not looking, you swipe a candy bar off one of the shelves. Gosh, what a jerk."); //lol
-            
-            SaveData.MyInventory.TryGetValue(Enums.Items.MapleBar, out var mapleBarCount);
-            mapleBarCount++;
-            SaveData.MyInventory[Enums.Items.RedMushroom] = mapleBarCount;
-        }
+            if (SaveData.StealFromPierre != true)
+            {
+                Console.WriteLine("When Pierre's not looking, you swipe a candy bar off one of the shelves."); //lol
+
+                SaveData.MyInventory.TryGetValue(Enums.Items.MapleBar, out var mapleBarCount);
+                mapleBarCount++;
+                SaveData.MyInventory[Enums.Items.MapleBar] = mapleBarCount;
+
+                Console.WriteLine("Maple Bar added to Inventory");
+                SaveData.StealFromPierre = true;
+            }
+            else
+            {
+                Console.WriteLine("Pierre watches you closely.");
+                Console.WriteLine("Pierre > Can I help you, Detective?");
+                Console.WriteLine("Maybe you shouldn't steal anything else in here.");
+            }
+        }     
     }
 }

@@ -36,7 +36,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 {
                     case "Y": 
                         Console.WriteLine("Me > Yep, that's me. It's, uh, nice to meet you Pam.");
-                        Console.WriteLine("Pam > And the same to you, Detecitve...?");
+                        Console.WriteLine("Pam > And the same to you, Detective...?");
                         SaveData.PlayerName = Console.ReadLine();
                         Console.WriteLine("Pam > Very nice to meet you, Detective "+SaveData.PlayerName);
                         break;
