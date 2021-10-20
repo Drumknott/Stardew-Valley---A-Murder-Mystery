@@ -33,7 +33,8 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Forage()
         {
-
+            Console.WriteLine("Marlon's watching you.");
+            Console.WriteLine("Marlon > Hey, what are you doing!? You'd better not steal anything.");
         }
     }
 }

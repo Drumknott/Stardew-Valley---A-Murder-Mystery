@@ -106,7 +106,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 {
                     Console.WriteLine("I > Is it true you were having a relationship with Lewis?");
                 }
-                
+
                 SaveData.MyInventory.TryGetValue(Enums.Items.LewisStatue, out int lewisStatue);
                 if (lewisStatue > 0)
                 {
@@ -116,42 +116,42 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                 var answer = Console.ReadLine();
                 if (answer == "L") break;
-                
+
                 else switch (answer)
                 {
                     case "P":
                         Console.WriteLine("Firstly, according to my case notes it was you who discovered Lewis' body and called the police. Can you tell me about the events of that evening?");
-                            Console.WriteLine("");
-                            caseP = true;
+                        Console.WriteLine("");
+                        caseP = true;
                         break;
 
-                    case "K": 
-                            Console.WriteLine("Did you kill Lewis?");
-                            if (SaveData.TheMurderer == "Marnie" && SaveData.MarnieAndLewis == true) //She murdered him because he was a jerk
-                            {
+                    case "K":
+                        Console.WriteLine("Did you kill Lewis?");
+                        if (SheKilledLewisAndPlayerKnowsAboutTheirRelationship()) //She murdered him because he was a jerk
+                        {
 
-                            }
-                            else if (SaveData.TheMurderer == "Marnie") //she killed him... BUT WHY!>
-                            {
+                        }
+                        else if (SaveData.TheMurderer == "Marnie") //she killed him... BUT WHY!>
+                        {
 
-                            }
-                            else if (SaveData.TheMurderer != "Marnie" && SaveData.MarnieAndLewis == true) //didn't kill him, sad he's gone
-                            {
+                        }
+                        else if (MarnieDidntKillLewisAndPlayerKnowsAboutTheirRelationship()) //didn't kill him, sad he's gone
+                        {
 
-                            }
-                            else //didn't kill him, has to pretend shes not personally invested (that's really sad! ):  )
-                            {
+                        }
+                        else //didn't kill him, has to pretend shes not personally invested (that's really sad! ):  )
+                        {
 
-                            }
-                           
-                            caseK = true;
+                        }
+
+                        caseK = true;
                         break;
 
                     case "I":
-                    Console.WriteLine("Is it true that you and Lewis were in a relationship? Why was it a secret?");
+                        Console.WriteLine("Is it true that you and Lewis were in a relationship? Why was it a secret?");
                         Console.WriteLine("Marnie gasps.");
                         Console.WriteLine("Marnie > How do you know about that...?");
-                        if (SaveData.ShaneFriendship >4)
+                        if (SaveData.ShaneFriendship > 4)
                         {
                             Console.WriteLine("I can't disclose that I'm afraid.");
                         }
@@ -161,15 +161,26 @@ namespace Stardew_Valley___A_Murder_Mystery
                         }
                         Console.WriteLine("Marnie > ");
                         caseI = true;
-                    break;
+                        break;
 
-                        case "S": Console.WriteLine("");
-                            caseS = true;
-                            break;
+                    case "S":
+                        Console.WriteLine("");
+                        caseS = true;
+                        break;
 
                     default: break;
                 }
             }
+        }
+
+        private bool MarnieDidntKillLewisAndPlayerKnowsAboutTheirRelationship()
+        {
+            return SaveData.TheMurderer != "Marnie" && SaveData.MarnieAndLewis == true;
+        }
+
+        private bool SheKilledLewisAndPlayerKnowsAboutTheirRelationship()
+        {
+            return SaveData.TheMurderer == "Marnie" && SaveData.MarnieAndLewis == true;
         }
     }
 }

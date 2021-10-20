@@ -165,7 +165,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                         caseM = true;
                         break;
                     case "L":
-                        break;
+                        return;
                     default: break;
                 }
             }

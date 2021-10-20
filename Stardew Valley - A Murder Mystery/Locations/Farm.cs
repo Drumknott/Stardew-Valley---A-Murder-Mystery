@@ -17,6 +17,8 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Enter()
         {
+            SaveData.LastVisited = "Farm";
+
             if (SaveData.FarmFirstVisit == false)
             {
                 Console.WriteLine("");
@@ -36,46 +38,34 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Forage()
         {
-            Random forage = new();
-            int random = forage.Next(0, 6);
+            Forage_Randomiser randomiser = new(SaveData);
+            var randomItem = randomiser.ForageRandomiser();
+
+            RandomForageDialogue(randomItem);
+
+            if (SaveData.MyInventory.TryGetValue(randomItem, out var randomItemCount))
+            {
+                randomItemCount++;
+            }
+            else
+            {
+                randomItemCount = 1;
+            }
+            SaveData.MyInventory[randomItem] = randomItemCount;
+            Console.WriteLine(randomItem + " added to Inventory");
+        }
+
+        private static void RandomForageDialogue(Enums.Items randomItem)
+        {
+            Random dialogue = new();
+            int random = dialogue.Next(0, 2);
+
             switch (random)
             {
-                case 0:
-                    Console.WriteLine("You find some wild Horseradish growing outside the Cabin.");
-                    SaveData.MyInventory.TryGetValue(Enums.Items.Horseradish, out var horseradishCount);
-                    horseradishCount++;
-                    SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
-                    break;
-                case 1:
-                    Console.WriteLine("There are some leeks growing by the duck pond.");
-                    SaveData.MyInventory.TryGetValue(Enums.Items.Leek, out var leekCount);
-                    leekCount++;
-                    SaveData.MyInventory[Enums.Items.Leek] = leekCount;
-                    break;
-                case 2:
-                    Console.WriteLine("You spot a strange back egg by the chicken coop.");
-                    SaveData.MyInventory.TryGetValue(Enums.Items.VoidEgg, out var voideggCount);
-                    voideggCount++;
-                    SaveData.MyInventory[Enums.Items.VoidEgg] = voideggCount;
-                    break;
-                case 3:
-                    Console.WriteLine("Some amaranth is growing by the path.");
-                    SaveData.MyInventory.TryGetValue(Enums.Items.Amaranth, out var amaranthCount);
-                    amaranthCount++;
-                    SaveData.MyInventory[Enums.Items.Amaranth] = amaranthCount;
-                    break;
-                case 4:
-                    Console.WriteLine("It's a bit late, but there's a holly bush in bloom near the Farmhouse.");
-                    SaveData.MyInventory.TryGetValue(Enums.Items.Holly, out var hollyCount);
-                    hollyCount++;
-                    SaveData.MyInventory[Enums.Items.Holly] = hollyCount;
-                    break;
-                case 5:
-                    Console.WriteLine("");
-                    SaveData.MyInventory.TryGetValue(Enums.Items.Daffodil, out var daffodilCount);
-                    daffodilCount++;
-                    SaveData.MyInventory[Enums.Items.Daffodil] = daffodilCount;
-                    break;
+                case 0: Console.WriteLine("You have found a" + randomItem); break;
+                case 1: Console.WriteLine("You spot a" + randomItem + "half buried under a bush."); break;
+                case 2: Console.WriteLine("After searching for a few minutes you find a" + randomItem); break;
+                default: break;
             }
         }
     }

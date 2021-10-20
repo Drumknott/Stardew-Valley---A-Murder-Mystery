@@ -46,6 +46,10 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Before you can say anything she reaches out her hand.");
             Console.WriteLine("Pam > Hi, I'm Pam. Are you the detective who's come to see about Mayor Lewis?");
             Console.WriteLine("");
+            SaveData.DayCount = 0;
+
+            SettingValues settingValues = new(SaveData);
+            settingValues.SetValues();
         }
     }
 }

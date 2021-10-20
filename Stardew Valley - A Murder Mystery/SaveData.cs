@@ -31,6 +31,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool ExploredEast { get; set; }
         public bool ExploredWest { get; set; }
         public bool PierreLied { get; set; }
+        public bool StealFromPierre { get; set; }
 
 
         //Places Visited

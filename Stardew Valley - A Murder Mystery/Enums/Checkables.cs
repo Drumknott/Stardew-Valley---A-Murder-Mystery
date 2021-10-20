@@ -9,7 +9,7 @@ namespace Stardew_Valley___A_Murder_Mystery.Enums
     public enum Checkables
     {
         Inventory,
-        CaseFile,
+        Casefile,
         Locations,
         People,
     }
