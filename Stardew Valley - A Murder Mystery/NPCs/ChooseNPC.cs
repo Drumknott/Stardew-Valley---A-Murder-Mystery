@@ -46,7 +46,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case People.Sebastian: npc = new Sebastian(saveData); break;
                 case People.Shane: npc = new Shane(saveData); break;
                 case People.Willy: npc = new Willy(saveData); break;
-                case People.Wizard: npc = new Wizard(saveData); break;                                   
+                case People.Wizard: npc = new Wizard(saveData); break;
+                case People.Harvey: npc = new Harvey(saveData); break;
                 
                 default:
                     throw new Exception("Oops,something went wrong. Try that again.");

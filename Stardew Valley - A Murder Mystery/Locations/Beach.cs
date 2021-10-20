@@ -32,7 +32,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             else if (SaveData.DayCount == 0 || SaveData.DayCount == 3)
             {
-
+                Console.WriteLine("You are at the Beach");
             }
 
             else if (SaveData.DayCount == 1 || SaveData.DayCount == 2)

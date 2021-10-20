@@ -31,6 +31,16 @@ namespace Stardew_Valley___A_Murder_Mystery
             if (SaveData.Mine == true) Console.WriteLine("[Mine]");
             if (SaveData.PelicanTown == true) Console.WriteLine("Pelican [Town]");
             if (SaveData.StardropSaloon == true) Console.WriteLine("Stardrop [Saloon]");
-        }       
+        }   
+        
+        public void IncreaseDayCount()
+        {
+            SaveData.DayCount++;
+            Console.WriteLine("");
+            Console.WriteLine("It's been a busy day. You should go and get some rest.");
+            Console.WriteLine("");
+            Console.WriteLine("Enter > Continue");
+            Console.ReadKey();
+        }
     }
 }

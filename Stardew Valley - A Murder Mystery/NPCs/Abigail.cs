@@ -96,35 +96,38 @@ namespace Stardew_Valley___A_Murder_Mystery
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
+            if (gift.Length == 0)
             {
-                if (gift == "Amethyst" && Enums.Items.Amethyst >0)
-                {
-                    Console.WriteLine("Abigail > Hey, how’d you know I was hungry? This looks delicious!"); // Abi loves
-                    SaveData.AbigailFriendship +=2;
+                return;
+            }
+            
+            if (gift == "Amethyst" && Enums.Items.Amethyst >0)
+            {
+                Console.WriteLine("Abigail > Hey, how’d you know I was hungry? This looks delicious!"); // Abi loves
+                SaveData.AbigailFriendship +=2;
 
-                    SaveData.MyInventory.TryGetValue(Enums.Items.Amethyst, out var amethystCount);
-                    amethystCount--;
-                    SaveData.MyInventory[Enums.Items.Amethyst] = amethystCount;
-                }
+                SaveData.MyInventory.TryGetValue(Enums.Items.Amethyst, out var amethystCount);
+                amethystCount--;
+                SaveData.MyInventory[Enums.Items.Amethyst] = amethystCount;
+            }
 
-                if (gift == "Horseradish" && Enums.Items.Horseradish > 0)
-                {
-                    Console.WriteLine("Abigail > What am I supposed to do with this ?"); //Abi hates
-                    SaveData.AbigailFriendship --;
+            if (gift == "Horseradish" && Enums.Items.Horseradish > 0)
+            {
+                Console.WriteLine("Abigail > What am I supposed to do with this ?"); //Abi hates
+                SaveData.AbigailFriendship --;
 
-                    SaveData.MyInventory.TryGetValue(Enums.Items.Horseradish, out var horseradishCount);
-                    horseradishCount--;
-                    SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
-                }
-                else //neutral
-                {
-                    Console.WriteLine("Abigail > You brought me a present? Thanks.");
-                    //var giftName = (Enums.Items)gift;
-                    //SaveData.MyInventory.TryGetValue(giftName , out var giftCount);
-                    //giftCount--;                    
-                    Console.WriteLine(gift + " removed from Inventory.");
-                }             
-            }   
+                SaveData.MyInventory.TryGetValue(Enums.Items.Horseradish, out var horseradishCount);
+                horseradishCount--;
+                SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
+            }
+            else //neutral
+            {
+                Console.WriteLine("Abigail > You brought me a present? Thanks.");
+                //var giftName = (Enums.Items)gift;
+                //SaveData.MyInventory.TryGetValue(giftName , out var giftCount);
+                //giftCount--;                    
+                Console.WriteLine(gift + " removed from Inventory.");
+            }           
         }
 
         bool caseH { get; set; }

@@ -73,7 +73,42 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Gift()
         {
+            Console.WriteLine("What gift would you like to give Caroline?");
+            Console.WriteLine("");
 
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            if (gift.Length == 0)
+            {
+                return;
+            }
+
+            else if (gift == "FishTaco" && Enums.Items.FishTaco > 0)
+            {
+                Console.WriteLine("Caroline > You're giving this... to me? I'm speechless."); // NPC loves
+                Console.WriteLine(gift + " removed from Inventory.");
+                
+                SaveData.MyInventory.TryGetValue(Enums.Items.FishTaco, out var FishTacoCount);
+                FishTacoCount--;
+                SaveData.MyInventory[Enums.Items.FishTaco] = FishTacoCount;
+            }
+
+            else if (gift == "Quartz" && Enums.Items.Quartz > 0)
+            {
+                Console.WriteLine("Caroline > This is absolute junk. I'm offended."); //NPC hates
+                Console.WriteLine(gift + " removed from Inventory.");
+
+                SaveData.MyInventory.TryGetValue(Enums.Items.Quartz, out var quartzCount);
+                quartzCount--;
+                SaveData.MyInventory[Enums.Items.Quartz] = quartzCount;
+            }
+            else //neutral
+            {
+                Console.WriteLine("Caroline > Oh, that's sweet. Thank you.");
+                Console.WriteLine(gift + " removed from Inventory.");
+            }
         }
 
         void Investigate()
