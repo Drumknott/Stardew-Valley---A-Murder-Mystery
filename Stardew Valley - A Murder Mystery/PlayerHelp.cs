@@ -8,6 +8,12 @@ namespace Stardew_Valley___A_Murder_Mystery
 {
     class PlayerHelp
     {
+        private SaveData SaveData { get; set; }
+
+        public PlayerHelp(SaveData saveData)
+        {
+            SaveData = saveData;
+        }
         public void Help()
         {
             Console.WriteLine("To play, type your commands and hit Enter.");
@@ -22,6 +28,10 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Check Casefile > Review the clues you've collected");
             Console.WriteLine("Check Locations > See which locations you can visit");
             Console.WriteLine("Save > Save the game (You may only have one save file)");
+            if (SaveData.Unlocked == true)
+            {
+                Console.WriteLine("Check Achievements > See which achievements you've unlocked");
+            }
             Console.WriteLine("Help > review commands");
             Console.WriteLine("");
             Console.WriteLine("Enter > Continue");

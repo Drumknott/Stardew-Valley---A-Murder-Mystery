@@ -90,9 +90,9 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             switch (random)
             {
-                case 0: Console.WriteLine("You have found a" + randomItem); break;
-                case 1: Console.WriteLine("You spot a" + randomItem + "half buried under a bush."); break;
-                case 2: Console.WriteLine("After searching for a few minutes you find a" + randomItem); break;
+                case 0: Console.WriteLine("You have found a " + randomItem); break;
+                case 1: Console.WriteLine("You spot a " + randomItem + " half buried under a bush."); break;
+                case 2: Console.WriteLine("After searching for a few minutes you find a " + randomItem); break;
                 default: break;
             }
         }

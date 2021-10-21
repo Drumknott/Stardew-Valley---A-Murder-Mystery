@@ -12,5 +12,6 @@ namespace Stardew_Valley___A_Murder_Mystery.Enums
         Casefile,
         Locations,
         People,
+        Achievements,
     }
 }

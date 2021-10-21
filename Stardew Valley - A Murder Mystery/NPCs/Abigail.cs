@@ -19,17 +19,16 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             SaveData.LastChat = "Abigail";
                      
-            if (SaveData.AbigailCount == 0)
+            while (true)
             {
-                //first meeting with Abigail
-                Console.WriteLine("Abigail > Oh that's right...I heard someone was coming to investigate...");
-                Console.WriteLine("Abigail > It's kind of a shame, really. I was hoping to solve the mystery myself.");
-                SaveData.AbigailCount++;
-            }
-
-            else
-            {
-                while (true)
+                if (SaveData.AbigailCount == 0)
+                {
+                    //first meeting with Abigail
+                    Console.WriteLine("Abigail > Oh that's right...I heard someone was coming to investigate...");
+                    Console.WriteLine("Abigail > It's kind of a shame, really. I was hoping to solve the mystery myself.");
+                    SaveData.AbigailCount++;
+                }
+                else
                 {
 
                     Random dialogue = new();
@@ -52,39 +51,40 @@ namespace Stardew_Valley___A_Murder_Mystery
                         case 8: Console.WriteLine("Abigail > Hi, I'm glad to see you. I want to take my mind off things for a while... how is your day going?"); break;
                         default: break;
                     }
-
-                    Console.WriteLine("H > Just wanted to say Hi.");
-                    Console.WriteLine("G > Here, I have something for you (Gift)");
-                    Console.WriteLine("M > I was hoping I could ask you about the murder?");
-                    Console.WriteLine("L > Leave");
-                    var choice = Console.ReadLine();
-
-                    if (choice == "L")
-                    {
-                        Console.WriteLine("It was nice to see you Abby. Talk soon!");
-                        break;
-                    }
-
-                    switch (choice)
-                    {
-                        case "H":
-                            Console.WriteLine("Hi Abigail, just wanted to see how you're doing.");
-                            SaveData.AbigailFriendship++;
-                            break;
-                        case "G":
-                            Console.WriteLine("Oh here, I wanted to give you this.");
-                            Gift();
-                            break;
-                        case "M":
-                            Console.WriteLine("I was hoping I could ask you about Mayor Lewis?");
-                            Console.WriteLine("Abigail > Oh, sure. What about him?");
-                            Investigate();
-                            Console.WriteLine("Ok, I think I've got what I need. Thanks, Abigail.");
-                            break;
-                        default: break;
-                    }
                 }
-            }            
+                Console.WriteLine("");
+                Console.WriteLine("H > Just wanted to say Hi.");
+                Console.WriteLine("G > Here, I have something for you (Gift)");
+                Console.WriteLine("M > I was hoping I could ask you about the murder?");
+                Console.WriteLine("L > Leave");
+                var choice = Console.ReadLine();
+
+                if (choice == "L")
+                {
+                    Console.WriteLine("Me > It was nice to see you Abby. Talk soon!");
+                    break;
+                }
+
+                switch (choice)
+                {
+                    case "H":
+                        Console.WriteLine("Hi Abigail, just wanted to see how you're doing.");
+                        SaveData.AbigailFriendship++;
+                        break;
+                    case "G":
+                        Console.WriteLine("Oh here, I wanted to give you this.");
+                        Gift();
+                        break;
+                    case "M":
+                        Console.WriteLine("I was hoping I could ask you about Mayor Lewis?");
+                        Console.WriteLine("Abigail > Oh, sure. What about him?");
+                        Investigate();
+                        Console.WriteLine("Ok, I think I've got what I need. Thanks, Abigail.");
+                        break;
+                    default: break;
+                }
+            }
+                       
         }
 
         public override void Gift()
@@ -161,7 +161,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 var askAbigail = Console.ReadLine();
                 if (askAbigail == "L")
                 {
-                    break;
+                    return;
                 }
 
                 else switch (askAbigail)

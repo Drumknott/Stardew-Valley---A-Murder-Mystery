@@ -35,11 +35,41 @@ namespace Stardew_Valley___A_Murder_Mystery
         
         public void IncreaseDayCount()
         {
-            SaveData.DayCount++;
+            
             Console.WriteLine("");
             Console.WriteLine("It's been a busy day. You should go and get some rest.");
             Console.WriteLine("");
             Console.WriteLine("Enter > Continue");
+            Console.WriteLine("");
+            Console.ReadKey();
+            SaveData.DayCount++;
+            if (SaveData.DayCount == 1)
+            {
+                Console.WriteLine("DAY 2");
+            }
+            if (SaveData.DayCount == 2)
+            {
+                Console.WriteLine("DAY 3");
+            }
+            if (SaveData.DayCount == 3)
+            {
+                Console.WriteLine("DAY 4");
+            }
+            if (SaveData.DayCount == 4)
+            {
+                Console.WriteLine("DAY 5");
+            }
+            if (SaveData.DayCount == 5)
+            {
+                Console.WriteLine("DAY 6");
+            }
+            if (SaveData.DayCount == 6)
+            {
+                Console.WriteLine("DAY 7: Election Day");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Enter > Continue");
+            Console.WriteLine("");
             Console.ReadKey();
         }
     }

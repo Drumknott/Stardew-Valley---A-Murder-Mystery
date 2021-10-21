@@ -84,7 +84,51 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         void Buy()
         {
-            //why oh why would I introduce money into a game like this???
+            if (SaveData.ShopGus > 10)
+            {
+                Console.WriteLine("Gus > Err, I don't mean to be rude Detective but I can't just keep giving you all this free food and drink...");
+                return;
+            }
+
+            Console.WriteLine("Gus > Oh don't be silly, Detective. You're our guest! Whatever you need is on the house.");
+            Console.WriteLine("");
+            Console.WriteLine("B > Beer");
+            Console.WriteLine("C > Coffee");
+            Console.WriteLine("F > Fish Taco");
+            Console.WriteLine("R > Risotto");
+
+            var order = Console.ReadLine();
+
+            switch(order)
+            {
+                case "B":
+                    Console.WriteLine("Gus > Beer it is. Here you go.");
+                    Console.WriteLine("Beer added to Inventory");
+                    SaveData.MyInventory.TryGetValue(Enums.Items.Beer, out var beerCount);
+                    beerCount++;
+                    SaveData.MyInventory[Enums.Items.Beer] = beerCount;
+                    break;
+                case "C":
+
+                    SaveData.MyInventory.TryGetValue(Enums.Items.Coffee, out var coffeeCount);
+                    coffeeCount++;
+                    SaveData.MyInventory[Enums.Items.Coffee] = coffeeCount;
+                    break;
+                case "F":
+
+                    SaveData.MyInventory.TryGetValue(Enums.Items.FishTaco, out var fishTacoCount);
+                    fishTacoCount--;
+                    SaveData.MyInventory[Enums.Items.FishTaco] = fishTacoCount;
+                    break;
+                case "R":
+
+                    SaveData.MyInventory.TryGetValue(Enums.Items.Risotto, out var risottoCount);
+                    risottoCount--;
+                    SaveData.MyInventory[Enums.Items.Risotto] = risottoCount;
+                    break;
+            }
+
+            SaveData.ShopGus++;
         }
     }
 }

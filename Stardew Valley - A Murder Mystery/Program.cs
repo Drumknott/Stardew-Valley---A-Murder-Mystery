@@ -63,47 +63,15 @@ namespace Stardew_Valley___A_Murder_Mystery
             }
                         
             while (true)
-            {
-                if (saveData.DayCount == 1)
-                {
-                    Console.WriteLine("DAY 2");
-                    DoStuffMethod();
-                }
-
-                if (saveData.DayCount == 2) 
-                {
-                    Console.WriteLine("DAY 3");
-                    DoStuffMethod();
-                }
-
-                if (saveData.DayCount == 3) 
-                {
-                    Console.WriteLine("DAY 4");
-                    DoStuffMethod();
-                }
-
-                if (saveData.DayCount == 4) 
-                {
-                    Console.WriteLine("DAY 5"); 
-                    saveData.TravellingLady = true;
-                    DoStuffMethod();
-                }
-
-                if (saveData.DayCount == 5)
-                {
-                    Console.WriteLine("DAY 6");
-                    DoStuffMethod();
-                }
-
-                if (saveData.DayCount == 6)
-                {
-                    Console.WriteLine("DAY 7: ELECTION DAY");
-                    DoStuffMethod();
-                }
+            {                
+                DoStuffMethod();                      
             }
 
             void DoStuffMethod()
             {
+                Achievements achievements = new(saveData);
+                achievements.CheckAchievements();
+
                 Commands commandType;
                 string commandArgument;
                 while (true)
@@ -170,6 +138,12 @@ namespace Stardew_Valley___A_Murder_Mystery
                         AvailablePlaces check = new(saveData);
                         check.ViewLocations();
                     }
+
+                    if (parsedcheckable == Checkables.Achievements)
+                    {
+                        Achievements view = new(saveData);
+                        view.ViewAchievements();
+                    }
                 }
 
                 if (commandType == Commands.Forage)
@@ -196,7 +170,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                 if (commandType == Commands.Help)
                 {
-                    PlayerHelp tips = new();
+                    PlayerHelp tips = new(saveData);
                     tips.Help();
                 }
 
