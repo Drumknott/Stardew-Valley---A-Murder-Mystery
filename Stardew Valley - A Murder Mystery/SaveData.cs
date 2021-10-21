@@ -20,7 +20,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 SaveFileStream.Flush();
             }
         }
-
+        //misc info
         public string PlayerName { get; set; }
         public string FarmerName { get; set; }
         public string TheMurderer { get; set; }
@@ -32,6 +32,8 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool ExploredWest { get; set; }
         public bool PierreLied { get; set; }
         public bool StealFromPierre { get; set; }
+        public bool Unlocked { get; set; }
+        public int ShopGus { get; set; }
 
 
         //Places Visited
@@ -119,49 +121,8 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         //Items Collected
         public Dictionary<Items, int> MyInventory { get; set; } = new Dictionary<Items, int>();
-        //public int Amethyst { get; set; } //Abi loves, Clint loves
-        //public int Horseradish { get; set; } // Abi hates
-        //public int LewisStatue { get; set; }
-        //public int CompleteBreakfast {get; set; } // Alex loves
-        //public int Holly {get; set; } // Alex Hates, Clint hates, Demetrius hates, Kent hates, Robin hates
-        //public int CrabCakes {get; set; } //Elliot loves
-        //public int Amaranth {get; set; } //Elliot hates
-        //public int Coffee { get; set; } //Harvey loves
-        //public int Coral {get; set; } // Harvey hates
-        //public int MapleBar {get; set; } //Sam loves
-        //public int Coal {get; set; } //Sam hates
-        //public int FrozenTear {get; set; } //Seb loves
-        //public int Clay {get; set; } //Seb hates, George hates, Marnie hates
-        //public int Cloth {get; set; } //Emily loves
-        //public int FishTaco {get; set; } //Emily hates, Caroline loves
-        //public int Coconut {get; set; } //Hayley hates, Linus loves
-        //public int PrismaticShard {get; set; } //Hayley hates
-        //public int GoatCheese { get; set; } //Leah loves, Robin loves
-        //public int Bread {get; set; } //Leah hates
-        //public int BatteryPack {get; set; } //Maru loves
-        //public int Honey { get; set; } //Maru hates
-        //public int Diamond { get; set; } //Penny loves, Gus loves
-        //public int Beer {get; set; } //Penny hates, Pam loves, Shane Loves
-        //public int Quartz {get; set; } //Caroline hates, Shane hates
-        //public int BeanHotpot {get; set; } //Demetrius loves
-        //public int Emerald {get; set; } //Dwarf loves, Emily loves
-        //public int Seaweed {get; set; } //Dwarf hates, Krobus hates, Linus hates
-        //public int ChocolateCake {get; set; } //Evelyn loves, Jodi loves
-        //public int Clam {get; set; } //Evelyn hates
-        //public int Leek {get; set; } //George loves, Willy hates
-        //public int Coleslaw {get; set; } //Gus hates
-        //public int Daffodil {get; set; } //Jodi hates
-        //public int Risotto {get; set; } //Kent loves
-        //public int VoidEgg {get; set; } //Krobus loves
-        //public int FarmersLunch {get; set; } //Marnie loves
-        //public int Octopus {get; set; } //Pam hates, Willy loves
-        //public int FriedCalamari {get; set; } //Pierre loves
-        //public int Corn {get; set; } //Pierre hates
-        //public int VoidEssence {get; set; } //Wizard loves
-        //public int RedMushroom {get; set; } //Wizard hates
-        //public int JojaCola { get; set; }
 
-
+        
         //Information Learned
         public bool Brief { get; set; }
         public bool Clue { get; set; }

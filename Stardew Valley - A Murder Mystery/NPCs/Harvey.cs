@@ -45,9 +45,9 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                     default: break;
                 }
                 //player dialogue options
-                Console.WriteLine(""); //chat
-                Console.WriteLine(""); //gift
-                Console.WriteLine(""); //investigate
+                Console.WriteLine("C"); //chat
+                Console.WriteLine("G"); //gift
+                Console.WriteLine("I"); //investigate
 
                 var dialogue1 = Console.ReadLine();
 
@@ -61,7 +61,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         Console.WriteLine("");
                         Gift();
                         break;
-                    case "investigate":
+                    case "I":
                         Console.WriteLine("");
                         Investigate();
                         break;
@@ -78,12 +78,20 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
-
+            Console.WriteLine("A > Autopsy");
+            var investigate = Console.ReadLine();
+            if (investigate == "A")
+            {
+                Autopsy();
+            }
         }
 
         void Autopsy()
         {
+            Console.WriteLine("Do Autopsy");
 
+            AvailablePlaces call = new(SaveData);
+                call.IncreaseDayCount();
         }
     }
 }

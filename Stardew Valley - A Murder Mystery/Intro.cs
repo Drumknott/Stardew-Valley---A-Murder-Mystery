@@ -16,7 +16,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public void Opening()
         {
-            PlayerHelp Tips = new();
+            PlayerHelp Tips = new(SaveData);
             Tips.Help();
             Console.WriteLine("");
             Console.WriteLine("DAY 1");
@@ -44,7 +44,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("The bus driver, a woman with blonde hair, pulls the bus over and yells out 'Pelican Town!'");
             Console.WriteLine("As you disembark you thank her, but get a whiff of alcohol on her breath. Was she drink driving!?");
             Console.WriteLine("Before you can say anything she reaches out her hand.");
-            Console.WriteLine("Pam > Hi, I'm Pam. Are you the detective who's come to see about Mayor Lewis?");
+            Console.WriteLine("Pam > Hey kid, The name's Pam. Are you the detective who's come to see about Mayor Lewis?");
             Console.WriteLine("");
             SaveData.DayCount = 0;
 

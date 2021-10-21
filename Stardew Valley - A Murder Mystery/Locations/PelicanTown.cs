@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stardew_Valley___A_Murder_Mystery.NPCs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,12 +23,14 @@ namespace Stardew_Valley___A_Murder_Mystery
                 exploreTown.Enter();               
             }
 
-            if (SaveData.DayCount >0)
+            if (SaveData.DayCount == 0)
             {
                 Console.WriteLine("You are in the town square. Posters have been put up on every available surface: VOTE KENT TO SERVE THE COMMUNITY.");
                 Console.WriteLine("Over these, rival posters have been stuck haphazardly: Vote Pierre, Joja OUT! And lastly, covering an entire wall of the Stardrop Saloon,");
                 Console.WriteLine("is one giant billboard in Joja blue: For Modern Progress vote for Mayor Morris");
                 Console.WriteLine("These people don't waste any time.");
+                Console.WriteLine("Harvey is sitting on a bench nearby");
+                Harvey harvey = new(SaveData);
             }                       
         }
 
@@ -57,9 +60,9 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             switch (random)
             {
-                case 0: Console.WriteLine("You have found a" + randomItem); break;
-                case 1: Console.WriteLine("You spot a" + randomItem + "half buried in the flowerbed."); break;
-                case 2: Console.WriteLine("After searching for a few minutes you find a" + randomItem); break;
+                case 0: Console.WriteLine("You have found a " + randomItem); break;
+                case 1: Console.WriteLine("You spot a " + randomItem + " half buried in the flowerbed."); break;
+                case 2: Console.WriteLine("After searching for a few minutes you find a " + randomItem); break;
                 default: break;
             }
         }

@@ -70,7 +70,42 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
+            Console.WriteLine("What gift would you like to give Demetrius?");
+            Console.WriteLine("");
 
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            if (gift.Length == 0)
+            {
+                return;
+            }
+
+            else if (gift == "BeanHotpot" && Enums.Items.BeanHotpot > 0)
+            {
+                Console.WriteLine("Demetrius > You're giving this to me? This is amazing!"); // NPC loves
+                Console.WriteLine(gift + " removed from Inventory.");
+                
+                SaveData.MyInventory.TryGetValue(Enums.Items.BeanHotpot, out var beanHotpotCount);
+                beanHotpotCount--;
+                SaveData.MyInventory[Enums.Items.BeanHotpot] = beanHotpotCount;
+            }
+
+            else if (gift == "Quartz" && Enums.Items.Quartz > 0)
+            {
+                Console.WriteLine("Demetrius > This is disgusting."); //NPC hates
+                Console.WriteLine(gift + " removed from Inventory.");
+                
+                SaveData.MyInventory.TryGetValue(Enums.Items.Quartz, out var quartzCount);
+                quartzCount--;
+                SaveData.MyInventory[Enums.Items.Horseradish] = quartzCount;
+            }
+            else //neutral
+            {
+                Console.WriteLine("Demetrius > Thank you! This is a very interesting specimen.");
+                Console.WriteLine(gift + " removed from Inventory.");
+            }
         }
 
         void Investigate() //if Pierre's the murderer, Demetrius is an accomplice

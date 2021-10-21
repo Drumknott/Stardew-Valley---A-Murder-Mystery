@@ -32,7 +32,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             else if (SaveData.DayCount == 0 || SaveData.DayCount == 3)
             {
-
+                Console.WriteLine("You are at the Beach");
             }
 
             else if (SaveData.DayCount == 1 || SaveData.DayCount == 2)
@@ -88,7 +88,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             switch (random)
             {
                 case 0: Console.WriteLine("You have found a " + randomItem); break;
-                case 1: Console.WriteLine("You spot a " + randomItem + "half buried in the sand."); break;
+                case 1: Console.WriteLine("You spot a " + randomItem + " half buried in the sand."); break;
                 case 2: Console.WriteLine("After searching for a few minutes you find a " + randomItem); break;
                 default: break;
             }

@@ -67,26 +67,36 @@ namespace Stardew_Valley___A_Murder_Mystery
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
+            if (gift.Length == 0)
             {
-                if (gift == "Complete Breakfast" && Enums.Items.CompleteBreakfast > 0)
-                {
-                    Console.WriteLine("Alex > "); // Alex loves
-                    SaveData.AlexFriendship += 2;
+                return;
+            }
 
-                    SaveData.MyInventory.TryGetValue(Enums.Items.CompleteBreakfast, out var completebreakfastCount);
-                    completebreakfastCount--;
-                    SaveData.MyInventory[Enums.Items.CompleteBreakfast] = completebreakfastCount;
-                }
+            else if (gift == "CompleteBreakfast" && Enums.Items.CompleteBreakfast > 0)
+            {
+                Console.WriteLine("Alex > Hey, awesome! I love this stuff!"); // NPC loves
+                Console.WriteLine(gift + " removed from Inventory.");
+                SaveData.AlexFriendship += 2;
 
-                if (gift == "Holly" && Enums.Items.Holly >0)
-                {
-                    Console.WriteLine("Alex > "); //Alex hates
-                    SaveData.AlexFriendship--;
+                SaveData.MyInventory.TryGetValue(Enums.Items.CompleteBreakfast, out var completeBreakfastCount);
+                completeBreakfastCount--;
+                SaveData.MyInventory[Enums.Items.CompleteBreakfast] = completeBreakfastCount;
+            }
 
-                    SaveData.MyInventory.TryGetValue(Enums.Items.Holly, out var hollyCount);
-                    hollyCount--;
-                    SaveData.MyInventory[Enums.Items.Holly] = hollyCount;
-                }
+            else if (gift == "Holly" && Enums.Items.Horseradish > 0)
+            {
+                Console.WriteLine("Alex > Are you serious? This is garbage."); //NPC hates
+                Console.WriteLine(gift + " removed from Inventory.");
+                SaveData.AlexFriendship--;
+
+                SaveData.MyInventory.TryGetValue(Enums.Items.Holly, out var hollyCount);
+                hollyCount--;
+                SaveData.MyInventory[Enums.Items.Holly] = hollyCount;
+            }
+            else //neutral
+            {
+                Console.WriteLine("Alex > Thanks!");
+                Console.WriteLine(gift + " removed from Inventory.");
             }
         }
 
