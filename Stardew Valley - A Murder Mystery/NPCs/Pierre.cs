@@ -16,23 +16,25 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Chat()
         {
-            SaveData.LastChat = "Pierre";                                  
+            while (true)
+            { 
+                SaveData.LastChat = "Pierre";
 
-            if (SaveData.PierreCount == 0) //first meeting
-            {
-                Console.WriteLine($"Pierre > Hey, it's Detective {SaveData.PlayerName}! I'm Pierre, owner of the local general store."); 
-                Console.WriteLine("Pierre > A little mystery like this could really inject life into the local economy!");
-                SaveData.PierreCount++;
-            }               
-
-            else
-            {
-                while (true)
+                if (SaveData.PierreCount == 0) //first meeting
                 {
+                    Console.WriteLine($"Pierre > Hey, it's Detective {SaveData.PlayerName}! I'm Pierre, owner of the local general store.");
+                    Console.WriteLine("Pierre > A little mystery like this could really inject life into the local economy!");
+                    SaveData.PierreCount++;
+                }
+
+                else
+                {
+
                     if (SaveData.DayCount == 1) //aerobics day
                     {
                         //chat about aerobics day
                     }
+
                     else
                     {
                         Random dialogue = new();
@@ -53,38 +55,38 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                             default: break;
                         }
                     }
+                }
 
-                    //player dialogue options
-                    Console.WriteLine(""); //chat
-                    Console.WriteLine(""); //gift
-                    Console.WriteLine(""); //investigate
-                    Console.WriteLine("L > Leave");
+                Console.WriteLine("");
+                Console.WriteLine(""); //chat
+                Console.WriteLine(""); //gift
+                Console.WriteLine(""); //investigate
+                Console.WriteLine("L > Leave");
 
-                    var dialogue1 = Console.ReadLine();
+                var dialogue1 = Console.ReadLine();
 
-                    switch (dialogue1)
-                    {
-                        case "chat":
-                            Console.WriteLine("");
-                            break;
-                        case "gift":
-                            Console.WriteLine("");
-                            Gift();
-                            break;
-                        case "investigate":
-                            Console.WriteLine("");
-                            Investigate();
-                            break;
-                        case "buy":
-                            Console.WriteLine("");
-                            Buy();
-                            break;
-                        case "L":
-                            SaveData.PierreCount++;
-                            return;
-                        default: break;
-                    }
-                }                   
+                switch (dialogue1)
+                {
+                    case "chat":
+                        Console.WriteLine("");
+                        break;
+                    case "gift":
+                        Console.WriteLine("");
+                        Gift();
+                        break;
+                    case "investigate":
+                        Console.WriteLine("");
+                        Investigate();
+                        break;
+                    case "buy":
+                        Console.WriteLine("");
+                        Buy();
+                        break;
+                    case "L":
+                        SaveData.PierreCount++;
+                        return;
+                    default: break;
+                }                                  
             }            
         }
 
@@ -122,6 +124,11 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 SaveData.MyInventory.TryGetValue(Enums.Items.MapleBar, out var mapleBarCount);
                 mapleBarCount--;
                 SaveData.MyInventory[Enums.Items.MapleBar] = mapleBarCount;
+
+                if (SaveData.StealFromPierre == true)
+                {
+                    SaveData.FuckYouPierre = true;
+                }
             }
 
             else if (gift == "FriedCalamari" && Enums.Items.FriedCalamari > 0)

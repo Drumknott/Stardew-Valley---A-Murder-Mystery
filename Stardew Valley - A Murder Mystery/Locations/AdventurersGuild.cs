@@ -17,6 +17,8 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
+            SaveData.LastVisited = "Guild";
+
             if (SaveData.DayCount <6)
             {
                 Console.WriteLine("You are in the Adventurer's Guild. Marlon is behind the counter.");

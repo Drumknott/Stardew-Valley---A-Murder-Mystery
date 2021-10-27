@@ -16,6 +16,8 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
+            SaveData.LastVisited = "Cindersap";
+
             Console.WriteLine("You are in the old Community Centre");
         }
 

@@ -18,6 +18,8 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
+            SaveData.LastVisited = "Marnies";
+
             Console.WriteLine("You're in Marnie's.");
             if (SaveData.DayCount == 0)
             {

@@ -1,6 +1,8 @@
-﻿using Stardew_Valley___A_Murder_Mystery.CommandUtilities;
+﻿using System.Collections.Generic;
+using Stardew_Valley___A_Murder_Mystery.CommandUtilities;
 using Stardew_Valley___A_Murder_Mystery.Enums;
 using System;
+using System.Linq;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
@@ -71,6 +73,9 @@ namespace Stardew_Valley___A_Murder_Mystery
             {
                 Achievements achievements = new(saveData);
                 achievements.CheckAchievements();
+
+                DayManager dayManager = new(saveData);
+                dayManager.CheckDayCount();
 
                 Commands commandType;
                 string commandArgument;
@@ -177,8 +182,19 @@ namespace Stardew_Valley___A_Murder_Mystery
                 if (commandType == Commands.Chat)
                 {
                     ChooseNPC chooseNPC = new();
-                    var chatNPC = chooseNPC.ChooseNPCMethod(commandArgument, saveData);
-                    chatNPC.Chat();
+                    var chatNPC = chooseNPC.ChooseNPCMethod(commandArgument, saveData);                                 
+                                    
+                    string[] presentNPCs = {saveData.npc1, saveData.npc2, saveData.npc3, saveData.npc4, saveData.npc5};
+                    bool availableNPCs = presentNPCs.Contains(commandArgument);
+
+                    if (availableNPCs)
+                    {
+                        chatNPC.Chat();
+                    }
+                    else
+                    {
+                        Console.WriteLine(commandArgument + " isn't here right now.");
+                    }
                 }
 
                 if (commandType == Commands.AdminHack)

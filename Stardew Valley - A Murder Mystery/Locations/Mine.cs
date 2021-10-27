@@ -16,7 +16,22 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
-            Console.WriteLine("");
+            while (true)
+            {
+                SaveData.LastVisited = "Mine";
+
+                Console.WriteLine("You are at the Mine");
+
+                if (SaveData.MineCount == 0)
+                {
+                    Console.WriteLine("");
+                    SaveData.MineCount++;
+                }
+                else
+                {
+
+                }
+            }
         }
 
         public override void Forage()

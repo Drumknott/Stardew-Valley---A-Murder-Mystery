@@ -16,18 +16,19 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Chat()
         {
-            SaveData.LastChat = "Wizard";
-
-            if (SaveData.WizardCount == 0) //first meeting
+            while (true)
             {
-                Console.WriteLine($"Wizard > Ah, yes. I have predicted your arrival a long time ago, young {SaveData.PlayerName}. However, your fate is ultimately in your own hands.");
-                SaveData.WizardCount++;
-            }
+                SaveData.LastChat = "Wizard";
 
-            else
-            {
-                while (true)
+                if (SaveData.WizardCount == 0) //first meeting
                 {
+                    Console.WriteLine($"Wizard > Ah, yes. I have predicted your arrival a long time ago, young {SaveData.PlayerName}. However, your fate is ultimately in your own hands.");
+                    SaveData.WizardCount++;
+                }
+
+                else
+                {
+
                     Random dialogue = new();
                     int random = dialogue.Next(0, 7);
 
@@ -43,33 +44,34 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         case 7: Console.WriteLine("Wizard > I sometimes observe the local villagers in secret. I am hoping to find an apprentice. Some day I will leave this mortal plane, but my arcane pursuits must continue."); break;
                         default: break;
                     }
-                    //player dialogue options
-                    Console.WriteLine(""); //chat
-                    Console.WriteLine(""); //gift
-                    Console.WriteLine(""); //investigate
-                    Console.WriteLine(""); //Leave
-
-                    var dialogue1 = Console.ReadLine();
-
-                    switch (dialogue1)
-                    {
-                        case "chat":
-                            Console.WriteLine("");
-                            break;
-                        case "gift":
-                            Console.WriteLine("");
-                            Gift();
-                            break;
-                        case "investigate":
-                            Console.WriteLine("");
-                            Investigate();
-                            break;
-                        case "L": return;
-                        default: break;
-                    }
-
-                    SaveData.WizardCount++;
                 }
+
+                Console.WriteLine("");
+                Console.WriteLine(""); //chat
+                Console.WriteLine(""); //gift
+                Console.WriteLine(""); //investigate
+                Console.WriteLine(""); //Leave
+
+                var dialogue1 = Console.ReadLine();
+
+                switch (dialogue1)
+                {
+                    case "chat":
+                        Console.WriteLine("");
+                        break;
+                    case "gift":
+                        Console.WriteLine("");
+                        Gift();
+                        break;
+                    case "investigate":
+                        Console.WriteLine("");
+                        Investigate();
+                        break;
+                    case "L":
+                        SaveData.WizardCount++;
+                        return;
+                    default: break;
+                }                
             }
         }
 

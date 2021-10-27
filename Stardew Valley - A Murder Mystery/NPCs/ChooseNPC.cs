@@ -21,7 +21,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case People.Alex: npc = new Alex(saveData); break;
                 case People.Caroline: npc = new Caroline(saveData); break;
                 case People.Demetrius: npc = new Demetrius(saveData); break;
-                case People.Elliot: npc = new Elliot(saveData); break;
+                case People.Elliott: npc = new Elliot(saveData); break;
                 case People.Emily: npc = new Emily(saveData); break;
                 case People.Evelyn: npc = new Evelyn(saveData); break;
                 case People.Farmer: npc = new Farmer(saveData); break;

@@ -16,19 +16,20 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Chat()
         {
-            SaveData.LastChat = "Sebastian";
+            while (true)
+            { 
+                SaveData.LastChat = "Sebastian";
 
-            if (SaveData.SebastianCount == 0) //first meeting
-            {
-                Console.WriteLine("Sebastian > Oh. You just moved in, right? Cool.");
-                Console.WriteLine("Out of all the places you could live, you chose Pelican Town ? ");
-                SaveData.SebastianCount++;
-            }
-
-            else
-            {
-                while (true)
+                if (SaveData.SebastianCount == 0) //first meeting
                 {
+                    Console.WriteLine("Sebastian > Oh. You just moved in, right? Cool.");
+                    Console.WriteLine("Out of all the places you could live, you chose Pelican Town ? ");
+                    SaveData.SebastianCount++;
+                }
+
+                else
+                {
+
                     Random dialogue = new();
                     int random = dialogue.Next(0, 10);
 
@@ -44,40 +45,42 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         case 7: Console.WriteLine("Sebastian > Uh... I don't really know you."); break;
                         case 8: Console.WriteLine("Sebastian > What? I didn't hear you... I'm busy thinking about something. What do you want?"); break;
                         case 9: Console.WriteLine("Sebastian > You know, I should be doing something productive right now. I just lose focus too fast... Maybe I should drink more coffee?"); break;
-                        case 10: Console.WriteLine("Sebastian > Hey. Your name is "+SaveData.PlayerName+", right?"); break;
+                        case 10: Console.WriteLine("Sebastian > Hey. Your name is " + SaveData.PlayerName + ", right?"); break;
                         case 11: Console.WriteLine("Sebastian > Having a good weekend? ...nice."); break;
-                        case 12: Console.WriteLine("Sebastian > I usually stay inside, but I do go to the beach now and then. Pretty much only when it's raining, though. For some reason, staring off into the bleak horizon makes me feel... I dunno.");
+                        case 12:
+                            Console.WriteLine("Sebastian > I usually stay inside, but I do go to the beach now and then. Pretty much only when it's raining, though. For some reason, staring off into the bleak horizon makes me feel... I dunno.");
                             Console.WriteLine("\tLike it's worthwhile to keep pushing on, I guess.”"); break;
                         default: break;
                     }
-                    //player dialogue options
-                    Console.WriteLine(""); //chat
-                    Console.WriteLine(""); //gift
-                    Console.WriteLine(""); //investigate
-                    Console.WriteLine("L > Leave");
-
-                    var dialogue1 = Console.ReadLine();
-
-                    switch (dialogue1)
-                    {
-                        case "chat":
-                            Console.WriteLine("");
-                            SaveData.SebastianFriendship++;
-                            break;
-                        case "gift":
-                            Console.WriteLine("");
-                            Gift();
-                            break;
-                        case "investigate":
-                            Console.WriteLine("");
-                            Investigate();
-                            break;
-                        case "L": return;
-                        default: break;
-                    }
-
-                    SaveData.SebastianCount++;
                 }
+
+                Console.WriteLine("");
+                Console.WriteLine(""); //chat
+                Console.WriteLine(""); //gift
+                Console.WriteLine(""); //investigate
+                Console.WriteLine("L > Leave");
+
+                var dialogue1 = Console.ReadLine();
+
+                switch (dialogue1)
+                {
+                    case "chat":
+                        Console.WriteLine("");
+                        SaveData.SebastianFriendship++;
+                        break;
+                    case "gift":
+                        Console.WriteLine("");
+                        Gift();
+                        break;
+                    case "investigate":
+                        Console.WriteLine("");
+                        Investigate();
+                        break;
+                    case "L":
+                        SaveData.SebastianCount++;
+                        return;
+                    default: break;
+                }                
             }
         }
 

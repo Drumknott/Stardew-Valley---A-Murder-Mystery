@@ -16,18 +16,19 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Chat()
         {
-            SaveData.LastChat = "Willy";
-
-            if (SaveData.WillyCount == 0) //first meeting
+            while (true)
             {
-                Console.WriteLine("Willy > Ahoy there! It's nice to see young folk movin' in to the valley. It's not very common these days.");
-                SaveData.WillyCount++;
-            }
+                SaveData.LastChat = "Willy";
 
-            else
-            {
-                while (true)
+                if (SaveData.WillyCount == 0) //first meeting
                 {
+                    Console.WriteLine("Willy > Ahoy there! It's nice to see young folk movin' in to the valley. It's not very common these days.");
+                    SaveData.WillyCount++;
+                }
+
+                else
+                {
+
                     Random dialogue = new();
                     int random = dialogue.Next(0, 7);
 
@@ -38,39 +39,41 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         case 2: Console.WriteLine($"Willy > A true angler has respect for the water... don't you forget that."); break;
                         case 3: Console.WriteLine($"Willy > Some fish come and go with the seasons. Others only come out at night or in the rain."); break;
                         case 4: Console.WriteLine($"Willy > *mumble* *mumble* ...Eh? I would tell you about my thoughts, but it's a fisherman's secret."); break;
-                        case 5: Console.WriteLine($"Willy > There are rumors of some very rare fish in these parts... but only an experienced angler could stand a chance against them."); 
-                                Console.WriteLine("\tYou'll need the finest bait you can get if you want a rare fish to bite."); break;
+                        case 5:
+                            Console.WriteLine($"Willy > There are rumors of some very rare fish in these parts... but only an experienced angler could stand a chance against them.");
+                            Console.WriteLine("\tYou'll need the finest bait you can get if you want a rare fish to bite."); break;
                         case 6: Console.WriteLine($"Willy > If you really want to get the fish biting, make sure you put some bait on your hook."); break;
                         case 7: Console.WriteLine($"Willy > If the local fishing scene got a bit more lively, I might expand the shop's stock."); break;
                         default: break;
                     }
-                    //player dialogue options
-                    Console.WriteLine(""); //chat
-                    Console.WriteLine(""); //gift
-                    Console.WriteLine(""); //investigate
-                    Console.WriteLine("L > Leave");
-
-                    var dialogue1 = Console.ReadLine();
-
-                    switch (dialogue1)
-                    {
-                        case "chat":
-                            Console.WriteLine("");
-                            break;
-                        case "gift":
-                            Console.WriteLine("");
-                            Gift();
-                            break;
-                        case "investigate":
-                            Console.WriteLine("");
-                            Investigate();
-                            break;
-                        case "L": return;
-                        default: break;
-                    }
-
-                    SaveData.WillyCount++;
                 }
+
+                Console.WriteLine("");
+                Console.WriteLine(""); //chat
+                Console.WriteLine(""); //gift
+                Console.WriteLine(""); //investigate
+                Console.WriteLine("L > Leave");
+
+                var dialogue1 = Console.ReadLine();
+
+                switch (dialogue1)
+                {
+                    case "chat":
+                        Console.WriteLine("");
+                        break;
+                    case "gift":
+                        Console.WriteLine("");
+                        Gift();
+                        break;
+                    case "investigate":
+                        Console.WriteLine("");
+                        Investigate();
+                        break;
+                    case "L":
+                        SaveData.WillyCount++;
+                        return;
+                    default: break;
+                }                
             }
         }
 

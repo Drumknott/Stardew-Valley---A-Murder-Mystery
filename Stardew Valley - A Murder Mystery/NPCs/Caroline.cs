@@ -16,38 +16,43 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Chat()
         {
-            SaveData.LastChat = "Caroline";
-
-            if (SaveData.CarolineCount == 0) //first meeting
+            while (true)
             {
-                Console.WriteLine("Caroline > Hello! You must be "+SaveData.PlayerName+", the Detective. I'm Caroline. My husband runs the general store here.");
-                Console.WriteLine("Caroline > And have you met my daughter, Abigail? She's the pale one with the purple hair.");
-                SaveData.CarolineCount++;
-            }
+                SaveData.LastChat = "Caroline";
 
-            else
-            {
-                Random dialogue = new();
-                int random = dialogue.Next(0, 9);
-
-                switch (random) //random dialogue
+                if (SaveData.CarolineCount == 0) //first meeting
                 {
-                    case 0: Console.WriteLine("Caroline > I wish Abby wouldn't spend so much time in her room."); break;
-                    case 1: Console.WriteLine("Caroline > I've seen wild horseradish in the forest. Foraging can be a fun way to earn some cash. Or you can use what you find as gifts."); break;
-                    case 2: Console.WriteLine("Caroline > Hi there. Do you have everything you need for the investigation? If not, we might be able to help you out. We carry a variety of useful items."); break;
-                    case 3: Console.WriteLine("Caroline > Hmmm... I wonder if I can get Pierre to cook dinner tonight."); break;
-                    case 4: Console.WriteLine("Caroline > Hmmm... what am I going to make for dinner tonight? Maybe I'll just get take-out from the Saloon."); break;
-                    case 5: Console.WriteLine("Caroline > It's a fine-looking day. On days like this I like to help Evelyn with the public gardens. She's strong for her age, but I think she appreciates all the help she can get."); break;
-                    case 6: Console.WriteLine("Caroline > Is it just me, or does Abigail have an unhealthy interest in doom and gloom? Maybe I'm just too old to understand."); break;
-                    case 7: Console.WriteLine("Caroline > Abby's always had a strange interest in the occult. I'm not sure where she gets it from..."); break;
-                    case 8: Console.WriteLine("Caroline > Today I'm just going to relax and think positively. Do you ever take a day off?"); break;
-                    case 9: Console.WriteLine("Caroline > Vote for Pierre!"); break;
-                    default: break;
+                    Console.WriteLine("Caroline > Hello! You must be " + SaveData.PlayerName + ", the Detective. I'm Caroline. My husband runs the general store here.");
+                    Console.WriteLine("Caroline > And have you met my daughter, Abigail? She's the pale one with the purple hair.");
+                    SaveData.CarolineCount++;
                 }
-                //player dialogue options
+
+                else
+                {
+                    Random dialogue = new();
+                    int random = dialogue.Next(0, 9);
+
+                    switch (random) //random dialogue
+                    {
+                        case 0: Console.WriteLine("Caroline > I wish Abby wouldn't spend so much time in her room."); break;
+                        case 1: Console.WriteLine("Caroline > I've seen wild horseradish in the forest. Foraging can be a fun way to earn some cash. Or you can use what you find as gifts."); break;
+                        case 2: Console.WriteLine("Caroline > Hi there. Do you have everything you need for the investigation? If not, we might be able to help you out. We carry a variety of useful items."); break;
+                        case 3: Console.WriteLine("Caroline > Hmmm... I wonder if I can get Pierre to cook dinner tonight."); break;
+                        case 4: Console.WriteLine("Caroline > Hmmm... what am I going to make for dinner tonight? Maybe I'll just get take-out from the Saloon."); break;
+                        case 5: Console.WriteLine("Caroline > It's a fine-looking day. On days like this I like to help Evelyn with the public gardens. She's strong for her age, but I think she appreciates all the help she can get."); break;
+                        case 6: Console.WriteLine("Caroline > Is it just me, or does Abigail have an unhealthy interest in doom and gloom? Maybe I'm just too old to understand."); break;
+                        case 7: Console.WriteLine("Caroline > Abby's always had a strange interest in the occult. I'm not sure where she gets it from..."); break;
+                        case 8: Console.WriteLine("Caroline > Today I'm just going to relax and think positively. Do you ever take a day off?"); break;
+                        case 9: Console.WriteLine("Caroline > Vote for Pierre!"); break;
+                        default: break;
+                    }
+                }
+
+                Console.WriteLine("");
                 Console.WriteLine("H > Hi, Caroline! How are you?"); //chat
                 Console.WriteLine(""); //gift
                 Console.WriteLine(""); //investigate
+                Console.WriteLine("L > Leave");
 
                 var dialogue1 = Console.ReadLine();
 
@@ -66,6 +71,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                         Console.WriteLine("Hi Caroline, I was wondering if I could ask you a few questions about Mayor Lewis?");
                         Investigate();
                         break;
+                    case "L": SaveData.CarolineCount++;
+                        return;
                     default: break;
                 }
             }

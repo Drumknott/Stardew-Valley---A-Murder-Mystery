@@ -38,7 +38,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             else if (SaveData.DayCount <4 || SaveData.DayCount == 5)
             {
-                Pam pam = new(SaveData);
+                SaveData.npc1 = "Pam";
 
                 Console.WriteLine("You are at the bus stop.");
                 Console.WriteLine("");
@@ -52,6 +52,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                 if (choice == "C")
                 {
+                    Pam pam = new(SaveData);
                     pam.Chat();
                 }
             }

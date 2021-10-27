@@ -25,10 +25,12 @@ namespace Stardew_Valley___A_Murder_Mystery
             if (SaveData.DayCount == 0)
             {
                 Console.WriteLine("Pierre is behind the counter. Marnie and Leah are browsing the shelves.");
-                Pierre pierre = new(SaveData);
-                Marnie marnie = new(SaveData);
-                Leah leah = new(SaveData);
+                Console.WriteLine("To the side of the counter a doorway leads back to Pierre's house.");
+                SaveData.npc1 = "Pierre";
+                SaveData.npc2 = "Marnie";
+                SaveData.npc3 = "Leah";
 
+                SaveData.npc4 = "Abigail";
                 //Abby is home
             }
 

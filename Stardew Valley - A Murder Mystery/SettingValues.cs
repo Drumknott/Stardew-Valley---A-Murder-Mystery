@@ -57,12 +57,12 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData.LeahFriendship = 0;
             SaveData.MaruFriendship = 0;
             SaveData.PennyFriendship = 0;
-            SaveData.SamFriendship = 0;                                 
+            SaveData.SamFriendship = 0;
             SaveData.SebastianFriendship = 0;
             SaveData.ShaneFriendship = 0;
             SaveData.KrobusFriendship = 0;
 
-            SaveData.ShopGus = 0;
+            SaveData.ShopGus = 0;            
         }
     }
 }

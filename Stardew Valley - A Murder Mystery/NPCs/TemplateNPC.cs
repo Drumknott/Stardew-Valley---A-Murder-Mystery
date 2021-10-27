@@ -17,34 +17,39 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Chat()
         {
-            SaveData.LastChat = "NPCname";
-
-            if (SaveData.ElliotCount == 0) //first meeting
+            while(true)
             {
-                Console.WriteLine("");
-                SaveData.ElliotCount++;
-            }
+                
+                SaveData.LastChat = "NPCname";
 
-            else
-            {
-                Random dialogue = new();
-                int random = dialogue.Next(0, 10);
-
-                switch (random) //random dialogue
+                if (SaveData.ElliotCount == 0) //first meeting
                 {
-                    case 0: Console.WriteLine(""); break;
-                    case 1: Console.WriteLine(""); break;
-                    case 2: Console.WriteLine(""); break;
-                    case 3: Console.WriteLine(""); break;
-                    case 4: Console.WriteLine(""); break;
-                    case 5: Console.WriteLine(""); break;
-                    case 6: Console.WriteLine(""); break;
-                    case 7: Console.WriteLine(""); break;
-                    case 8: Console.WriteLine(""); break;
-                    case 9: Console.WriteLine(""); break;
-                    default: break;
+                    Console.WriteLine("");
+                    SaveData.ElliotCount++;
                 }
-                //player dialogue options
+
+                else
+                {
+                    Random dialogue = new();
+                    int random = dialogue.Next(0, 10);
+
+                    switch (random) //random dialogue
+                    {
+                        case 0: Console.WriteLine(""); break;
+                        case 1: Console.WriteLine(""); break;
+                        case 2: Console.WriteLine(""); break;
+                        case 3: Console.WriteLine(""); break;
+                        case 4: Console.WriteLine(""); break;
+                        case 5: Console.WriteLine(""); break;
+                        case 6: Console.WriteLine(""); break;
+                        case 7: Console.WriteLine(""); break;
+                        case 8: Console.WriteLine(""); break;
+                        case 9: Console.WriteLine(""); break;
+                        default: break;
+                    }
+                }
+                
+
                 Console.WriteLine(""); //chat
                 Console.WriteLine(""); //gift
                 Console.WriteLine(""); //investigate

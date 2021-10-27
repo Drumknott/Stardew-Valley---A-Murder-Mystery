@@ -34,7 +34,7 @@ namespace Stardew_Valley___A_Murder_Mystery.Enums
         Emily,
         Hayley,
         Leah,
-        Elliot,
+        Elliott,
         Farmer,
         HatMaus,
         Marlon,

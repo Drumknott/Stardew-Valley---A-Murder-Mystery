@@ -92,7 +92,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                         case 11: Console.WriteLine("Pam > If my legs weren't so stiff I'd visit the mountains every now and then."); break;
                         default: break;
                     }
-                    //player dialogue options
+
+                    Console.WriteLine("");
                     Console.WriteLine("a"); //chat
                     Console.WriteLine("b"); //gift
                     Console.WriteLine("c"); //investigate

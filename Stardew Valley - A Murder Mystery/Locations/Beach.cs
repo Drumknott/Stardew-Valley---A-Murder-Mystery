@@ -42,8 +42,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("Elliot is standing outside his house, admiring the waves rolling in.");
                 Console.WriteLine("Further down you can see Willy fishing off the quay.");
 
-                Elliot elliot = new(SaveData);
-                Willy willy = new(SaveData);
+                SaveData.npc1 = "Willy";
+                SaveData.npc2 = "Elliott";
             }
 
             else if (SaveData.DayCount == 4 || SaveData.DayCount == 6)
@@ -57,7 +57,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("");
                 Console.WriteLine("Elliot is standing on the quay, staring out to sea as if lost in thought.");
 
-                Elliot elliot = new(SaveData);
+                SaveData.npc1 = "Elliott";
             }
         }
 
