@@ -46,11 +46,8 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                     }
                 }
 
-                Console.WriteLine("");
-                Console.WriteLine(""); //chat
-                Console.WriteLine(""); //gift
-                Console.WriteLine(""); //investigate
-                Console.WriteLine("L > Leave");
+                ChooseNPC chat = new();
+                chat.ChatOptions();
 
                 var dialogue1 = Console.ReadLine();
 

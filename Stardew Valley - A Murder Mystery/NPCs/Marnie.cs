@@ -56,17 +56,14 @@ namespace Stardew_Valley___A_Murder_Mystery
                     }
                 }
 
-                Console.WriteLine("");
-                Console.WriteLine("H > Hi Marnie, just wanted to see how you're doing.");
-                Console.WriteLine("G > Hey, I thought you might like this?");
-                Console.WriteLine("M > Hi Marnie. I was wondering if I could ask you a few questions about Mayor Lewis?");
-                Console.WriteLine("L > Leave");
+                ChooseNPC chat = new();
+                chat.ChatOptions();
 
                 var dialogue1 = Console.ReadLine();
 
                 switch (dialogue1)
                 {
-                    case "H": Console.WriteLine("Hi Marnie. How are you?");
+                    case "C": Console.WriteLine("Hi Marnie. How are you?");
                         if (SaveData.MarnieAndMarlon == true)
                         {
                             //happy Marnie
@@ -82,7 +79,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                     case "G": Console.WriteLine("Marnie, I thought you might like this?");
                         Gift();
                         break;
-                    case "M": Console.WriteLine("Hi Marnie. I'm here on official business I'm afraid. Can I ask you a few questions about Mayor Lewis?");
+                    case "I": Console.WriteLine("Hi Marnie. I'm here on official business I'm afraid. Can I ask you a few questions about Mayor Lewis?");
                         Console.WriteLine("Marnie > Oh, um, yes I suppose.");
                         Investigate();
                         Console.WriteLine("Well, thank you for talking with me Marnie. This has been very informative.");
@@ -125,13 +122,13 @@ namespace Stardew_Valley___A_Murder_Mystery
                 else switch (answer)
                 {
                     case "P":
-                        Console.WriteLine("Firstly, according to my case notes it was you who discovered Lewis' body and called the police. Can you tell me about the events of that evening?");
+                        Console.WriteLine("Me > Firstly, according to my case notes it was you who discovered Lewis' body and called the police. Can you tell me about the events of that evening?");
                         Console.WriteLine("");
                         caseP = true;
                         break;
 
                     case "K":
-                        Console.WriteLine("Did you kill Lewis?");
+                        Console.WriteLine("Me > Did you kill Lewis?");
                         if (SheKilledLewisAndPlayerKnowsAboutTheirRelationship()) //She murdered him because he was a jerk
                         {
 
@@ -168,7 +165,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                         caseI = true;
                         break;
 
-                    case "S":
+                    case "S": // lewis statue
                         Console.WriteLine("");
                         caseS = true;
                         break;

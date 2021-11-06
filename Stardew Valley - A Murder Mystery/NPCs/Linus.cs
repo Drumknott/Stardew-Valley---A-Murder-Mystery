@@ -52,25 +52,22 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                     }
                 }
 
-                Console.WriteLine("");
-                Console.WriteLine(""); //chat
-                Console.WriteLine(""); //gift
-                Console.WriteLine(""); //investigate
-                Console.WriteLine("L > Leave");
+                ChooseNPC chat = new();
+                chat.ChatOptions();
 
                 var dialogue1 = Console.ReadLine();
 
                 switch (dialogue1)
                 {
-                    case "chat":
-                        Console.WriteLine("");                        
+                    case "C":
+                        Console.WriteLine("Me > Hey, Linus. How are you doing today?");                        
                         break;
-                    case "gift":
-                        Console.WriteLine("");
+                    case "G":
+                        Console.WriteLine("Me > Hi Linus. Would you like this?");
                         Gift();
                         break;
-                    case "investigate":
-                        Console.WriteLine("");
+                    case "I":
+                        Console.WriteLine("Me > Would it be ok if I as you about the murder?");
                         Investigate();
                         break;
                     case "L": SaveData.LinusCount++;
@@ -94,7 +91,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 return;
             }
 
-            else if (gift == "Fav" && Enums.Items.Coconut > 0)
+            else if (gift == "Coconut" && Enums.Items.Coconut > 0)
             {
                 Console.WriteLine("Linus > This is wonderful! You've really made my day special."); // NPC loves
                 Console.WriteLine(gift + " removed from Inventory.");
@@ -104,7 +101,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 SaveData.MyInventory[Enums.Items.Coconut] = coconutCount;
             }
 
-            else if (gift == "hate" && Enums.Items.Horseradish > 0)
+            else if (gift == "Seaweed" && Enums.Items.Seaweed > 0)
             {
                 Console.WriteLine("Linus > Why would you give this to me? Do you think I like junk just because I live in a tent? That's terrible."); //NPC hates
                 Console.WriteLine(gift + " removed from Inventory.");
@@ -122,7 +119,73 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            Console.WriteLine("");
+            Console.WriteLine("Linus > Of course. What can I help you with?");
 
+            while (true)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("W > Where were you the night of the murder?");
+                Console.WriteLine("M > How well did you know Mayor Lewis?");
+                if (Enums.Items.LewisStatue > 0) Console.WriteLine("S > Have you ever seen this statue before?");
+                Console.WriteLine("L > Leave");
+                               
+                switch (Console.ReadLine())
+                {
+                    case "W":
+                        Console.WriteLine("Linus > I was sitting by my little campfire of course. I think the other townsfolk get uncomfortable if I spend too much time in the town.");
+                        Console.WriteLine($"Linus > I did see something funny though. I saw {SaveData.TheMurderer} walking towards the mine at about midnight.");
+                        Witness();
+                        break;
+                    case "M": Console.WriteLine("Linus > I think Lewis found me to be an inconvenience. A blemish on his perfect little town.");
+                        Console.WriteLine("Me > And how did you feel about that?");
+                        Console.WriteLine("Linus > I'm used to it now. I prefer the simply life, but not everyone understands it.");
+                        break;
+                    case "S": Console.WriteLine("Linus > No, I can't say I have. Funny - it looks a bit like Lewis."); break;
+                    case "L": return;
+                    default: break;
+                }
+
+            }
+        }
+
+        private void Witness()
+        {
+            bool caseY = false;
+            bool caseT = false;
+            bool caseD = false;
+
+            while (true)
+            {
+                if (caseY == true && caseT == true && caseD == true)
+                {
+                    return;
+                }
+
+                Console.WriteLine("");
+                Console.WriteLine($"Y > You're sure it was {SaveData.TheMurderer}?");
+                Console.WriteLine("T > Do you know what they did there?");
+                Console.WriteLine("D > Did you see them come back?");
+                Console.WriteLine("L > Leave");
+                Console.WriteLine("");
+
+                switch (Console.ReadLine())
+                {
+                    case "Y": Console.WriteLine("Linus > Oh, very sure. No mistake.");
+                        Console.WriteLine($"[Potential Suspect: {SaveData.TheMurderer} added to Casefile.");
+                        SaveData.Suspect = true;
+                        caseY = true;
+                        break;
+                    case "T": Console.WriteLine("Linus > No idea. I didn't follow them. That mine is dangerous, especially at night.");
+                        caseT = true;
+                        break;
+                    case "D": Console.WriteLine("Yes, after about half an hour.");
+                        caseD = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

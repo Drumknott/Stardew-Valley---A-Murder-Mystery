@@ -48,26 +48,23 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         default: break;
                     }
                 }
-                
-                Console.WriteLine("");
-                Console.WriteLine(""); //chat
-                Console.WriteLine(""); //gift
-                Console.WriteLine(""); //investigate
-                Console.WriteLine("L > Leave");
+
+                ChooseNPC chat = new();
+                chat.ChatOptions();
 
                 var dialogue1 = Console.ReadLine();
 
                 switch (dialogue1)
                 {
-                    case "chat":
+                    case "C":
                         Console.WriteLine("");
                         SaveData.ElliotFriendship++;
                         break;
-                    case "gift":
+                    case "G":
                         Console.WriteLine("");
                         Gift();
                         break;
-                    case "investigate":
+                    case "I":
                         Console.WriteLine("");
                         Investigate();
                         break;

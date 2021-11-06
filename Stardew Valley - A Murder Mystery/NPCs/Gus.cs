@@ -44,30 +44,27 @@ namespace Stardew_Valley___A_Murder_Mystery
                     }
                 }
 
-                Console.WriteLine("");
-                Console.WriteLine(""); //chat
-                Console.WriteLine(""); //gift
-                Console.WriteLine(""); //investigate
-                Console.WriteLine("S > I was hoping to buy something from you Gus"); //buy stuff
-                Console.WriteLine("L > Leave");
-
+                ChooseNPC chat = new();
+                chat.ChatOptions();
+                Console.WriteLine("S > Shop"); //buy stuff
+                
                 var dialogue1 = Console.ReadLine();
 
                 switch (dialogue1)
                 {
-                    case "chat":
+                    case "C":
                         Console.WriteLine("");                        
                         break;
-                    case "gift":
+                    case "G":
                         Console.WriteLine("");
                         Gift();
                         break;
-                    case "investigate":
+                    case "I":
                         Console.WriteLine("");
                         Investigate();
                         break;
-                    case "buy":
-                        Console.WriteLine("");
+                    case "S":
+                        Console.WriteLine("Me > I was hoping to buy something from you Gus");
                         Buy();
                         break;
                     case "L": SaveData.GusCount++;
@@ -79,7 +76,44 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Gift()
         {
-            
+            Console.WriteLine("What gift would you like to give Gus?");
+            Console.WriteLine("");
+
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            if (gift.Length == 0)
+            {
+                return;
+            }
+
+            else if (gift == "Fav" && Enums.Items.Amethyst > 0)
+            {
+                Console.WriteLine(""); // NPC loves
+                Console.WriteLine(gift + " removed from Inventory.");
+                SaveData.AbigailFriendship += 2;
+
+                SaveData.MyInventory.TryGetValue(Enums.Items.Amethyst, out var amethystCount);
+                amethystCount--;
+                SaveData.MyInventory[Enums.Items.Amethyst] = amethystCount;
+            }
+
+            else if (gift == "hate" && Enums.Items.Horseradish > 0)
+            {
+                Console.WriteLine(""); //NPC hates
+                Console.WriteLine(gift + " removed from Inventory.");
+                SaveData.AbigailFriendship--;
+
+                SaveData.MyInventory.TryGetValue(Enums.Items.Horseradish, out var horseradishCount);
+                horseradishCount--;
+                SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
+            }
+            else //neutral
+            {
+                Console.WriteLine("Abigail > You brought me a present? Thanks.");
+                Console.WriteLine(gift + " removed from Inventory.");
+            }
         }
 
         void Investigate()

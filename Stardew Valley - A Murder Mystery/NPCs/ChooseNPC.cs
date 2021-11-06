@@ -55,5 +55,15 @@ namespace Stardew_Valley___A_Murder_Mystery
             saveData.LastChat = chosenNPC;
             return npc;
         }
+
+        public void ChatOptions()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("C > Chat");
+            Console.WriteLine("G > Gift");
+            Console.WriteLine("I > Investigate");
+            Console.WriteLine("L > Leave");
+        }
+            
     }
 }

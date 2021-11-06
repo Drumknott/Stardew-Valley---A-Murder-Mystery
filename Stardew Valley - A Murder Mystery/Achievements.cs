@@ -14,20 +14,34 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             SaveData = saveData;
         }
-
+        
         public void CheckAchievements()
         {
+            if (SaveData.Unlocked != true)
+            {
+                if (SaveData.Vivisection == true || SaveData.Friendship == true || SaveData.HotShot == true || SaveData.HatMaus == true || SaveData.FuckYouPierre == true)
+                {
+                    SaveData.Unlocked = true;
+                    Console.WriteLine("");
+                    Console.WriteLine("Congratulations, you have unlocked your first achievement!");
+                    Console.WriteLine("You can view your achievements by using the command 'Check Achievements'");
+                    Console.WriteLine("");
+                }
+            }
             if (SaveData.Vivisection == true)
             {
-                Console.WriteLine("Achievement Unlocked: Vivisection");               
+                Console.WriteLine("Achievement Unlocked: Vivisection");
+                SaveData.Vivisection = false;
             }
             if (SaveData.Friendship == true)
             {
                 Console.WriteLine("Achievement Unlocked: Friendship");
+                SaveData.Friendship = false;
             }
             if (SaveData.HotShot == true)
             {
                 Console.WriteLine("Achievement Unlocked: Hot Shot Detective");
+                SaveData.HotShot = false;
             }
             if (SaveData.HatMausHaus == true && SaveData.HatMaus != true)
             {
@@ -43,16 +57,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             {
                 SaveData.AchievementHoarder = true;
                 Console.WriteLine("Achievement Unlocked: Unlocked all Achievements");
-            }
-
-            if (SaveData.Vivisection == true || SaveData.Friendship == true || SaveData.HotShot == true || SaveData.HatMaus == true || SaveData.FuckYouPierre == true)
-            {
-                SaveData.Unlocked = true;
-                Console.WriteLine("");
-                Console.WriteLine("Congratulations, you have unlocked your first achievement!");
-                Console.WriteLine("You can view your achievements by using the command 'Check Achievements'");
-                Console.WriteLine("");
-            }
+            }           
         }
 
         public void ViewAchievements()

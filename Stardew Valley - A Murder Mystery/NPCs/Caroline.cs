@@ -48,26 +48,23 @@ namespace Stardew_Valley___A_Murder_Mystery
                     }
                 }
 
-                Console.WriteLine("");
-                Console.WriteLine("H > Hi, Caroline! How are you?"); //chat
-                Console.WriteLine(""); //gift
-                Console.WriteLine(""); //investigate
-                Console.WriteLine("L > Leave");
+                ChooseNPC chat = new();
+                chat.ChatOptions();
 
                 var dialogue1 = Console.ReadLine();
 
                 switch (dialogue1)
                 {
-                    case "chat":
+                    case "C":
                         Console.WriteLine("Hi Caroline, how are you doing?");
                         Console.WriteLine("Caroline > Not bad, all this campaigning busness is stressful though. Vote for Pierre!");
                         SaveData.CarolineCount++;
                         break;
-                    case "gift":
+                    case "G":
                         Console.WriteLine("Hey Caroline, I thought you might like this?");
                         Gift();
                         break;
-                    case "investigate":
+                    case "I":
                         Console.WriteLine("Hi Caroline, I was wondering if I could ask you a few questions about Mayor Lewis?");
                         Investigate();
                         break;
@@ -120,7 +117,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         void Investigate()
         {
-
+            //mention M. Rasmodius
         }
     }
 }

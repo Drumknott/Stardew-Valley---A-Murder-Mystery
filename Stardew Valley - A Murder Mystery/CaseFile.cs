@@ -26,6 +26,13 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("The body is being kept at the local Doctor's Surgery. Awaiting further investigation.");
             }
 
+            if (SaveData.Suspect == true)
+            {
+                Console.WriteLine("");
+                Console.WriteLine($"Linus saw {SaveData.TheMurderer} go into the mine in the middle of the night. What were they doing there?");
+            }
+
+            Console.WriteLine("");
             Console.WriteLine("Enter > Return");
             Console.ReadKey();
         }

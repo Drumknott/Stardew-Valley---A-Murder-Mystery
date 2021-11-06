@@ -93,11 +93,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                         default: break;
                     }
 
-                    Console.WriteLine("");
-                    Console.WriteLine("a"); //chat
-                    Console.WriteLine("b"); //gift
-                    Console.WriteLine("c"); //investigate
-                    Console.WriteLine("L > Leave");
+                    ChooseNPC chat = new();
+                    chat.ChatOptions();
 
                     var dialogue1 = Console.ReadLine();
 
