@@ -16,7 +16,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Chat()
         {
-
+            Console.WriteLine("Hat Mouse > Me sell hats, okay poke? ");
         }
 
         public override void Gift()

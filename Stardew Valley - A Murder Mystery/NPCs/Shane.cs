@@ -19,18 +19,19 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Chat()
         {
-            SaveData.LastChat = "Shane";
-
-            if (SaveData.ShaneCount == 0) //First meeting
+            while (true)
             {
-                Console.WriteLine("Shane > I don't know you. Why are you talking to me?");
-                SaveData.ShaneCount ++;
-            }
+                SaveData.LastChat = "Shane";
 
-            else
-            {
-                while (true)
+                if (SaveData.ShaneCount == 0) //First meeting
                 {
+                    Console.WriteLine("Shane > I don't know you. Why are you talking to me?");
+                    SaveData.ShaneCount++;
+                }
+
+                else
+                {
+
                     Random dialogue = new();
                     int random = dialogue.Next(1, 15);
 
@@ -52,35 +53,32 @@ namespace Stardew_Valley___A_Murder_Mystery
                         case 14: Console.WriteLine("Shane > Every time I try something new it goes horribly wrong.You learn to just stay in a shell."); break;
                         default: break;
                     }
-
-                    //player dialogue options
-                    Console.WriteLine(""); //chat
-                    Console.WriteLine(""); //gift
-                    Console.WriteLine(""); //investigate
-                    Console.WriteLine("L > Leave");
-
-                    var dialogue1 = Console.ReadLine();
-
-                    switch (dialogue1)
-                    {
-                        case "chat":
-                            Console.WriteLine("");
-                            SaveData.ShaneFriendship++;
-                            break;
-                        case "gift":
-                            Console.WriteLine("");
-                            Gift();
-                            break;
-                        case "investigate":
-                            Console.WriteLine("");
-                            Investigate();
-                            break;
-                        case "L": return;
-                        default: break;
-                    }
-
-                    SaveData.ShaneCount++;
                 }
+
+                ChooseNPC chat = new();
+                chat.ChatOptions();
+
+                var dialogue1 = Console.ReadLine();
+
+                switch (dialogue1)
+                {
+                    case "C":
+                        Console.WriteLine("");
+                        SaveData.ShaneFriendship++;
+                        break;
+                    case "G":
+                        Console.WriteLine("");
+                        Gift();
+                        break;
+                    case "I":
+                        Console.WriteLine("");
+                        Investigate();
+                        break;
+                    case "L":
+                        SaveData.ShaneCount++;
+                        return;
+                    default: break;
+                }                
             }
         }
         public override void Gift()

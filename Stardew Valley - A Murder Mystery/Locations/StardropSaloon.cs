@@ -16,22 +16,21 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
+            SaveData.LastVisited = "Saloon";
+
             Console.WriteLine("");
             Console.WriteLine("You are in the Stardrop Saloon. A friendly looking man behind the bar greets you.");
 
             Gus newNPC = new Gus(SaveData);
             newNPC.Chat();
 
-            Console.WriteLine("");
-            
+            Console.WriteLine("");          
 
         }
 
         public override void Forage()
         {
             Console.WriteLine("You can't forage in here.");
-        }
-
-        
+        }        
     }
 }

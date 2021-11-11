@@ -1,6 +1,8 @@
-﻿using Stardew_Valley___A_Murder_Mystery.CommandUtilities;
+﻿using System.Collections.Generic;
+using Stardew_Valley___A_Murder_Mystery.CommandUtilities;
 using Stardew_Valley___A_Murder_Mystery.Enums;
 using System;
+using System.Linq;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
@@ -8,6 +10,8 @@ namespace Stardew_Valley___A_Murder_Mystery
     {
         static void Main(string[] args)
         {
+            Graphic graphic = new();
+            graphic.DisplayGraphic();
             Console.WriteLine("N > NEW GAME");
             Console.WriteLine("L > LOAD GAME");
             var Start = Console.ReadLine().Substring(0, 1).ToUpper();
@@ -15,7 +19,6 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData saveData;
             if (Start == "L")
             {
-                //load game
                 saveData = SaveManager.Load();
             }
             else 
@@ -63,7 +66,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             }
                         
             while (true)
-            {                
+            {
                 DoStuffMethod();                      
             }
 
@@ -72,12 +75,14 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Achievements achievements = new(saveData);
                 achievements.CheckAchievements();
 
+                DayManager dayManager = new(saveData);
+                dayManager.CheckDayCount();
+
                 Commands commandType;
                 string commandArgument;
                 while (true)
                 {
-                    Console.WriteLine("");
-                    Console.WriteLine("What would you like to do?");
+                    graphic.MethodGraphic();
                     var response = Console.ReadLine();
 
                     var commandParser = new CommandParser();
@@ -102,16 +107,13 @@ namespace Stardew_Valley___A_Murder_Mystery
                     switch (description)
                     {
                         case 0:
-                            Console.WriteLine("");
-                            Console.WriteLine("The weather is lovely as you head towards your destination.");
+                            Console.WriteLine("\nThe weather is lovely as you head towards your destination.");
                             break;
-                        case 1:
-                            Console.WriteLine("");
-                            Console.WriteLine("The sun beams down on you as you walk, and birds sing in the trees.");
+                        case 1:                           
+                            Console.WriteLine("\nThe sun beams down on you as you walk, and birds sing in the trees.");
                             break;
-                        case 2:
-                            Console.WriteLine("");
-                            Console.WriteLine("Clouds gather overhead, and you're afraid it might rain soon.");
+                        case 2:                          
+                            Console.WriteLine("\nClouds gather overhead, and you're afraid it might rain soon.");
                             break;
                     }
                     ChosenLocation.Enter();
@@ -177,8 +179,19 @@ namespace Stardew_Valley___A_Murder_Mystery
                 if (commandType == Commands.Chat)
                 {
                     ChooseNPC chooseNPC = new();
-                    var chatNPC = chooseNPC.ChooseNPCMethod(commandArgument, saveData);
-                    chatNPC.Chat();
+                    var chatNPC = chooseNPC.ChooseNPCMethod(commandArgument, saveData);                                 
+                                    
+                    string[] presentNPCs = {saveData.npc1, saveData.npc2, saveData.npc3, saveData.npc4, saveData.npc5};
+                    bool availableNPCs = presentNPCs.Contains(commandArgument);
+
+                    if (availableNPCs)
+                    {
+                        chatNPC.Chat();
+                    }
+                    else
+                    {
+                        Console.WriteLine(commandArgument + " isn't here right now.");
+                    }
                 }
 
                 if (commandType == Commands.AdminHack)

@@ -52,11 +52,9 @@ namespace Stardew_Valley___A_Murder_Mystery
                         default: break;
                     }
                 }
-                Console.WriteLine("");
-                Console.WriteLine("H > Just wanted to say Hi.");
-                Console.WriteLine("G > Here, I have something for you (Gift)");
-                Console.WriteLine("M > I was hoping I could ask you about the murder?");
-                Console.WriteLine("L > Leave");
+                ChooseNPC chat = new();
+                chat.ChatOptions();
+
                 var choice = Console.ReadLine();
 
                 if (choice == "L")
@@ -67,7 +65,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                 switch (choice)
                 {
-                    case "H":
+                    case "C":
                         Console.WriteLine("Hi Abigail, just wanted to see how you're doing.");
                         SaveData.AbigailFriendship++;
                         break;
@@ -75,7 +73,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                         Console.WriteLine("Oh here, I wanted to give you this.");
                         Gift();
                         break;
-                    case "M":
+                    case "I":
                         Console.WriteLine("I was hoping I could ask you about Mayor Lewis?");
                         Console.WriteLine("Abigail > Oh, sure. What about him?");
                         Investigate();

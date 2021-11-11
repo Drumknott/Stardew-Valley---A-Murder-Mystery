@@ -19,14 +19,13 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             SaveData.LastVisited = "Clinic";
 
-            Console.WriteLine("You are in the Doctor's Surgery.");
-            Console.WriteLine("");
-
+            Console.WriteLine("You are in the Doctor's Surgery.\n");
+            
             if (SaveData.DayCount == 1 || SaveData.DayCount == 3)
             {
                 Console.WriteLine("Maru is behind the desk, chatting with Harvey. The waiting room is empty.");
-                Harvey harvey = new (SaveData);
-                Maru maru = new (SaveData);
+                SaveData.npc1 = "Harvey";
+                SaveData.npc2 = "Maru";
             }
 
             else

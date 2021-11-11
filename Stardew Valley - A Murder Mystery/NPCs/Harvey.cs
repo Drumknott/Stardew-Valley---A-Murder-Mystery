@@ -16,48 +16,48 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Chat()
         {
+            while (true)
+            { 
             SaveData.LastChat = "Harvey";
 
-            if (SaveData.HarveyCount == 0) //first meeting
-            {
-                Console.WriteLine("Harvey > It's a pleasure to meet you. I'm Harvey, the local doctor.");
-                Autopsy();
-                SaveData.HarveyCount++;
-            }
-
-            else
-            {
-                Random dialogue = new();
-                int random = dialogue.Next(0, 10);
-
-                switch (random) //random dialogue
+                if (SaveData.HarveyCount == 0) //first meeting
                 {
-                    case 0: Console.WriteLine("Harvey > I perform regular check-ups and medical procedures for all the residents of Pelican Town. It's rewarding work."); break;
-                    case 1: Console.WriteLine("Harvey > We sell a few over-the-counter medicines at the clinic... feel free to stop by if you're feeling exhausted. I know that being a detective is pretty tiring work... don't overdo it!"); break;
-                    case 2: Console.WriteLine("Harvey > I feel responsible for the health of this whole community... it's kind of stressful. It's a pretty small community, and I'm fortunate to be able to build a good relationship with my patients."); break;
-                    case 3: Console.WriteLine("Harvey > Feel free to stop by my office if you're ever feeling ill. You're young, though. You'll probably stay healthy without trying."); break;
-                    case 4: Console.WriteLine("Harvey > Remember to cover your mouth when you sneeze. Then make sure to wash your hands."); break;
-                    case 5: Console.WriteLine("Harvey > Nutrition is important, so make sure and eat well. Try to increase your vegetable intake! Home-cooked meals are best. Do you cook?"); break;
-                    case 6: Console.WriteLine("Harvey > It's a beautiful day, isn't it? I wish I had less work to do."); break;
-                    case 7: Console.WriteLine("Harvey > If you want to hang out in my apartment, that's okay with me. I live above the clinic."); break;
-                    case 8: Console.WriteLine("Harvey > I came here because I liked the small-town atmosphere, and the potential for a holistic approach to patient care. I've grown to really love it."); break;
-                    case 9: Console.WriteLine("Harvey > Hmm... I'm struggling to make ends meet. I don't have enough patients. I guess I should try to get patients from the neighboring towns..."); break;
-                    default: break;
+                    Console.WriteLine("Harvey > It's a pleasure to meet you. I'm Harvey, the local doctor.");
                 }
-                //player dialogue options
-                Console.WriteLine("C"); //chat
-                Console.WriteLine("G"); //gift
-                Console.WriteLine("I"); //investigate
+
+                else
+                {
+                    Random dialogue = new();
+                    int random = dialogue.Next(0, 10);
+
+                    switch (random) //random dialogue
+                    {
+                        case 0: Console.WriteLine("Harvey > I perform regular check-ups and medical procedures for all the residents of Pelican Town. It's rewarding work."); break;
+                        case 1: Console.WriteLine("Harvey > We sell a few over-the-counter medicines at the clinic... feel free to stop by if you're feeling exhausted. I know that being a detective is pretty tiring work... don't overdo it!"); break;
+                        case 2: Console.WriteLine("Harvey > I feel responsible for the health of this whole community... it's kind of stressful. It's a pretty small community, and I'm fortunate to be able to build a good relationship with my patients."); break;
+                        case 3: Console.WriteLine("Harvey > Feel free to stop by my office if you're ever feeling ill. You're young, though. You'll probably stay healthy without trying."); break;
+                        case 4: Console.WriteLine("Harvey > Remember to cover your mouth when you sneeze. Then make sure to wash your hands."); break;
+                        case 5: Console.WriteLine("Harvey > Nutrition is important, so make sure and eat well. Try to increase your vegetable intake! Home-cooked meals are best. Do you cook?"); break;
+                        case 6: Console.WriteLine("Harvey > It's a beautiful day, isn't it? I wish I had less work to do."); break;
+                        case 7: Console.WriteLine("Harvey > If you want to hang out in my apartment, that's okay with me. I live above the clinic."); break;
+                        case 8: Console.WriteLine("Harvey > I came here because I liked the small-town atmosphere, and the potential for a holistic approach to patient care. I've grown to really love it."); break;
+                        case 9: Console.WriteLine("Harvey > Hmm... I'm struggling to make ends meet. I don't have enough patients. I guess I should try to get patients from the neighboring towns..."); break;
+                        default: break;
+                    }
+                }
+
+                ChooseNPC chat = new();
+                chat.ChatOptions();
 
                 var dialogue1 = Console.ReadLine();
 
                 switch (dialogue1)
                 {
-                    case "chat":
+                    case "C":
                         Console.WriteLine("");
                         SaveData.HarveyFriendship++;
                         break;
-                    case "gift":
+                    case "G":
                         Console.WriteLine("");
                         Gift();
                         break;
@@ -65,15 +65,52 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         Console.WriteLine("");
                         Investigate();
                         break;
+                    case "L": SaveData.HarveyCount++;
+                        return;
                     default: break;
-                }
-
-                SaveData.HarveyCount++;
+                }               
             }
         }
         public override void Gift()
         {
+            Console.WriteLine("What gift would you like to give NPC?");
+            Console.WriteLine("");
 
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            if (gift.Length == 0)
+            {
+                return;
+            }
+
+            else if (gift == "Coffee" && Enums.Items.Coffee > 0)
+            {
+                Console.WriteLine("Harvey > It's for me? This is my favorite stuff! It's like you read my mind."); // NPC loves
+                Console.WriteLine(gift + " removed from Inventory.");
+                SaveData.HarveyFriendship += 2;
+
+                SaveData.MyInventory.TryGetValue(Enums.Items.Coffee, out var coffeeCount);
+                coffeeCount--;
+                SaveData.MyInventory[Enums.Items.Coffee] = coffeeCount;
+            }
+
+            else if (gift == "hate" && Enums.Items.Horseradish > 0)
+            {
+                Console.WriteLine("Harvey > ...I think I'm allergic to this."); //NPC hates
+                Console.WriteLine(gift + " removed from Inventory.");
+                SaveData.HarveyFriendship--;
+
+                SaveData.MyInventory.TryGetValue(Enums.Items.Coral, out var coralCount);
+                coralCount--;
+                SaveData.MyInventory[Enums.Items.Coral] = coralCount;
+            }
+            else //neutral
+            {
+                Console.WriteLine("Harvey > Thanks. That's very kind of you.");
+                Console.WriteLine(gift + " removed from Inventory.");
+            }
         }
 
         void Investigate()
@@ -89,9 +126,9 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         void Autopsy()
         {
             Console.WriteLine("Do Autopsy");
-
-            AvailablePlaces call = new(SaveData);
-                call.IncreaseDayCount();
+            SaveData.Autopsy = true;
+            SaveData.Vivisection = true;
+            
         }
     }
 }

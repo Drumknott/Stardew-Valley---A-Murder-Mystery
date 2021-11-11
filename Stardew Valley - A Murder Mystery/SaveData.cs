@@ -34,6 +34,11 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool StealFromPierre { get; set; }
         public bool Unlocked { get; set; }
         public int ShopGus { get; set; }
+        public bool FuckYouPierre { get; set; } //gift Pierre the candy you stole from his store
+        public bool Flashlight { get; set; }
+        public int levelCount {get; set;}
+        public bool Monster { get; set; }
+        public string MonsterType { get; set; }
 
 
         //Places Visited
@@ -46,6 +51,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool FreshOffTheBus { get; set; }
         public bool BusStop { get; set; }
         public bool Mine { get; set; }
+        public int MineCount { get; set; }
         public bool DoctorsSurgery { get; set; }
         public bool CommunityCentre { get; set; }
         public bool StardropSaloon { get; set; }
@@ -100,6 +106,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int ElliotCount { get; set; }
         public int FarmerCount { get; set; }
         public int MarlonCount { get; set; }
+        public int MorrisCount { get; set; }
 
         //Friendship/Romance
         public int AbigailFriendship { get; set; }
@@ -122,15 +129,33 @@ namespace Stardew_Valley___A_Murder_Mystery
         //Items Collected
         public Dictionary<Items, int> MyInventory { get; set; } = new Dictionary<Items, int>();
 
-        
+
         //Information Learned
         public bool Brief { get; set; }
         public bool Clue { get; set; }
         //time
-        public int DayCount { get; set; } 
+        public int DayCount { get; set; }
 
         //Investigations
         public int AbigailInvestigated { get; set; }
+
+        public bool Suspect { get; set; }
+        public string npc1 { get; set; }
+        public string npc2 { get; set; }
+        public string npc3 {get; set;}
+        public string npc4 { get; set; }
+        public string npc5 { get; set; }
+
+        //increase time
+        public bool Autopsy { get; set; }
+        public bool autopsyChecked { get; set; }
+
+        //Achievements
+        public bool Vivisection { get; set; } //review Lewis' autopsy
+        public bool Friendship { get; set; } // speak with every character in the game
+        public bool HotShot { get; set; } //correctly identify the murderer
+        public bool HatMaus { get; set; } //find HatMaus in the forest
+        public bool AchievementHoarder { get; set; } //complete every other achievement
 
     }
 }

@@ -16,18 +16,19 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Chat()
         {
-            SaveData.LastChat = "Robin";
+            while (true)
+            { 
+                SaveData.LastChat = "Robin";
 
-            if (SaveData.RobinCount == 0) //first meeting
-            {
-                Console.WriteLine("Robin > Have you met everyone in town yet? That sounds exhausting.");
-                SaveData.RobinCount++;
-            }
-
-            else
-            {
-                while (true)
+                if (SaveData.RobinCount == 0) //first meeting
                 {
+                    Console.WriteLine("Robin > Have you met everyone in town yet? That sounds exhausting.");
+                    SaveData.RobinCount++;
+                }
+
+                else
+                {
+
                     Random dialogue = new();
                     int random = dialogue.Next(0, 10);
 
@@ -52,33 +53,31 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         case 10: Console.WriteLine($"Robin > Sorry if it smells weird in here, {SaveData.PlayerName}. It's my husband's bizarre science project..."); break;
                         default: break;
                     }
-                    //player dialogue options
-                    Console.WriteLine(""); //chat
-                    Console.WriteLine(""); //gift
-                    Console.WriteLine(""); //investigate
-                    Console.WriteLine("L > Leave");
-
-                    var dialogue1 = Console.ReadLine();
-
-                    switch (dialogue1)
-                    {
-                        case "chat":
-                            Console.WriteLine("");
-                            break;
-                        case "gift":
-                            Console.WriteLine("");
-                            Gift();
-                            break;
-                        case "investigate":
-                            Console.WriteLine("");
-                            Investigate();
-                            break;
-                        case "L":
-                            SaveData.RobinCount++;
-                            return;
-                        default: break;
-                    }                    
                 }
+
+                ChooseNPC chat = new();
+                chat.ChatOptions();
+
+                var dialogue1 = Console.ReadLine();
+
+                switch (dialogue1)
+                {
+                    case "chat":
+                        Console.WriteLine("");
+                        break;
+                    case "gift":
+                        Console.WriteLine("");
+                        Gift();
+                        break;
+                    case "investigate":
+                        Console.WriteLine("");
+                        Investigate();
+                        break;
+                    case "L":
+                        SaveData.RobinCount++;
+                        return;
+                    default: break;
+                }               
             }
         }
 

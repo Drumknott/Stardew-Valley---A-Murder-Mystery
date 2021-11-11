@@ -16,63 +16,95 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Chat()
         {
-            SaveData.LastChat = "Marlon";
+            while (true)
+            { 
+                SaveData.LastChat = "Marlon";
 
-            if (SaveData.MarlonCount == 0) //first meeting
-            {
-                Console.WriteLine("");
-                SaveData.MarlonCount++;
-            }
-
-            else
-            {
-                Random dialogue = new();
-                int random = dialogue.Next(0, 10);
-
-                switch (random) //random dialogue
+                if (SaveData.MarlonCount == 0) //first meeting
                 {
-                    case 0: Console.WriteLine(""); break;
-                    case 1: Console.WriteLine(""); break;
-                    case 2: Console.WriteLine(""); break;
-                    case 3: Console.WriteLine(""); break;
-                    case 4: Console.WriteLine(""); break;
-                    case 5: Console.WriteLine(""); break;
-                    case 6: Console.WriteLine(""); break;
-                    case 7: Console.WriteLine(""); break;
-                    case 8: Console.WriteLine(""); break;
-                    case 9: Console.WriteLine(""); break;
-                    default: break;
+                    Console.WriteLine("Marlon > Hey, good afternoon.");
+                    SaveData.MarlonCount++;
                 }
-                //player dialogue options
-                Console.WriteLine(""); //chat
-                Console.WriteLine(""); //gift
-                Console.WriteLine(""); //investigate
+
+                else
+                {
+                    Random dialogue = new();
+                    int random = dialogue.Next(0, 10);
+
+                    switch (random) //random dialogue
+                    {
+                        case 0: Console.WriteLine("Marlon > Even with my bad leg, I never miss a town festival."); break;
+                        case 1: Console.WriteLine("Marlon > Marnie looks lovely today..."); break;
+                        case 2: Console.WriteLine("Marlon > Clint's blades get sharper every year. So do his prices..."); break;
+                        default: break;
+                    }
+                }
+
+                ChooseNPC chat = new();
+                chat.ChatOptions();
 
                 var dialogue1 = Console.ReadLine();
 
                 switch (dialogue1)
                 {
-                    case "chat":
+                    case "C":
                         Console.WriteLine("");                        
                         break;
-                    case "gift":
+                    case "G":
                         Console.WriteLine("");
                         Gift();
                         break;
-                    case "investigate":
+                    case "I":
                         Console.WriteLine("");
                         Investigate();
                         break;
+                    case "L": SaveData.MarlonCount++;
+                        return;
                     default: break;
-                }
-
-                SaveData.MarlonCount++;
+                }             
             }
         }
 
         public override void Gift()
         {
+            Console.WriteLine("What gift would you like to give Marlon?");
+            Console.WriteLine("");
 
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            if (gift.Length == 0)
+            {
+                return;
+            }
+
+            else if (gift == "Fav" && Enums.Items.Amethyst > 0)
+            {
+                Console.WriteLine("Marlon > "); // NPC loves
+                Console.WriteLine(gift + " removed from Inventory.");
+                SaveData.AbigailFriendship += 2;
+
+                SaveData.MyInventory.TryGetValue(Enums.Items.Amethyst, out var amethystCount);
+                amethystCount--;
+                SaveData.MyInventory[Enums.Items.Amethyst] = amethystCount;
+            }
+
+            else if (gift == "hate" && Enums.Items.Horseradish > 0)
+            {
+                Console.WriteLine("Marlon > "); //NPC hates
+                Console.WriteLine(gift + " removed from Inventory.");
+                SaveData.AbigailFriendship--;
+
+                SaveData.MyInventory.TryGetValue(Enums.Items.Horseradish, out var horseradishCount);
+                horseradishCount--;
+                SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
+            }
+            else //neutral
+            {
+                Console.WriteLine("Marlon > ");
+                Console.WriteLine(gift + " removed from Inventory.");
+            }
         }
 
         void Investigate()

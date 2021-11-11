@@ -14,51 +14,50 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             SaveData = saveData;
         }
-
-        //Achievements
-        public bool Vivisection { get; set; } //review Lewis' autopsy
-        public bool Friendship { get; set; } // speak with every character in the game
-        public bool HotShot { get; set; } //correctly identify the murderer
-        public bool HatMaus { get; set; } //find HatMaus in the forest
-        public bool AchievementHoarder { get; set; } //complete every other achievement
-        public bool FuckYouPierre { get; set; } //gift Pierre the candy you stole from his store
-       
-
+        
         public void CheckAchievements()
         {
-            
-
-            if (Vivisection == true)
+            if (SaveData.Unlocked != true)
+            {
+                if (SaveData.Vivisection == true || SaveData.Friendship == true || SaveData.HotShot == true || SaveData.HatMaus == true || SaveData.FuckYouPierre == true)
+                {
+                    SaveData.Unlocked = true;
+                    Console.WriteLine("");
+                    Console.WriteLine("Congratulations, you have unlocked your first achievement!");
+                    Console.WriteLine("You can view your achievements by using the command 'Check Achievements'");
+                    Console.WriteLine("");
+                }
+            }
+            if (SaveData.Vivisection == true)
             {
                 Console.WriteLine("Achievement Unlocked: Vivisection");
+                SaveData.Vivisection = false;
             }
-            if (Friendship == true)
+            if (SaveData.Friendship == true)
             {
                 Console.WriteLine("Achievement Unlocked: Friendship");
+                SaveData.Friendship = false;
             }
-            if (HotShot == true)
+            if (SaveData.HotShot == true)
             {
                 Console.WriteLine("Achievement Unlocked: Hot Shot Detective");
+                SaveData.HotShot = false;
             }
-            if (SaveData.HatMausHaus == true && HatMaus != true)
+            if (SaveData.HatMausHaus == true && SaveData.HatMaus != true)
             {
-                HatMaus = true;
+                SaveData.HatMaus = true;
                 Console.WriteLine("Achievement Unlocked: Friend of Hat Mouse");
             }
-            if (Vivisection == true && Friendship == true && HotShot == true && HatMaus == true && FuckYouPierre == true)
+            if (SaveData.FuckYouPierre == true)
             {
-                AchievementHoarder = true;
-                Console.WriteLine("Achievement Unlocked: Unlocked all Achievements");
+                Console.WriteLine("Achievement Unlocked: Fuck You Pierre");
             }
 
-            if (Vivisection == true || Friendship == true || HotShot == true || HatMaus == true || FuckYouPierre == true)
+            if (SaveData.Vivisection == true && SaveData.Friendship == true && SaveData.HotShot == true && SaveData.HatMaus == true && SaveData.FuckYouPierre == true)
             {
-                SaveData.Unlocked = true;
-                Console.WriteLine("");
-                Console.WriteLine("Congratulations, you have unlocked your first achievement!");
-                Console.WriteLine("You can view your achievements by using the command 'Check Achievements'");
-                Console.WriteLine("");
-            }
+                SaveData.AchievementHoarder = true;
+                Console.WriteLine("Achievement Unlocked: Unlocked all Achievements");
+            }           
         }
 
         public void ViewAchievements()
@@ -66,23 +65,29 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Unlocked Achievements;");
             Console.WriteLine("");
 
-            if (Vivisection == true)
+            if (SaveData.Vivisection == true)
             {
                 Console.WriteLine("Vivisection: Watched Mayor Lewis' autopsy.");
             }
-            if (Friendship == true)
+            if (SaveData.Friendship == true)
             {
                 Console.WriteLine("Friendship: spoke to every villager in Stardew Valley");
             }
-            if (HotShot == true)
+            if (SaveData.HotShot == true)
             {
                 Console.WriteLine("Hot Shot Detective: correctly identified Lewis' murderer");
             }
-            if (HatMaus == true)
+            if (SaveData.HatMaus == true)
             {
                 Console.WriteLine("Friend of Hat Mouse: found and spoke with Hat Mouse in Cindersap Forest");
             }
-            if (AchievementHoarder == true)
+            if (SaveData.FuckYouPierre == true)
+            {
+                Console.WriteLine("Fuck You Pierre: stole a maple bar from Pierre and then gifted it back to him");
+                Console.WriteLine("(It's ok. He's a jerk, he deserves it)");
+            }
+
+            if (SaveData.AchievementHoarder == true)
             {
                 Console.WriteLine("Achievement Hoarder: unlocked all other achievements");
             }

@@ -21,12 +21,12 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case People.Alex: npc = new Alex(saveData); break;
                 case People.Caroline: npc = new Caroline(saveData); break;
                 case People.Demetrius: npc = new Demetrius(saveData); break;
-                case People.Elliot: npc = new Elliot(saveData); break;
+                case People.Elliott: npc = new Elliot(saveData); break;
                 case People.Emily: npc = new Emily(saveData); break;
                 case People.Evelyn: npc = new Evelyn(saveData); break;
                 case People.Farmer: npc = new Farmer(saveData); break;
                 case People.George: npc = new George(saveData); break;
-                case People.Gunther: npc = new Gunther(saveData); break;
+                case People.Morris: npc = new Morris(saveData); break;
                 case People.Gus: npc = new Gus(saveData); break;
                 case People.HatMaus: npc = new HatMaus(saveData); break;
                 case People.Hayley: npc = new Hayley(saveData); break;
@@ -55,5 +55,15 @@ namespace Stardew_Valley___A_Murder_Mystery
             saveData.LastChat = chosenNPC;
             return npc;
         }
+
+        public void ChatOptions()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("C > Chat");
+            Console.WriteLine("G > Gift");
+            Console.WriteLine("I > Investigate");
+            Console.WriteLine("L > Leave");
+        }
+            
     }
 }

@@ -77,23 +77,21 @@ namespace Stardew_Valley___A_Murder_Mystery
                     case 9: Console.WriteLine(""); break;
                     default: break;
                 }
-                //player dialogue options
-                Console.WriteLine(""); //chat
-                Console.WriteLine(""); //gift
-                Console.WriteLine(""); //investigate
+                ChooseNPC chat = new();
+                chat.ChatOptions();
 
                 var dialogue1 = Console.ReadLine();
 
                 switch (dialogue1)
                 {
-                    case "chat":
+                    case "C":
                         Console.WriteLine("");
                         break;
-                    case "gift":
+                    case "G":
                         Console.WriteLine("");
                         Gift();
                         break;
-                    case "investigate":
+                    case "I":
                         Console.WriteLine("");
                         Investigate();
                         break;

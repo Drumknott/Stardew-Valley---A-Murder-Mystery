@@ -17,6 +17,8 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
+            SaveData.LastVisited = "Town";
+
             if (SaveData.TownFirstVisit == false)
             {
                 ExploreTown exploreTown = new(SaveData);
@@ -30,7 +32,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("is one giant billboard in Joja blue: For Modern Progress vote for Mayor Morris");
                 Console.WriteLine("These people don't waste any time.");
                 Console.WriteLine("Harvey is sitting on a bench nearby");
-                Harvey harvey = new(SaveData);
+                SaveData.npc1 = "Harvey";
             }                       
         }
 

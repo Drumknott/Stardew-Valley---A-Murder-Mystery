@@ -16,7 +16,22 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
+            SaveData.LastVisited = "Cindersap";
             Console.WriteLine("You are in the old Community Centre");
+
+            switch (SaveData.DayCount)
+            {
+                case < 5:
+                case 6:
+                    Console.WriteLine("The place looks like it's falling apart. No wonder Jojamart wants to use it as a warehouse.\nThere's nobody here.");
+                    break;
+                case 5:
+                    Console.WriteLine("Penny and Maru are both here doing some cleaning.");
+                    SaveData.npc1 = "Penny";
+                    SaveData.npc2 = "Maru";
+                    break;
+                default: break;
+            }
         }
 
         public override void Forage()

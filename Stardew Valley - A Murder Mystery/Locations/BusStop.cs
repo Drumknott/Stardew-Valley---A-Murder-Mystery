@@ -34,34 +34,23 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("[BusStop] added to location list");
                 Console.WriteLine("[Farm] added to Location list");
                 Console.WriteLine("Pelican [Town] added to location list");
-                }
-
-            else if (SaveData.DayCount <4 || SaveData.DayCount == 5)
-            {
-                Pam pam = new(SaveData);
-
-                Console.WriteLine("You are at the bus stop.");
-                Console.WriteLine("");
-                Console.WriteLine("Pam is here, waiting by the bus. Is she always here?");
-                Console.WriteLine("");
-                Console.WriteLine("What would you like to do?");
-                Console.WriteLine("");
-                Console.WriteLine("C > Chat with Pam");
-                Console.WriteLine("G > Go back");
-                var choice = Console.ReadLine();
-
-                if (choice == "C")
-                {
-                    pam.Chat();
-                }
             }
 
-            else if (SaveData.DayCount == 4 || SaveData.DayCount == 6)
+            else switch (SaveData.DayCount)
             {
-                Console.WriteLine("You are at the bus stop.");
-                Console.WriteLine("");
-                Console.WriteLine("For once there's no one here. Could Pam be having a day off for once?");
-            }
+                case <4:
+                case 5:
+                    Console.WriteLine("You are at the bus stop.\n ");
+                    Console.WriteLine("Pam is here, waiting by the bus. Is she always here?");
+                    SaveData.npc1 = "Pam";
+                    break;
+                case 4:
+                case 6:
+                    Console.WriteLine("You are at the bus stop.\n");                   
+                    Console.WriteLine("For once there's no one here. Could Pam be having a day off!?");
+                    break;
+                default: break;
+            }       
         }
 
         public override void Forage()

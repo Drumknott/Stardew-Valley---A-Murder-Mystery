@@ -27,8 +27,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case Locations.Marnies when saveData.MarniesHouse == true: location = new Marnies(saveData); break;
                 case Locations.Bus when saveData.BusStop == true: location = new BusStop(saveData); break;
                 case Locations.Guild when saveData.AdventurersGuild == true: location = new AdventurersGuild(saveData); break;
-
-               
+                                  
                 default:
                     throw new Exception("Oops, something went wrong. Try that again.");
             }
