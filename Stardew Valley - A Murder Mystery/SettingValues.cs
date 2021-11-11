@@ -34,7 +34,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData.EvelynCount = 0;
             SaveData.AlexCount = 0;
             SaveData.ClintCount = 0;
-            SaveData.GuntherCount = 0;
+            SaveData.MorrisCount = 0;
             SaveData.WillyCount = 0;
             SaveData.SamCount = 0;
             SaveData.JodiCount = 0;
@@ -62,7 +62,8 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData.ShaneFriendship = 0;
             SaveData.KrobusFriendship = 0;
 
-            SaveData.ShopGus = 0;            
+            SaveData.ShopGus = 0;
+            SaveData.MineCount = 0;
         }
     }
 }

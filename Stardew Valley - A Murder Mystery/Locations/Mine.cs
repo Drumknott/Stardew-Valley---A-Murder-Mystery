@@ -15,22 +15,27 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData = saveData;
         }
         public override void Enter()
-        {
-            while (true)
+        {          
+            SaveData.LastVisited = "Mine";
+            Console.WriteLine("You are at the Mine\n");
+
+            if (SaveData.MineCount == 0)
             {
-                SaveData.LastVisited = "Mine";
+                Console.WriteLine("It's dark, but through the gloom you can just make out the shape of a ladder descending into the earth.\n");
+                SaveData.MineCount++;
+            }
 
-                Console.WriteLine("You are at the Mine");
+            Console.WriteLine("E > Explore the Mine");
+            Console.WriteLine("L > Leave");
 
-                if (SaveData.MineCount == 0)
-                {
-                    Console.WriteLine("");
-                    SaveData.MineCount++;
-                }
-                else
-                {
-
-                }
+            switch (Console.ReadLine())
+            {
+                case "E":
+                    MineMinigame minigame = new(SaveData);
+                    minigame.ExploreTheMine();
+                    break;
+                case "L": return;
+                default: return;
             }
         }
 

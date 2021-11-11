@@ -18,44 +18,33 @@ namespace Stardew_Valley___A_Murder_Mystery
         public override void Enter()
         {
             SaveData.LastVisited = "Cindersap";
+            Console.WriteLine("You are in Cindersap Forest.\n");
 
-            Console.WriteLine("You are in Cindersap Forest.");
-
-            if (SaveData.DayCount == 0)
+            switch (SaveData.DayCount)
             {
-                Console.WriteLine("Haley is taking photos down by the river");
-                Hayley haley = new (SaveData);
-            }
-
-            else if (SaveData.DayCount == 2 || SaveData.DayCount == 3)
-            {
-                Console.WriteLine("Leah is outside her house, drawing in a sketchbook.");
-                Leah leah = new(SaveData);
-            }
-
-            else if (SaveData.DayCount == 4)
-            {
-                Console.WriteLine("There's a travelling lady waving at you from a cute little caravan. It's pulled by a... pig?");
-                //travelling lady
-            }
-
-            else if (SaveData.DayCount == 5)
-            {
-                Console.WriteLine("Willy and the Wizard are up to THINGS"); // totally sus dark ritual to yoba
-                Willy willy = new (SaveData);
-                Wizard wizard = new (SaveData);
-            }
-
-            else if (SaveData.DayCount == 6)
-            {
-                Console.WriteLine("There's a travelling lady waving at you from a cute little caravan. It's pulled by a... pig?");
-                //travelling lady
-            }
-
-            else
-            {
-                Console.WriteLine("The forest is lovely and peaceful. You don't see anyone here.");
-            }
+                case 0:
+                    Console.WriteLine("Haley is taking photos down by the river");
+                    SaveData.npc1 = "Haley";
+                    break;
+                case 1:
+                    Console.WriteLine("The forest is lovely and peaceful. You don't see anyone here.");
+                    break;
+                case 2:
+                case 3:
+                    Console.WriteLine("Leah is outside her house, drawing in a sketchbook.");
+                    SaveData.npc1 = "Leah";
+                    break;
+                case 4:
+                case 6:
+                    Console.WriteLine("There's a travelling lady waving at you from a cute little caravan. It's pulled by a... pig?");
+                    break;
+                case 5:
+                    Console.WriteLine("Willy and the Wizard are up to THINGS"); // totally sus dark ritual to yoba
+                    SaveData.npc1 = "Willy";
+                    SaveData.npc2 = "Wizard";
+                    break;
+                default: break;
+            }            
         }
 
         public override void Forage()

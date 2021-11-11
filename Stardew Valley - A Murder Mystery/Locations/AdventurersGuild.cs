@@ -19,18 +19,17 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             SaveData.LastVisited = "Guild";
 
-            if (SaveData.DayCount <6)
+            switch (SaveData.DayCount)
             {
-                Console.WriteLine("You are in the Adventurer's Guild. Marlon is behind the counter.");
-                Marlon marlon = new Marlon(SaveData);
-
-
-            }
-
-            else if (SaveData.DayCount == 6)
-            {
-                Console.WriteLine("You are in the Adventurer's Guild. There's no one here.");
-            }
+                case <6:
+                    Console.WriteLine("You are in the Adventurer's Guild. Marlon is behind the counter.");
+                    SaveData.npc1 = "Marlon";
+                    break;
+                case 6:
+                    Console.WriteLine("You are in the Adventurer's Guild. There's no one here.");
+                    break;
+                default: break;
+            }           
         }
 
         public override void Forage()

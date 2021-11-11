@@ -19,8 +19,11 @@ namespace Stardew_Valley___A_Murder_Mystery
             PlayerHelp Tips = new(SaveData);
             Tips.Help();
             Console.WriteLine("");
-            Console.WriteLine("DAY 1");
-            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("*********");
+            Console.WriteLine("* DAY 1 *");
+            Console.WriteLine("*********\n");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You're the only passenger on this bus. This place clearly doesn't get many visitors.");
             Console.WriteLine("As the bus speeds along you figure you'd better have a read of the case file. What was it your Chief said?");
             Console.WriteLine("Suspected murder, but this town doesn't have any police so you need to go and investigate it? Weird.");

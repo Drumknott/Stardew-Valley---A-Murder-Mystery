@@ -71,7 +71,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 while (true)
                 {
                     Random dialogue = new();
-                    int random = dialogue.Next(0, 10);
+                    int random = dialogue.Next(0, 11);
 
                     switch (random) //random dialogue
                     {
@@ -100,14 +100,14 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                     switch (dialogue1)
                     {
-                        case "chat":
+                        case "C":
                             Console.WriteLine("");
                             break;
-                        case "gift":
+                        case "G":
                             Console.WriteLine("");
                             Gift();
                             break;
-                        case "investigate":
+                        case "I":
                             Console.WriteLine("");
                             Investigate();
                             break;
@@ -133,7 +133,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 return;
             }
 
-            else if (gift == "Beer" && Enums.Items.Amethyst > 0)
+            else if (gift == "Beer" && Enums.Items.Beer > 0)
             {
                 Console.WriteLine("Pam > Hey, hey! Now this is really something! Thanks a million, kid."); // NPC loves
                 Console.WriteLine(gift + " removed from Inventory.");
@@ -143,7 +143,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 SaveData.MyInventory[Enums.Items.Beer] = beerCount;
             }
 
-            else if (gift == "hate" && Enums.Items.Horseradish > 0)
+            else if (gift == "Octopus" && Enums.Items.Octopus > 0)
             {
                 Console.WriteLine("Pam > Now this is just absolutely despicable.(Is this some kind of mean joke?)"); //NPC hates
                 Console.WriteLine(gift + " removed from Inventory.");

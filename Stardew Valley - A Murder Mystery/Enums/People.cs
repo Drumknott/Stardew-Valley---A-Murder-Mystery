@@ -27,7 +27,7 @@ namespace Stardew_Valley___A_Murder_Mystery.Enums
         George,
         Evelyn,
         Alex,
-        Gunther,
+        Morris,
         Willy,
         Sam,
         Jodi,

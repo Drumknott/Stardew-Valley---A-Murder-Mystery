@@ -18,46 +18,37 @@ namespace Stardew_Valley___A_Murder_Mystery
         public override void Enter()
         {
             SaveData.LastVisited = "Beach";
+            Console.WriteLine("You are at the beach.\n");
 
             if (SaveData.Beach == false)
             {
-                SaveData.Beach = true;
-                SaveData.ElliottsCabin = true;
-                SaveData.WillysShack = true;
-                Console.WriteLine("[Beach] added to location list");
-                Console.WriteLine("[Elliots] Cabin added to location list");
-                Console.WriteLine("[Willys] Shack added to location list");
-                Console.WriteLine("");
+                SaveData.Beach = true;                
+                Console.WriteLine("[Beach] added to location list\n");                
             }
 
-            else if (SaveData.DayCount == 0 || SaveData.DayCount == 3)
+            else switch (SaveData.DayCount)
             {
-                Console.WriteLine("You are at the Beach");
-            }
-
-            else if (SaveData.DayCount == 1 || SaveData.DayCount == 2)
-            {
-                Console.WriteLine(" You are at the beach.");
-                Console.WriteLine("");
-                Console.WriteLine("Elliot is standing outside his house, admiring the waves rolling in.");
-                Console.WriteLine("Further down you can see Willy fishing off the quay.");
-
-                SaveData.npc1 = "Willy";
-                SaveData.npc2 = "Elliott";
-            }
-
-            else if (SaveData.DayCount == 4 || SaveData.DayCount == 6)
-            {
-                Console.WriteLine("You are at the beach. You can't see anybody else here.");
-            }
-
-            else if (SaveData.DayCount == 5)
-            {
-                Console.WriteLine("You are at the beach.");
-                Console.WriteLine("");
-                Console.WriteLine("Elliot is standing on the quay, staring out to sea as if lost in thought.");
-
-                SaveData.npc1 = "Elliott";
+                case 0:
+                case 3:
+                    Console.WriteLine("You can see Willy fishing from the pier.");
+                    SaveData.npc1 = "Willy";
+                    break;
+                case 1:
+                case 2:
+                    Console.WriteLine("Elliot is standing outside his house, admiring the waves rolling in.");
+                    Console.WriteLine("Further down you can see Willy fishing off the quay.");
+                    SaveData.npc1 = "Willy";
+                    SaveData.npc2 = "Elliott";
+                    break;
+                case 4:
+                case 6:
+                    Console.WriteLine("You can't see anybody else here today.");
+                    break;
+                case 5:
+                    Console.WriteLine("Elliott is standing on the quay, staring out to sea as if lost in thought.");
+                    SaveData.npc1 = "Elliott";
+                    break;
+                default: break;
             }
         }
 

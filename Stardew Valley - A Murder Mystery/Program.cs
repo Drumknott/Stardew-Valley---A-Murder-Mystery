@@ -10,6 +10,8 @@ namespace Stardew_Valley___A_Murder_Mystery
     {
         static void Main(string[] args)
         {
+            Graphic graphic = new();
+            graphic.DisplayGraphic();
             Console.WriteLine("N > NEW GAME");
             Console.WriteLine("L > LOAD GAME");
             var Start = Console.ReadLine().Substring(0, 1).ToUpper();
@@ -17,7 +19,6 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData saveData;
             if (Start == "L")
             {
-                //load game
                 saveData = SaveManager.Load();
             }
             else 
@@ -65,7 +66,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             }
                         
             while (true)
-            {                
+            {
                 DoStuffMethod();                      
             }
 
@@ -81,8 +82,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 string commandArgument;
                 while (true)
                 {
-                    Console.WriteLine("");
-                    Console.WriteLine("What would you like to do?");
+                    graphic.MethodGraphic();
                     var response = Console.ReadLine();
 
                     var commandParser = new CommandParser();
@@ -107,16 +107,13 @@ namespace Stardew_Valley___A_Murder_Mystery
                     switch (description)
                     {
                         case 0:
-                            Console.WriteLine("");
-                            Console.WriteLine("The weather is lovely as you head towards your destination.");
+                            Console.WriteLine("\nThe weather is lovely as you head towards your destination.");
                             break;
-                        case 1:
-                            Console.WriteLine("");
-                            Console.WriteLine("The sun beams down on you as you walk, and birds sing in the trees.");
+                        case 1:                           
+                            Console.WriteLine("\nThe sun beams down on you as you walk, and birds sing in the trees.");
                             break;
-                        case 2:
-                            Console.WriteLine("");
-                            Console.WriteLine("Clouds gather overhead, and you're afraid it might rain soon.");
+                        case 2:                          
+                            Console.WriteLine("\nClouds gather overhead, and you're afraid it might rain soon.");
                             break;
                     }
                     ChosenLocation.Enter();

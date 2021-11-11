@@ -26,7 +26,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case People.Evelyn: npc = new Evelyn(saveData); break;
                 case People.Farmer: npc = new Farmer(saveData); break;
                 case People.George: npc = new George(saveData); break;
-                case People.Gunther: npc = new Gunther(saveData); break;
+                case People.Morris: npc = new Morris(saveData); break;
                 case People.Gus: npc = new Gus(saveData); break;
                 case People.HatMaus: npc = new HatMaus(saveData); break;
                 case People.Hayley: npc = new Hayley(saveData); break;

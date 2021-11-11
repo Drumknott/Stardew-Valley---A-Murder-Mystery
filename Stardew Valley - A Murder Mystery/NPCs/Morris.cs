@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery.NPCs
 {
-    class TemplateNPC : NPC
+    class Morris : NPC
     {
         private SaveData SaveData { get; set; }
 
-        public TemplateNPC (SaveData saveData)
+        public Morris(SaveData saveData)
         {
             SaveData = saveData;
         }
 
         public override void Chat()
         {
-            while(true)
+            while (true)
             {
-                
-                SaveData.LastChat = "NPCname";
 
-                if (SaveData.ElliotCount == 0) //first meeting
+                SaveData.LastChat = "Morris";
+
+                if (SaveData.MorrisCount == 0) //first meeting
                 {
                     Console.WriteLine("");
-                    SaveData.ElliotCount++;
+                    SaveData.MorrisCount++;
                 }
 
                 else
@@ -48,7 +48,6 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         default: break;
                     }
                 }
-
 
                 ChooseNPC chat = new();
                 chat.ChatOptions();
@@ -80,44 +79,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give NPC?");
-            Console.WriteLine("");
 
-            Inventory inventory = new(SaveData);
-            inventory.InventoryList();
-
-            var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-            
-            else if (gift == "Fav" && Enums.Items.Amethyst > 0)
-            {
-                Console.WriteLine(""); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.AbigailFriendship += 2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Amethyst, out var amethystCount);
-                amethystCount--;
-                SaveData.MyInventory[Enums.Items.Amethyst] = amethystCount;
-            }
-
-            else if (gift == "hate" && Enums.Items.Horseradish > 0)
-            {
-                Console.WriteLine(""); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.AbigailFriendship--;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Horseradish, out var horseradishCount);
-                horseradishCount--;
-                SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Abigail > You brought me a present? Thanks.");                              
-                Console.WriteLine(gift + " removed from Inventory.");
-            }            
         }
 
         void Investigate()

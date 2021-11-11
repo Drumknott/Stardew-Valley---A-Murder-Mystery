@@ -35,6 +35,10 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool Unlocked { get; set; }
         public int ShopGus { get; set; }
         public bool FuckYouPierre { get; set; } //gift Pierre the candy you stole from his store
+        public bool Flashlight { get; set; }
+        public int levelCount {get; set;}
+        public bool Monster { get; set; }
+        public string MonsterType { get; set; }
 
 
         //Places Visited
@@ -102,6 +106,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int ElliotCount { get; set; }
         public int FarmerCount { get; set; }
         public int MarlonCount { get; set; }
+        public int MorrisCount { get; set; }
 
         //Friendship/Romance
         public int AbigailFriendship { get; set; }
