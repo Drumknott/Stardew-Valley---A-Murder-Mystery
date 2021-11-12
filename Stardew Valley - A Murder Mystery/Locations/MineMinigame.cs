@@ -43,7 +43,9 @@ namespace Stardew_Valley___A_Murder_Mystery
                             case 1:
                                 Console.WriteLine($"The {SaveData.MonsterType} latches onto your hand and wont let go! Before you know it everything's going dark...");
                                 //passed out method (increase the DayCount)
-                                break;
+                                DayManager time = new(SaveData);
+                                time.PassedOut();
+                                return;
                             case 2:
                                 Console.WriteLine($"You bring your flashlight down on the {SaveData.MonsterType}'s head, and it backs away.\nYou're safe for now.");
                                 SaveData.Monster = false;
@@ -51,6 +53,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                             default: break;
                         }
                     }
+                    //else if Demetrius == true, encounter
 
                     Console.WriteLine("What would you like to do?");
                     Console.WriteLine("F > Forage");
@@ -109,7 +112,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                     Console.WriteLine("\nYou hear something shuffling in the darkness beyond your torchlight\n.");                    
                     break;
                 case 1:
-                    Console.WriteLine("\nAs you reach the bottom of the ladder you see footprints. Someobe has been here recently.\n");
+                    Console.WriteLine("\nAs you reach the bottom of the ladder you see footprints. Someone has been here recently.\n");
                     break;
                 case 2:
                     Console.WriteLine("\nIt occurs to you, not for the first time, that this might be a bad idea.\n");

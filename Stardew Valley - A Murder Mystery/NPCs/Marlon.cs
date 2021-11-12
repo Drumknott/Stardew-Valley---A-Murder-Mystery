@@ -36,6 +36,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         case 0: Console.WriteLine("Marlon > Even with my bad leg, I never miss a town festival."); break;
                         case 1: Console.WriteLine("Marlon > Marnie looks lovely today..."); break;
                         case 2: Console.WriteLine("Marlon > Clint's blades get sharper every year. So do his prices..."); break;
+                        case 3: Console.WriteLine("Marlon > Be careful if you go exploring in the mines. It can be dangerous in there."); break;
                         default: break;
                     }
                 }
@@ -48,7 +49,16 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");                        
+                        if (SaveData.Flashlight == false)
+                        {
+                            Console.WriteLine("Marlon > Say, I was clearing out one of my old boxes of junk and I found this flashlight. Would you like it? It might come in handy.");
+                            SaveData.Flashlight = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Me > How are you doing, Marlon? Don't you ever get lonely up here?");
+                            Console.WriteLine("Marlon > Folks like me are used to being by themselves. Mind you, I would enjoy some of Miss Marnie's company.");
+                        }
                         break;
                     case "G":
                         Console.WriteLine("");
