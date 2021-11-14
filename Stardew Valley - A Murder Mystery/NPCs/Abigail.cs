@@ -121,9 +121,9 @@ namespace Stardew_Valley___A_Murder_Mystery
             else //neutral
             {
                 Console.WriteLine("Abigail > You brought me a present? Thanks.");
-                //var giftName = (Enums.Items)gift;
-                //SaveData.MyInventory.TryGetValue(giftName , out var giftCount);
-                //giftCount--;                    
+                //var giftName = SaveData.MyInventory[Enums.Items.gift];
+                //SaveData.MyInventory.TryGetValue(giftName, out var giftCount);
+                //giftCount--;
                 Console.WriteLine(gift + " removed from Inventory.");
             }           
         }

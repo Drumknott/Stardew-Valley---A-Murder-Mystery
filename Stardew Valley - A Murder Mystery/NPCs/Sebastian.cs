@@ -62,15 +62,21 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "chat":
-                        Console.WriteLine("");
+                        Console.WriteLine("Sebastian > Do you like True Crime?\nY> Yes\nN > No");
+                        switch (Console.ReadLine())
+                        {
+                            case "Y": Console.WriteLine("Sebastian > Did you know that [true crime fact here]"); break;
+                            case "N": Console.WriteLine("Sebastian > No? Oh, ok. Kind of weird that you're a cop then.");  break;
+                            default: break;
+                        }
                         SaveData.SebastianFriendship++;
                         break;
                     case "gift":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hey Sebastian. Would you like this?");
                         Gift();
                         break;
                     case "investigate":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hi Sebastian. Can I ask you some questions about Mayor Lewis?");
                         Investigate();
                         break;
                     case "L":

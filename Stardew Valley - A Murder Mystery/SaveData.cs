@@ -39,6 +39,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int levelCount {get; set;}
         public bool Monster { get; set; }
         public string MonsterType { get; set; }
+        public bool MineDemetrius { get; set; }
 
 
         //Places Visited
