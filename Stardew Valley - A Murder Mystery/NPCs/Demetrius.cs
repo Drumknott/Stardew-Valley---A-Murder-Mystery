@@ -54,6 +54,17 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
+                        if (SaveData.Flashlight == false)
+                        {
+                            Console.WriteLine("Demetrius > I like to go foraging for mushrooms in the mines sometimes. HEre, I've got a spare flashlight if you ever fancy giving it a go.");
+                            Console.WriteLine("Gained Flashlight");
+                            SaveData.Flashlight = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Me > How are things, Demterius?");
+                            Console.WriteLine("Demetrius > Good thank you, Detective. I always have plenty of research to keep me busy.");
+                        }
                         Console.WriteLine("");
                         break;
                     case "G":
@@ -61,8 +72,9 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hi Demetrius. Could I ask you a few questions as part of my investigation?");
                         Investigate();
+                        Console.WriteLine("Thanks, Demetrius. I think that answers all my questions for now.");
                         break;
                     case "L": SaveData.DemetriusCount++;
                         return;
@@ -111,9 +123,65 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             }
         }
 
+        bool caseW;
+        bool caseM;
+        bool caseS;
+        bool caseD;      
+
         void Investigate() //if Pierre's the murderer, Demetrius is an accomplice
         {
+            Console.WriteLine("Demetrius > Of course you can Detective. What can I help you with?");
 
+            while (caseW == false && caseM == false && caseS == false && caseD == false)
+            {
+                Console.WriteLine("W > Where were you on Friday night?");
+                Console.WriteLine("M > Was Mayor Lewis well liked around town? Do you know if anyone had a problem with him?");
+                if (SaveData.MineDemetrius == true) Console.WriteLine("S > When I spoke to you in the mines you said you go there a lot. Would you say you know them better than most people in town?");
+                if (SaveData.MyInventory[Enums.Items.LewisStatue] == 1) Console.WriteLine("D > Have you ever seen this statue before, Demetrius?");
+                if (SaveData.SuspectDemetrius == true) Console.WriteLine("U > Linus says he saw you go into the mines on Friday night, about midnight. Can you tell me about that?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine())
+                {
+                    case "W":
+                        Console.WriteLine("Demetrius > I had a late night in my lab. I've been looking at the mineral content of various mushroom growths, and-");
+                        Console.WriteLine("Me > Ok, ok. No need to go into detail. Wow, you really love mushrooms, huh?");
+                        Console.WriteLine("Demetrius > They're just fascinating, aren't they!?");
+                        caseW = true;
+                        break;
+                    case "M":
+                        Console.WriteLine("");
+                        caseM = true;
+                        break;
+                    case "S":
+                        Console.WriteLine("");
+                        caseS = true;
+                        break;
+                    case "D":
+                        if (SaveData.TheMurderer == "Pierre")
+                        {
+                            Console.WriteLine("Demetrius looks nervous.\nDemetrius > No, er... no. Never seen it before. What are those markings, it that rust...?");
+                            Console.WriteLine("Me > You're the scientist, Demetrius. Does that look like rust?");
+                            Console.WriteLine("Demetrius > ...No.\nMe > What does it look like?\nDemetrius > Blood. You think this is the murder weapon!?");
+                            Console.WriteLine("Me > Did I say that? I just asked if you've ever seen it before...");
+                            Console.WriteLine("Demetrius > *sigh*\nMe > Out with it. When have you seen this statue?");
+                            Console.WriteLine("Demetrius > I... I hid it. I threw it into the mine on Friday night. I didn't kill Lewis though, I swear!");
+                            Console.WriteLine("Me > Well you'd better have a good explanation. Who did? How did you end up with the statue? And why did you hide it?");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Demetrius > Let's have a look. Hmm, no. This must have been expensive though, the gold content is very high. What does it weigh? I can calculate the exact-");
+                            Console.WriteLine("Me > No, thank you Demetrius. I think you've answered my question there.");
+                        }
+                        caseD = true;
+                        break;
+                    case "U":
+                        break;
+                    case "L":                       
+                        break;
+                    default: break;
+                }                
+            }
         }
     }
 }

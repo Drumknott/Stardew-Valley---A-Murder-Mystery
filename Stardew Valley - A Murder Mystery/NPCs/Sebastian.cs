@@ -65,7 +65,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         Console.WriteLine("Sebastian > Do you like True Crime?\nY> Yes\nN > No");
                         switch (Console.ReadLine())
                         {
-                            case "Y": Console.WriteLine("Sebastian > Did you know that [true crime fact here]"); break;
+                            case "Y": Console.WriteLine("Sebastian > Did you know that you can dissolve the body of a frog in Mountain Dew? I wonder if that would work for a person..."); break;
                             case "N": Console.WriteLine("Sebastian > No? Oh, ok. Kind of weird that you're a cop then.");  break;
                             default: break;
                         }
@@ -131,7 +131,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
-
+            //Seb and Abby are starting a true crime podcast, with Sam on production and audio effects.
         }
     }
 }

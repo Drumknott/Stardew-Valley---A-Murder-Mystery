@@ -141,6 +141,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int AbigailInvestigated { get; set; }
 
         public bool Suspect { get; set; }
+        public bool SuspectDemetrius { get; set; }
         public string npc1 { get; set; }
         public string npc2 { get; set; }
         public string npc3 {get; set;}

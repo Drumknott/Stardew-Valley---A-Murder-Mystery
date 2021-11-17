@@ -28,6 +28,10 @@ namespace Stardew_Valley___A_Murder_Mystery
             {
                 Console.WriteLine($"\nLinus saw {SaveData.TheMurderer} go into the mine in the middle of the night. What were they doing there?");
             }
+            if (SaveData.SuspectDemetrius == true)
+            {
+                Console.WriteLine($"\nLinus saw Demetrius go into the mine in the middle of the night. What were they doing there?");
+            }
             if (SaveData.MyInventory[Enums.Items.LewisStatue] == 1)
             {
                 Console.WriteLine("You found a bloodstained statue of Lewis that someone had tried to hide in the mine. Could it be the murder weapon?");

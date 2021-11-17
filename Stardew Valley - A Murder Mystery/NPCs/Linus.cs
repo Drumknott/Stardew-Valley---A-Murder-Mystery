@@ -133,13 +133,21 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (Console.ReadLine())
                 {
                     case "W":
-                        Console.WriteLine("Linus > I was sitting by my little campfire of course. I think the other townsfolk get uncomfortable if I spend too much time in the town.");
-                        Console.WriteLine($"Linus > I did see something funny though. I saw {SaveData.TheMurderer} walking towards the mine at about midnight.");
+                        if (SaveData.TheMurderer == "Pierre")
+                        {
+                            Console.WriteLine("Linus > I was sitting by my little campfire of course. I think the other townsfolk get uncomfortable if I spend too much time in the town.");
+                            Console.WriteLine($"Linus > I did see something funny though. I saw Demetrius walking towards the mine at about midnight.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Linus > I was sitting by my little campfire of course. I think the other townsfolk get uncomfortable if I spend too much time in the town.");
+                            Console.WriteLine($"Linus > I did see something funny though. I saw {SaveData.TheMurderer} walking towards the mine at about midnight.");
+                        }
                         Witness();
                         break;
                     case "M": Console.WriteLine("Linus > I think Lewis found me to be an inconvenience. A blemish on his perfect little town.");
                         Console.WriteLine("Me > And how did you feel about that?");
-                        Console.WriteLine("Linus > I'm used to it now. I prefer the simply life, but not everyone understands it.");
+                        Console.WriteLine("Linus > I'm used to it now. I prefer the simple life, but not everyone understands it.");
                         break;
                     case "S": Console.WriteLine("Linus > No, I can't say I have. Funny - it looks a bit like Lewis."); break;
                     case "L": return;
@@ -163,7 +171,14 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 }
 
                 Console.WriteLine("");
-                Console.WriteLine($"Y > You're sure it was {SaveData.TheMurderer}?");
+                if (SaveData.TheMurderer == "Pierre")
+                {
+                    Console.WriteLine("Y > You're sure it was Demetrius?");
+                }
+                else
+                {
+                    Console.WriteLine($"Y > You're sure it was {SaveData.TheMurderer}?");
+                }
                 Console.WriteLine("T > Do you know what they did there?");
                 Console.WriteLine("D > Did you see them come back?");
                 Console.WriteLine("L > Leave");
@@ -172,8 +187,16 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (Console.ReadLine())
                 {
                     case "Y": Console.WriteLine("Linus > Oh, very sure. No mistake.");
-                        Console.WriteLine($"[Potential Suspect: {SaveData.TheMurderer} added to Casefile.");
-                        SaveData.Suspect = true;
+                        if (SaveData.TheMurderer == "Pierre")
+                        {
+                            Console.WriteLine($"Potential Suspect: Demetrius added to Casefile.");
+                            SaveData.SuspectDemetrius = true;
+                        }
+                        else
+                        { 
+                            Console.WriteLine($"Potential Suspect: {SaveData.TheMurderer} added to Casefile.");
+                            SaveData.Suspect = true;
+                        }
                         caseY = true;
                         break;
                     case "T": Console.WriteLine("Linus > No idea. I didn't follow them. That mine is dangerous, especially at night.");

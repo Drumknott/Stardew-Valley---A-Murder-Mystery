@@ -58,11 +58,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public void ChatOptions()
         {
-            Console.WriteLine("");
-            Console.WriteLine("C > Chat");
-            Console.WriteLine("G > Gift");
-            Console.WriteLine("I > Investigate");
-            Console.WriteLine("L > Leave");
+            Console.WriteLine("\nC > Chat\nG > Gift\nI > Investigate\nL > Leave\n");           
         }
             
     }
