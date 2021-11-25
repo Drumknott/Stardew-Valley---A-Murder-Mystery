@@ -14,68 +14,60 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             SaveData = saveData;
         }
+
+        bool passedOut = false;
         
         public void IncreaseDayCount()
         {
-
-            Console.WriteLine("");
-            Console.WriteLine("It's been a busy day. You should go and get some rest.");
-            Console.WriteLine("");
-            Console.WriteLine("Enter > Continue");
-            Console.WriteLine("");
+            if (passedOut == true)
+            {
+                Console.WriteLine("You wake to find Linus crouching over you.\nLinus > Phew! Close one Detective. You need to be more careful down there.\nLinus > You should go and get some rest.\n");
+                passedOut = false;
+            }
+            else
+            {
+                Console.WriteLine("It's been a busy day. You should go and get some rest.\n");
+            }
+           
+            Console.WriteLine("Enter > Continue\n");            
             Console.ReadKey();
             SaveData.DayCount++;
-            if (SaveData.DayCount == 1)
+            
+            switch (SaveData.DayCount)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("*********");
-                Console.WriteLine("* DAY 2 *");
-                Console.WriteLine("*********");
-                Console.ForegroundColor = ConsoleColor.White;
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("*********\n* DAY 2 *\n*********\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case 2:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("*********\n* DAY 3 *\n*********\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case 3:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("*********\n* DAY 4 *\n*********\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case 4:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("*********\n* DAY 5 *\n*********\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case 5:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("*********\n* DAY 6 *\n*********\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case 6:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("***********************\n* DAY 7: Election Day *\n***********************\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
             }
-            if (SaveData.DayCount == 2)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("*********");
-                Console.WriteLine("* DAY 3 *");
-                Console.WriteLine("*********");
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            if (SaveData.DayCount == 3)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("*********");
-                Console.WriteLine("* DAY 4 *");
-                Console.WriteLine("*********");
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            if (SaveData.DayCount == 4)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("*********");
-                Console.WriteLine("* DAY 5 *");
-                Console.WriteLine("*********");
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            if (SaveData.DayCount == 5)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("*********");
-                Console.WriteLine("* DAY 6 *");
-                Console.WriteLine("*********");
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            if (SaveData.DayCount == 6)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("***********************");
-                Console.WriteLine("* DAY 7: Election Day *");
-                Console.WriteLine("***********************");
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            Console.WriteLine("");
-            Console.WriteLine("Enter > Continue");
-            Console.WriteLine("");
+            
+            Console.WriteLine("Enter > Continue\n");
             Console.ReadKey();
         }
         public void CheckDayCount()
@@ -85,6 +77,13 @@ namespace Stardew_Valley___A_Murder_Mystery
                 IncreaseDayCount();
                 SaveData.autopsyChecked = true;
             }
+        }
+
+        public void PassedOut()
+        {
+            passedOut = true;
+            IncreaseDayCount();
+            return;
         }
     }
 }

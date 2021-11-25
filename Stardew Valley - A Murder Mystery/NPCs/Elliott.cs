@@ -20,11 +20,11 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             {
                 SaveData.LastChat = "Elliott";
 
-                if (SaveData.ElliotCount == 0) //first meeting
+                if (SaveData.ElliottCount == 0) //first meeting
                 {
                     Console.WriteLine("Elliott > Ah, the Detective we've all been expecting... and whose arrival has sparked many a conversation!");
                     Console.WriteLine("Elloitt > I'm Elliott... I live in the little cabin by the beach. It's a pleasure to meet you.");
-                    SaveData.ElliotCount++;
+                    SaveData.ElliottCount++;
                 }
 
                 else
@@ -58,7 +58,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 {
                     case "C":
                         Console.WriteLine("");
-                        SaveData.ElliotFriendship++;
+                        SaveData.ElliottFriendship++;
                         break;
                     case "G":
                         Console.WriteLine("");
@@ -69,7 +69,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         Investigate();
                         break;
                     case "L":
-                        SaveData.ElliotCount++;
+                        SaveData.ElliottCount++;
                         return;
                     default: break;
                 }
@@ -78,7 +78,21 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
+            string NPCName = "Elliott";
+            var FavGift = Enums.Items.CrabCakes;
+            var DislikedGift = Enums.Items.Amaranth;
+            string LoveGift = $"{SaveData.PlayerName}, this is a beautiful gift! Thank you!";
+            string HateGift = "This item gives me a terrible feeling. I'll have to dispose of it.";
+            string NeutralGift = "Oh, a present! Thank you!";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.ElliottFriendship += friendshipChange;
         }
 
         void Investigate()

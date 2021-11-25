@@ -64,6 +64,8 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             SaveData.ShopGus = 0;
             SaveData.MineCount = 0;
+            
+
         }
     }
 }

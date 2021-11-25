@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stardew_Valley___A_Murder_Mystery.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +11,13 @@ namespace Stardew_Valley___A_Murder_Mystery
     {
         private SaveData SaveData { get; set; }
 
+        private List<Items> ForagableMineItems = new[] { Items.Amethyst, Items.BatteryPack, Items.Clay, Items.Coal, Items.Diamond, Items.Emerald, Items.FrozenTear, Items.JojaCola, Items.PrismaticShard, Items.Quartz, Items.VoidEssence}.ToList();
         public Mine (SaveData saveData)
         {
             SaveData = saveData;
         }
+
+
         public override void Enter()
         {          
             SaveData.LastVisited = "Mine";
@@ -41,8 +45,9 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Forage()
         {
-            Forage_Randomiser randomiser = new(SaveData);
-            var randomItem = randomiser.ForageRandomiser();
+            var random = new Random();
+            var Index = random.Next(0, ForagableMineItems.Count - 1);
+            var randomItem = ForagableMineItems[Index];
 
             RandomForageDialogue(randomItem);
 

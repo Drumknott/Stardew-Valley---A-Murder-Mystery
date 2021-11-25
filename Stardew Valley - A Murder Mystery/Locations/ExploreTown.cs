@@ -32,14 +32,14 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             while (SaveData.TownFirstVisit == false)
             {
-                if (SaveData.ExploredNorth == true && SaveData.ExploredSouth == true && SaveData.ExploredEast == true && SaveData.ExploredWest == true)
+                if (SaveData.ExploredNorth == true && SaveData.ExploredSouth == true && SaveData.ExploredEast == true && SaveData.ExploredWest == true && SaveData.Mine == true)
                 {
                     SaveData.TownFirstVisit = true;
                     break;
                 }
                 Console.WriteLine("Where would you like to explore?");
 
-                if (SaveData.ExploredNorth == false) Console.WriteLine("N > North");
+                if (SaveData.ExploredNorth == false || SaveData.Mine == false) Console.WriteLine("N > North");
                 if (SaveData.ExploredSouth == false) Console.WriteLine("S > South");
                 if (SaveData.ExploredEast == false) Console.WriteLine("E > East");
                 if (SaveData.ExploredWest == false) Console.WriteLine("W > South West");

@@ -30,13 +30,13 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 else
                 {
                     Random dialogue = new();
-                    int random = dialogue.Next(0, 10);
+                    int random = dialogue.Next(0, 9);
 
                     switch (random) //random dialogue
                     {
                         case 0: Console.WriteLine("Jodi > Maintaining a household is difficult work... but somebody has to do it. Yes?"); break;
                         case 1: Console.WriteLine("Jodi > Exercise is important for staying healthy. I always make sure to set aside some time for it.");
-                            Console.WriteLine("Jodi > As a parent, I don't have much time to devote to myself. So I try and make every minute count."); break;
+                                Console.WriteLine("Jodi > As a parent, I don't have much time to devote to myself. So I try and make every minute count."); break;
                         case 2: Console.WriteLine("Jodi > I wish I could spend more time outside, but there's so much work to do."); break;
                         case 3: Console.WriteLine("Jodi > I started wearing rubber gloves to keep my hands soft. The older you get, the more work you have to do to stay healthy. Ok, bye!"); break;
                         case 4: Console.WriteLine("Jodi > The food at JojaMart might not be the healthiest for my family, but with such low prices you'd be crazy to shop anywhere else!"); break;
@@ -76,42 +76,20 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Jodi?");
-            Console.WriteLine("");
+            string NPCName = "Jodi";
+            var FavGift = Enums.Items.ChocolateCake;
+            var DislikedGift = Enums.Items.Daffodil;
+            string LoveGift = "Oh, you're such a sweetheart! I really love this!";
+            string HateGift = "*Blech*... I hate this...";
+            string NeutralGift = "That's so nice of you! Thanks.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "ChocolateCake" && Enums.Items.ChocolateCake > 0)
-            {
-                Console.WriteLine("Jodi > Oh, you're such a sweetheart! I really love this!"); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.ChocolateCake, out var chocolateCakeCount);
-                chocolateCakeCount--;
-                SaveData.MyInventory[Enums.Items.ChocolateCake] = chocolateCakeCount;
-            }
-
-            else if (gift == "Daffodil" && Enums.Items.Daffodil > 0)
-            {
-                Console.WriteLine("Jodi > *Blech*... I hate this..."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.Daffodil, out var daffodilCount);
-                daffodilCount--;
-                SaveData.MyInventory[Enums.Items.Daffodil] = daffodilCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Jodi > That's so nice of you! Thanks.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
         }
 
         void Investigate()

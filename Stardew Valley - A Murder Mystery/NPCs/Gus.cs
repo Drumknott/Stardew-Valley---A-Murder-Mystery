@@ -76,44 +76,20 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Gus?");
-            Console.WriteLine("");
+            string NPCName = "Gus";
+            var FavGift = Enums.Items.Diamond;
+            var DislikedGift = Enums.Items.Horseradish;
+            string LoveGift = "You're giving this... to me? I'm speechless.";
+            string HateGift = "No, no, no...";
+            string NeutralGift = "Oh, that's sweet. Thank you.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "Fav" && Enums.Items.Amethyst > 0)
-            {
-                Console.WriteLine(""); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.AbigailFriendship += 2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Amethyst, out var amethystCount);
-                amethystCount--;
-                SaveData.MyInventory[Enums.Items.Amethyst] = amethystCount;
-            }
-
-            else if (gift == "hate" && Enums.Items.Horseradish > 0)
-            {
-                Console.WriteLine(""); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.AbigailFriendship--;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Horseradish, out var horseradishCount);
-                horseradishCount--;
-                SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Abigail > You brought me a present? Thanks.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);           
         }
 
         void Investigate()
@@ -129,8 +105,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 return;
             }
 
-            Console.WriteLine("Gus > Oh don't be silly, Detective. You're our guest! Whatever you need is on the house.");
-            Console.WriteLine("");
+            Console.WriteLine("Gus > Oh don't be silly, Detective. You're our guest! Whatever you need is on the house.\n");
             Console.WriteLine("B > Beer");
             Console.WriteLine("C > Coffee");
             Console.WriteLine("F > Fish Taco");

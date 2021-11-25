@@ -14,6 +14,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         {
             SaveData = saveData;
         }
+
         public override void Chat()
         {
             while (true)
@@ -31,7 +32,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 {
 
                     Random dialogue = new();
-                    int random = dialogue.Next(0, 10);
+                    int random = dialogue.Next(0, 13);
 
                     switch (random) //random dialogue
                     {
@@ -50,6 +51,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         case 12:
                             Console.WriteLine("Sebastian > I usually stay inside, but I do go to the beach now and then. Pretty much only when it's raining, though. For some reason, staring off into the bleak horizon makes me feel... I dunno.");
                             Console.WriteLine("\tLike it's worthwhile to keep pushing on, I guess.”"); break;
+                        case 13: Console.WriteLine("Abby and I are working on a true crime podcast. Sam's doing the audio effects and production. We're going to call it 'True Crime Hang Time with Seb and Abby'."); break;
                         default: break;
                     }
                 }
@@ -62,15 +64,18 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "chat":
-                        Console.WriteLine("");
+                        Console.WriteLine("Sebastian > Do you like True Crime?\nY> Yes\nN > No");
+                        var choice = Console.ReadLine();                        
+                        if (choice == "Y") Console.WriteLine("Sebastian > Did you know that you can dissolve the body of a frog in Mountain Dew? I wonder if that would work for a person...");
+                        else Console.WriteLine("Sebastian > No? Oh, ok. Kind of weird that you're a cop then.");                                                    
                         SaveData.SebastianFriendship++;
                         break;
                     case "gift":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hey Sebastian. Would you like this?");
                         Gift();
                         break;
                     case "investigate":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hi Sebastian. Can I ask you some questions about Mayor Lewis?");
                         Investigate();
                         break;
                     case "L":
@@ -83,49 +88,50 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Sebastian?");
-            Console.WriteLine("");
+            string NPCName = "Sebastian";
+            var FavGift = Enums.Items.FrozenTear;
+            var DislikedGift = Enums.Items.Coal;
+            string LoveGift = "I really love this. How did you know?";
+            string HateGift = "...I hate this.";
+            string NeutralGift = "...thanks.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "FrozenTear" && Enums.Items.FrozenTear > 0)
-            {
-                Console.WriteLine("Sebastian > I really love this. How did you know?"); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.SebastianFriendship += 2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.FrozenTear, out var frozenTearCount);
-                frozenTearCount--;
-                SaveData.MyInventory[Enums.Items.FrozenTear] = frozenTearCount;
-            }
-
-            else if (gift == "Coal" && Enums.Items.Coal > 0)
-            {
-                Console.WriteLine("Sebastian > ...I hate this."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.SebastianFriendship--;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Coal, out var coalCount);
-                coalCount--;
-                SaveData.MyInventory[Enums.Items.Coal] = coalCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Sebastian > ...thanks.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.SebastianFriendship += friendshipChange;
         }
 
         void Investigate()
         {
+            if (SaveData.podcast == false)
+            {
+                Podcast();
+            }
 
+            while (true)
+            {
+                Console.WriteLine("");
+            }
+        }
+
+        void Podcast()
+        {
+            //Seb and Abby are starting a true crime podcast, with Sam on production and audio effects.
+            Console.WriteLine("Sebastian > Absoloutely! Yes, this is great. Who are your suspects so far?");
+            Console.WriteLine("Me > Err, what? I'm supposed to be asking the questions here. ");
+            Console.WriteLine("Sebastian > Oh, of course. Sorry. It's just we're following the case really closely for our podcast, so any info you could drop us would be really cool...\n");
+
+            Console.WriteLine("P > Podcast?");
+            Console.WriteLine("W > Who's 'we'?\n");
+            Console.ReadLine();
+            Console.WriteLine("Sebastian > Yeah! It's called 'True Crime Hang Time with Seb and Abby', and Sam's our producer and does audio stuff. We talk about true crime cases. This one is such a scoop, right in our town!");
+            Console.WriteLine("Me > Look Sebastian, I'm glad you have a hobby you enjoy but a man is dead here. And I need to figure out who did it, ok?");
+            Console.WriteLine("Sebastian > Absoloutely, Detective. Fire away.");
+            SaveData.podcast = true;
         }
     }
 }

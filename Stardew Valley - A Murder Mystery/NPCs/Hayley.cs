@@ -72,44 +72,21 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give NPC?");
-            Console.WriteLine("");
+            string NPCName = "Haley";
+            var FavGift = Enums.Items.Coconut;
+            var DislikedGift = Enums.Items.PrismaticShard;
+            string LoveGift = "Oh my god, this is my favorite thing!";
+            string HateGift = "Gross!";
+            string NeutralGift = "Thank you. I love presents.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "Coconut" && Enums.Items.Coconut > 0)
-            {
-                Console.WriteLine("Haley > Oh my god, this is my favorite thing!"); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.HaleyFriendship += 2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Coconut, out var coconutCount);
-                coconutCount--;
-                SaveData.MyInventory[Enums.Items.Coconut] = coconutCount;
-            }
-
-            else if (gift == "PrismaticShard" && Enums.Items.PrismaticShard > 0)
-            {
-                Console.WriteLine("Haley > Gross!"); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.HaleyFriendship--;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.PrismaticShard, out var prismaticShardCount);
-                prismaticShardCount--;
-                SaveData.MyInventory[Enums.Items.PrismaticShard] = prismaticShardCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Haley > Thank you. I love presents.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.HaleyFriendship += friendshipChange;
         }
 
         void Investigate()

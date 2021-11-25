@@ -19,7 +19,6 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         {
             while (true)
             {
-
                 SaveData.LastChat = "Morris";
 
                 if (SaveData.MorrisCount == 0) //first meeting
@@ -68,18 +67,32 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         Investigate();
                         break;
                     case "L":
-                        SaveData.KentCount++;
+                        SaveData.MorrisCount++;
                         return;
                     default: break;
                 }
 
-                SaveData.ElliotCount++;
+                
             }
         }
 
         public override void Gift()
         {
+            string NPCName = "Morris";
+            var FavGift = Enums.Items.JojaCola;
+            var DislikedGift = Enums.Items.MapleBar;
+            string LoveGift = $"A gift of the highest quality. Thank you, {SaveData.PlayerName}.";
+            string HateGift = "You insult me with my competitor's wares.";
+            string NeutralGift = "Thank you, this is very nice.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+          
         }
 
         void Investigate()

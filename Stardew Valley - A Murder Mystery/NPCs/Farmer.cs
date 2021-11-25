@@ -104,7 +104,21 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Gift()
         {
+            string NPCName = SaveData.FarmerName;
+            var FavGift = Enums.Items.Beer;
+            var DislikedGift = Enums.Items.Coal;
+            string LoveGift = "";
+            string HateGift = "";
+            string NeutralGift = "";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+         
         }
 
         void Investigate()

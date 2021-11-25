@@ -43,7 +43,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         case 7: Console.WriteLine("Emily > Sometimes the flowers speak to me... each one has a different story to tell!"); break;
                         case 8: Console.WriteLine("Emily > Ah, spring. The season of pastels. I actually prefer jewel tones, myself. Oh, excuse me! I was mumbling about fashion again, wasn't I?"); break;
                         case 9: Console.WriteLine("Emily > I like making my own clothes, but it's not easy to get cloth. And it's such a long trip to the city."); break;
-                        case 10: Console.WriteLine("Emily > This house was left in our care by my parents. They've been traveling the world for the last two years. We have no idea when they'll be back. I enjoy living here, though. It's a beautiful area and the town is nice."); break;
+                        case 10: Console.WriteLine("Emily > This house was left in our care by my parents. They've been traveling the world for the last two years.\nWe have no idea when they'll be back. I enjoy living here, though. It's a beautiful area and the town is nice."); break;
                         default: break;
                     }
                 }
@@ -76,7 +76,21 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
+            string NPCName = "Emily";
+            var FavGift = Enums.Items.Amethyst;
+            var DislikedGift = Enums.Items.FishTaco;
+            string LoveGift = "This gift is fabulous! Thank you so much!";
+            string HateGift = "This gift has a strong negative energy. I can't stand it.";
+            string NeutralGift = "Thanks!";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.EmilyFriendship += friendshipChange;
         }
 
         void Investigate()
