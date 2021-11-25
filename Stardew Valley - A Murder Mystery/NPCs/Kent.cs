@@ -72,42 +72,20 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Kent?");
-            Console.WriteLine("");
+            string NPCName = "Kent";
+            var FavGift = Enums.Items.Risotto;
+            var DislikedGift = Enums.Items.Holly;
+            string LoveGift = "Oh...! Mom used to give me this when I was a young boy. It brings back wonderful memories. Thank you.";
+            string HateGift = "This... They gave this to me in Gotoro prison camp. I've been trying to forget about that. *shudder*";
+            string NeutralGift = "That's kind of you. The family will like this.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "Risotto" && Enums.Items.Risotto > 0)
-            {
-                Console.WriteLine("Kent > Oh...! Mom used to give me this when I was a young boy. It brings back wonderful memories. Thank you."); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.Risotto, out var risottoCount);
-                risottoCount--;
-                SaveData.MyInventory[Enums.Items.Risotto] = risottoCount;
-            }
-
-            else if (gift == "Holly" && Enums.Items.Holly > 0)
-            {
-                Console.WriteLine("Kent > This... They gave this to me in Gotoro prison camp. I've been trying to forget about that. *shudder*."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-               
-                SaveData.MyInventory.TryGetValue(Enums.Items.Holly, out var hollyCount);
-                hollyCount--;
-                SaveData.MyInventory[Enums.Items.Holly] = hollyCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Kent > That's kind of you. The family will like this.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);           
         }
 
         void Investigate()

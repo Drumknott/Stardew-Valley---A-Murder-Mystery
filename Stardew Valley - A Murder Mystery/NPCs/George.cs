@@ -70,7 +70,20 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
+            string NPCName = "George";
+            var FavGift = Enums.Items.Leek;
+            var DislikedGift = Enums.Items.Clay;
+            string LoveGift = "This is my favorite thing! Thank you.";
+            string HateGift = "This is probably the worst gift I've ever seen. Thanks a lot.";
+            string NeutralGift = "A gift? Hmm...";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
+
+            var gift = Console.ReadLine();
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);            
         }
 
         void Investigate()

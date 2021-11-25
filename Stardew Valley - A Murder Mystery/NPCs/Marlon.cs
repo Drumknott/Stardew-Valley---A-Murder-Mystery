@@ -77,45 +77,22 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Marlon?");
-            Console.WriteLine("");
+            string NPCName = "Marlon";
+            var FavGift = Enums.Items.GoatCheese;
+            var DislikedGift = Enums.Items.FriedCalamari;
+            string LoveGift = $"Oh {SaveData.PlayerName}, this is wonderful. Thank you so much.";
+            string HateGift = "This is disgusting. Please take it away.";
+            string NeutralGift = "A gift? How lovely.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "Fav" && Enums.Items.Amethyst > 0)
-            {
-                Console.WriteLine("Marlon > "); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.AbigailFriendship += 2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Amethyst, out var amethystCount);
-                amethystCount--;
-                SaveData.MyInventory[Enums.Items.Amethyst] = amethystCount;
-            }
-
-            else if (gift == "hate" && Enums.Items.Horseradish > 0)
-            {
-                Console.WriteLine("Marlon > "); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.AbigailFriendship--;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Horseradish, out var horseradishCount);
-                horseradishCount--;
-                SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Marlon > ");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
-        }
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+          
+        }    
 
         void Investigate()
         {

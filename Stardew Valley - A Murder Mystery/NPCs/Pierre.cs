@@ -89,21 +89,19 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            //add gift option for joja cola and the candy you can steal from the store
+            string NPCName = "Pierre";
+            var FavGift = Enums.Items.FriedCalamari;
+            var DislikedGift = Enums.Items.Corn;
+            string LoveGift = "This is my all-time favorite! Thank you!";
+            string HateGift = "Please, never bring this to me again.";
+            string NeutralGift = "A present? Thanks!";
 
-            Console.WriteLine("What gift would you like to give Pierre?");
-            Console.WriteLine("");
-
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "JojaCola" && Enums.Items.JojaCola > 0)
+            if (gift == "JojaCola" && Enums.Items.JojaCola > 0)
             {
                 Console.WriteLine("Pierre > Is this some kind of sick joke? Why would you bring me my competitor's product?");
                 Console.WriteLine(gift + " removed from Inventory.");
@@ -127,32 +125,11 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                     SaveData.FuckYouPierre = true;
                 }
             }
-
-            else if (gift == "FriedCalamari" && Enums.Items.FriedCalamari > 0)
+            else
             {
-                Console.WriteLine("Pierre > This is my all-time favorite! Thank you!"); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.FriedCalamari, out var friedCalamariCount);
-                friedCalamariCount--;
-                SaveData.MyInventory[Enums.Items.FriedCalamari] = friedCalamariCount;
-            }
-
-            else if (gift == "Corn" && Enums.Items.Corn > 0)
-            {
-                Console.WriteLine("Pierre > Please, never bring this to me again."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-               
-                SaveData.MyInventory.TryGetValue(Enums.Items.Corn, out var cornCount);
-                cornCount--;
-                SaveData.MyInventory[Enums.Items.Corn] = cornCount;
-            }
-
-            else //neutral
-            {
-                Console.WriteLine("Pierre > A present? Thanks!");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+                Gift giftMethod = new(SaveData);
+                giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            }          
         }
 
         void Investigate()

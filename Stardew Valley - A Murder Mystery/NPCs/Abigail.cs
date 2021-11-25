@@ -84,48 +84,23 @@ namespace Stardew_Valley___A_Murder_Mystery
             }
                        
         }
-
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Abigail?");
-            Console.WriteLine("");
+            string NPCName = "Abigail";
+            var FavGift = Enums.Items.Amethyst;
+            var DislikedGift = Enums.Items.Horseradish;
+            string LoveGift = "Hey, how’d you know I was hungry? This looks delicious!";
+            string HateGift = "What am I supposed to do with this?";
+            string NeutralGift = "You brought me a present? Thanks.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-            
-            if (gift == "Amethyst" && Enums.Items.Amethyst >0)
-            {
-                Console.WriteLine("Abigail > Hey, how’d you know I was hungry? This looks delicious!"); // Abi loves
-                SaveData.AbigailFriendship +=2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Amethyst, out var amethystCount);
-                amethystCount--;
-                SaveData.MyInventory[Enums.Items.Amethyst] = amethystCount;
-            }
-
-            if (gift == "Horseradish" && Enums.Items.Horseradish > 0)
-            {
-                Console.WriteLine("Abigail > What am I supposed to do with this ?"); //Abi hates
-                SaveData.AbigailFriendship --;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Horseradish, out var horseradishCount);
-                horseradishCount--;
-                SaveData.MyInventory[Enums.Items.Horseradish] = horseradishCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Abigail > You brought me a present? Thanks.");
-                //var giftName = SaveData.MyInventory[Enums.Items.gift];
-                //SaveData.MyInventory.TryGetValue(giftName, out var giftCount);
-                //giftCount--;
-                Console.WriteLine(gift + " removed from Inventory.");
-            }           
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.AbigailFriendship += friendshipChange;
         }
 
         bool caseH { get; set; }
@@ -165,25 +140,23 @@ namespace Stardew_Valley___A_Murder_Mystery
                 else switch (askAbigail)
                 {
                     case "H":
-                            Console.WriteLine("How well did you know him?");
-                            SaveData.AbigailInvestigated++;
+                            Console.WriteLine("How well did you know him?");                          
                             break;
                     case "W":
-                            Console.WriteLine("Where were you on the night he was murdered?");
-                            SaveData.AbigailInvestigated++;
+                            Console.WriteLine("Where were you on the night he was murdered?");                       
                             break;
                     case "P":
                         if (SaveData.PierreLied == true)
-                            Console.WriteLine("Abigail > Yeah, we were playing Journey of the Prairie King together.");
-                            SaveData.AbigailInvestigated++;
+                            Console.WriteLine("Abigail > Yeah, we were playing Journey of the Prairie King together.");                            
                         if (SaveData.AbigailFriendship > 4)
                             Console.WriteLine("Abigail pauses.");
                             Console.WriteLine("Abigail > Well… um, that wasn't true about my dad being home actually.");
                             Console.WriteLine("I was playing Journey of the Prairie King, but he wasn't there. He only got home about midnight. ");
                             break;
                     case "S":
-                        if (lewisStatue > 0) Console.WriteLine("Abigail > Let's see. No, I don't think so. Ha, it looks like Lewis, that's funny.");
-                            SaveData.AbigailInvestigated++;
+                        if (lewisStatue > 0) Console.WriteLine("Abigail > Let's see. No, I don't think so. Ha, it looks like Lewis, that's funny.");                       
+                            break;
+                        case "L": 
                             break;
                     default: break;
                 }

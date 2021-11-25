@@ -71,47 +71,23 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 }                
             }
         }
-
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Maru?");
-            Console.WriteLine("");
+            string NPCName = "Maru";
+            var FavGift = Enums.Items.BatteryPack;
+            var DislikedGift = Enums.Items.Holly;
+            string LoveGift = $"Is that...? Oh wow, {SaveData.PlayerName}! This is spectacular!";
+            string HateGift = "Yuck! You thought I would like this?";
+            string NeutralGift = "Thanks.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "Fav" && Enums.Items.BatteryPack > 0)
-            {
-                Console.WriteLine("Maru > Is that...? Oh wow, (Name)! This is spectacular!"); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.MaruFriendship += 2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.BatteryPack, out var batteryPackCount);
-                batteryPackCount--;
-                SaveData.MyInventory[Enums.Items.BatteryPack] = batteryPackCount;
-            }
-
-            else if (gift == "hate" && Enums.Items.Horseradish > 0)
-            {
-                Console.WriteLine("Maru > Yuck! You thought I would like this?"); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.MaruFriendship--;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Holly, out var hollyCount);
-                hollyCount--;
-                SaveData.MyInventory[Enums.Items.Holly] = hollyCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Maru > Thanks.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.MaruFriendship += friendshipChange;
         }
 
         void Investigate()

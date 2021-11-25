@@ -75,42 +75,21 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Krobus?");
-            Console.WriteLine("");
+            string NPCName = "Krobus";
+            var FavGift = Enums.Items.VoidEgg;
+            var DislikedGift = Enums.Items.Seaweed;
+            string LoveGift = "This is an amazing gift. For my people it is a great honor to receive something like this.";
+            string HateGift = "Oh... Um. I guess I'll accept it.";
+            string NeutralGift = "Thank you.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "VoidEgg" && Enums.Items.VoidEgg > 0)
-            {
-                Console.WriteLine("Krobus > This is an amazing gift. For my people it is a great honor to receive something like this."); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.VoidEgg, out var voidEggCount);
-                voidEggCount--;
-                SaveData.MyInventory[Enums.Items.VoidEgg] = voidEggCount;
-            }
-
-            else if (gift == "Seaweed" && Enums.Items.Horseradish > 0)
-            {
-                Console.WriteLine("Krobus > Oh... Um. I guess I'll accept it."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.Seaweed, out var seaweedCount);
-                seaweedCount--;
-                SaveData.MyInventory[Enums.Items.Seaweed] = seaweedCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Krobus > Thank you.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.KrobusFriendship += friendshipChange;           
         }
 
         void Investigate()

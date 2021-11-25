@@ -79,42 +79,20 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Linus?");
-            Console.WriteLine("");
+            string NPCName = "Linus";
+            var FavGift = Enums.Items.Coconut;
+            var DislikedGift = Enums.Items.Seaweed;
+            string LoveGift = "This is wonderful! You've really made my day special.";
+            string HateGift = "Why would you give this to me? Do you think I like junk just because I live in a tent? That's terrible.";
+            string NeutralGift = "A gift? How nice.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "Coconut" && Enums.Items.Coconut > 0)
-            {
-                Console.WriteLine("Linus > This is wonderful! You've really made my day special."); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.Coconut, out var coconutCount);
-                coconutCount--;
-                SaveData.MyInventory[Enums.Items.Coconut] = coconutCount;
-            }
-
-            else if (gift == "Seaweed" && Enums.Items.Seaweed > 0)
-            {
-                Console.WriteLine("Linus > Why would you give this to me? Do you think I like junk just because I live in a tent? That's terrible."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.Seaweed, out var seaweedCount);
-                seaweedCount--;
-                SaveData.MyInventory[Enums.Items.Seaweed] = seaweedCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Linus > A gift? How nice.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
         }
 
         void Investigate()
@@ -181,8 +159,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 }
                 Console.WriteLine("T > Do you know what they did there?");
                 Console.WriteLine("D > Did you see them come back?");
-                Console.WriteLine("L > Leave");
-                Console.WriteLine("");
+                Console.WriteLine("L > Leave\n");
 
                 switch (Console.ReadLine())
                 {

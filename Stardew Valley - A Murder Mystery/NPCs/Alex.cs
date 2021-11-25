@@ -72,44 +72,21 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Alex?");
-            Console.WriteLine("");
+            string NPCName = "Alex";
+            var FavGift = Enums.Items.CompleteBreakfast;
+            var DislikedGift = Enums.Items.Holly;
+            string LoveGift = "Hey, awesome! I love this stuff!";
+            string HateGift = "Are you serious? This is garbage.";
+            string NeutralGift = "Thanks!";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "CompleteBreakfast" && Enums.Items.CompleteBreakfast > 0)
-            {
-                Console.WriteLine("Alex > Hey, awesome! I love this stuff!"); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.AlexFriendship += 2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.CompleteBreakfast, out var completeBreakfastCount);
-                completeBreakfastCount--;
-                SaveData.MyInventory[Enums.Items.CompleteBreakfast] = completeBreakfastCount;
-            }
-
-            else if (gift == "Holly" && Enums.Items.Horseradish > 0)
-            {
-                Console.WriteLine("Alex > Are you serious? This is garbage."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.AlexFriendship--;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Holly, out var hollyCount);
-                hollyCount--;
-                SaveData.MyInventory[Enums.Items.Holly] = hollyCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Alex > Thanks!");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.AlexFriendship += friendshipChange;
         }
 
         void Investigate()

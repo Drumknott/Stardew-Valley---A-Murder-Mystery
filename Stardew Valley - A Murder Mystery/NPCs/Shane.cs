@@ -83,39 +83,21 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Shane?");
-            Console.WriteLine("");
+            string NPCName = "Shane";
+            var FavGift = Enums.Items.Beer;
+            var DislikedGift = Enums.Items.Coal;
+            string LoveGift = "Oh wow, " + SaveData.PlayerName + "! How'd you know this is my favorite?";
+            string HateGift = "Why are you giving me your garbage?";
+            string NeutralGift = "Oh, you got me something? Thanks!";
 
-            Inventory checkList = new(SaveData);
-            checkList.InventoryList();
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
+            Inventory inventory = new(SaveData);
+            inventory.InventoryList();
 
-            var gift = Console.ReadLine().Substring(0, 1).ToUpper();
-            Console.WriteLine("");
-
-            if (gift == "Beer" && Enums.Items.Beer > 0)
-            {
-                Console.WriteLine("Shane > Oh wow, " + SaveData.PlayerName + "! How'd you know this is my favorite?");
-                SaveData.ShaneFriendship += 2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Beer, out var beerCount);
-                beerCount--;
-                SaveData.MyInventory[Enums.Items.Beer] = beerCount;
-            }
-
-            if (gift == "Quartz" && Enums.Items.Quartz > 0)
-            {
-                Console.WriteLine("Shane > Why are you giving me your garbage?");
-                SaveData.ShaneFriendship--;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Quartz, out var quartzCount);
-                quartzCount--;
-                SaveData.MyInventory[Enums.Items.Quartz] = quartzCount;
-            }
-
-            else if (gift != "Quartz" || gift != "Beer")
-            {
-                Console.WriteLine("Shane > Oh, you got me something? Thanks!");
-            }
+            var gift = Console.ReadLine();
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.ShaneFriendship += friendshipChange;            
         }
 
         void Investigate()

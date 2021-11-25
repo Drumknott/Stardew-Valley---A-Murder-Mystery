@@ -76,42 +76,20 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give Willy?");
-            Console.WriteLine("");
+            string NPCName = "Willy";
+            var FavGift = Enums.Items.Octopus;
+            var DislikedGift = Enums.Items.Leek;
+            string LoveGift = "This is great! If only me ol' Pappy was around. He'd go nuts for this.";
+            string HateGift = " ... *sniff*... Well I guess I can toss it into the chum bucket.";
+            string NeutralGift = "A gift! Thanks.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "Octopus" && Enums.Items.Octopus > 0)
-            {
-                Console.WriteLine("Willy > This is great! If only me ol' Pappy was around. He'd go nuts for this."); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-              
-                SaveData.MyInventory.TryGetValue(Enums.Items.Octopus, out var octopusCount);
-                octopusCount--;
-                SaveData.MyInventory[Enums.Items.Octopus] = octopusCount;
-            }
-
-            else if (gift == "Leek" && Enums.Items.Leek > 0)
-            {
-                Console.WriteLine("Willy > ... *sniff*... Well I guess I can toss it into the chum bucket."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.Leek, out var leekCount);
-                leekCount--;
-                SaveData.MyInventory[Enums.Items.Leek] = leekCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Willy > A gift! Thanks.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);          
         }
 
         void Investigate()

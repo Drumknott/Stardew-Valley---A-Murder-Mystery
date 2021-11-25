@@ -73,44 +73,21 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give NPC?");
-            Console.WriteLine("");
+            string NPCName = "Harvey";
+            var FavGift = Enums.Items.Coffee;
+            var DislikedGift = Enums.Items.Coral;
+            string LoveGift = "It's for me? This is my favorite stuff! It's like you read my mind.";
+            string HateGift = "...I think I'm allergic to this.";
+            string NeutralGift = "Thanks. That's very kind of you.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "Coffee" && Enums.Items.Coffee > 0)
-            {
-                Console.WriteLine("Harvey > It's for me? This is my favorite stuff! It's like you read my mind."); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.HarveyFriendship += 2;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Coffee, out var coffeeCount);
-                coffeeCount--;
-                SaveData.MyInventory[Enums.Items.Coffee] = coffeeCount;
-            }
-
-            else if (gift == "hate" && Enums.Items.Horseradish > 0)
-            {
-                Console.WriteLine("Harvey > ...I think I'm allergic to this."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                SaveData.HarveyFriendship--;
-
-                SaveData.MyInventory.TryGetValue(Enums.Items.Coral, out var coralCount);
-                coralCount--;
-                SaveData.MyInventory[Enums.Items.Coral] = coralCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Harvey > Thanks. That's very kind of you.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
+            SaveData.HarveyFriendship += friendshipChange;            
         }
 
         void Investigate()

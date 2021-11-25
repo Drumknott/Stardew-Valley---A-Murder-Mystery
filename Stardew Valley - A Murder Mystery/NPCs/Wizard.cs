@@ -74,42 +74,20 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         public override void Gift()
         {
-            Console.WriteLine("What gift would you like to give the Wizard?");
-            Console.WriteLine("");
+            string NPCName = "Wizard";
+            var FavGift = Enums.Items.VoidEssence;
+            var DislikedGift = Enums.Items.RedMushroom;
+            string LoveGift = "Ahh, this is imbued with potent arcane energies. It's very useful for my studies. Thank you!";
+            string HateGift = "Ughh... These are utterly mundane. Please refrain from bothering me with this in the future.";
+            string NeutralGift = "Thank you, this will prove useful, I think.";
 
+            Console.WriteLine($"What gift would you like to give {NPCName}?\n");
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
-            if (gift.Length == 0)
-            {
-                return;
-            }
-
-            else if (gift == "Fav" && Enums.Items.VoidEssence > 0)
-            {
-                Console.WriteLine("Wizard > Ahh, this is imbued with potent arcane energies. It's very useful for my studies. Thank you!"); // NPC loves
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.VoidEssence, out var voidEssenceCount);
-                voidEssenceCount--;
-                SaveData.MyInventory[Enums.Items.VoidEssence] = voidEssenceCount;
-            }
-
-            else if (gift == "hate" && Enums.Items.RedMushroom > 0)
-            {
-                Console.WriteLine("Wizard > Ughh... These are utterly mundane. Please refrain from bothering me with this in the future."); //NPC hates
-                Console.WriteLine(gift + " removed from Inventory.");
-                
-                SaveData.MyInventory.TryGetValue(Enums.Items.RedMushroom, out var redMushroomCount);
-                redMushroomCount--;
-                SaveData.MyInventory[Enums.Items.Horseradish] = redMushroomCount;
-            }
-            else //neutral
-            {
-                Console.WriteLine("Wizard > Thank you, this will prove useful, I think.");
-                Console.WriteLine(gift + " removed from Inventory.");
-            }
+            Gift giftMethod = new(SaveData);
+            giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
         }
 
         void Investigate()

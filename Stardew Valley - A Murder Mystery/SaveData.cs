@@ -104,7 +104,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int MarnieCount { get; set; }
         public int ShaneCount { get; set; }
         public int LeahCount { get; set; }
-        public int ElliotCount { get; set; }
+        public int ElliottCount { get; set; }
         public int FarmerCount { get; set; }
         public int MarlonCount { get; set; }
         public int MorrisCount { get; set; }
@@ -112,7 +112,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         //Friendship/Romance
         public int AbigailFriendship { get; set; }
         public int AlexFriendship { get; set; }
-        public int ElliotFriendship { get; set; }
+        public int ElliottFriendship { get; set; }
         public int EmilyFriendship { get; set; }
         public int HaleyFriendship { get; set; }
         public int HarveyFriendship { get; set; }
@@ -139,7 +139,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         //Investigations
         public int AbigailInvestigated { get; set; }
-
+        public bool podcast { get; set; }
         public bool Suspect { get; set; }
         public bool SuspectDemetrius { get; set; }
         public string npc1 { get; set; }
