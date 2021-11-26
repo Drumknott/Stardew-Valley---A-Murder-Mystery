@@ -17,8 +17,6 @@ namespace Stardew_Valley___A_Murder_Mystery
         }
         public override void Enter()
         {
-            SaveData.LastVisited = "Town";
-
             if (SaveData.TownFirstVisit == false)
             {
                 ExploreTown exploreTown = new(SaveData);

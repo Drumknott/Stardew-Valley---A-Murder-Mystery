@@ -43,5 +43,29 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("******************************\n");
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        public void EndGraphic()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("                            ,,,,,,,,,,,,                 ");
+            Console.WriteLine("                            ,,,,,,******...              ");
+            Console.WriteLine("                            ,,,***//////,,,              ");
+            Console.WriteLine("                               ,,,,,,///***,,,           ");
+            Console.WriteLine("                            ,,,###&&&&&&&&&###,,,        ");
+            Console.WriteLine("       ,,,,,,               ,,,&&&&&&,,,&& &###,,,       ");
+            Console.WriteLine("    ,,,&& &###,,,,,,         ,,,&&&&&&,,,###&&&&&&,,,    ");
+            Console.WriteLine("    ,,,%%%&& &###(((.........(((&&&&&&,,,&&&(((///       ");
+            Console.WriteLine("    ,,,###&&&&&&%%%*********%%%&&&&&&***&&&///,,,        ");
+            Console.WriteLine("    ,,,***&&&&&&&&&&&&######&&&&&&&&&&&&&&&&&&,,,        ");
+            Console.WriteLine("       ,,,***###&&&&&&&&&###&&&&&&&&&&&&&&&&&&###,,,     ");
+            Console.WriteLine("    ,,,###&&&###,,,,,,###&&&&&&###&&&&&&&&&&&&&&&,,,     ");
+            Console.WriteLine("    ,,,***###&&&,,,&&&&&&&&&&&&***&&&###&&&###&&&,,,     ");
+            Console.WriteLine("       ,,,###%%%***************###%%%&&&%%%&&&%%%,,,     ");
+            Console.WriteLine("       ...((((((///,,,,,,******######&&&###%%%(((...     ");
+            Console.WriteLine("          ,,, ***###******##################***,,,       ");
+            Console.WriteLine("             ,,,,,, ***,,, ***#########***,,,,,,         ");
+            Console.WriteLine("                   ,,,###,,,,,,,,,,,,,,,                 ");
+            Console.WriteLine("                   ,,,###&&&&&&,,,&&&,,,                 ");
+        }
     }
 }

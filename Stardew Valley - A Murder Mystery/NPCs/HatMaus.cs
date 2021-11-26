@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Stardew_Valley___A_Murder_Mystery.NPCs
 {
-    class HatMaus //okay poke?
+    class HatMaus : NPC //okay poke?
     {
         private SaveData SaveData { get; set; }
 
@@ -14,9 +14,13 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         {
             SaveData = saveData;
         }
-        public void Chat()
+        public override void Chat()
         {
             Console.WriteLine("Hat Mouse > Me sell hats, okay poke?");
-        }        
+        }
+        public override void Gift()
+        {
+            
+        }
     }
 }

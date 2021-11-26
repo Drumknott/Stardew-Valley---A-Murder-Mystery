@@ -18,20 +18,23 @@ namespace Stardew_Valley___A_Murder_Mystery
         public override void Enter()
         {
             SaveData.LastVisited = "Clinic";
-
             Console.WriteLine("You are in the Doctor's Surgery.\n");
-            
-            if (SaveData.DayCount == 1 || SaveData.DayCount == 3)
-            {
-                Console.WriteLine("Maru is behind the desk, chatting with Harvey. The waiting room is empty.");
-                SaveData.npc1 = "Harvey";
-                SaveData.npc2 = "Maru";
-            }
 
-            else
+            switch (SaveData.DayCount)
             {
-                Console.WriteLine("The clinic is empty. Where is everyone?");
-            }
+                case 1:
+                case 3:
+                    Console.WriteLine("Maru is behind the desk, chatting with Harvey. The waiting room is empty.");
+                    SaveData.npc1 = "Harvey";
+                    SaveData.npc2 = "Maru";
+                    break;
+                case 0:
+                case 2:
+                case >=4:
+                    Console.WriteLine("The clinic is empty. Where is everyone?");
+                    break;
+                default: break;
+            }        
         }
 
         public override void Forage()

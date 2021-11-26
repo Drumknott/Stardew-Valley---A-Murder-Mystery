@@ -58,8 +58,8 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool StardropSaloon { get; set; }
         public bool PelicanTown { get; set; }
         public bool TownFirstVisit { get; set; }
-        public bool Quarry { get; set; }
-        public bool TrainTracks { get; set; }
+        public bool JodisHouse { get; set; }
+        public bool EmilysHouse { get; set; }
         public bool AdventurersGuild { get; set; }
         public bool WizardsTower { get; set; }
         public bool JojaMart { get; set; }
@@ -67,13 +67,16 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool HatMausHaus { get; set; }
         public bool GeneralStore { get; set; }
         public bool Cabin { get; set; }
-        public bool WillysShack { get; set; }
-        public bool ElliottsCabin { get; set; }
+        public bool Sewers { get; set; }
+        public bool GeorgesHouse { get; set; }
         public bool Blacksmith { get; set; }
         public bool Museum { get; set; }
         public bool Robins { get; set; }
         public bool Cindersap { get; set; }
         public bool LeahsHouse { get; set; }
+        public bool EvelynGeorgeAlexsHouse { get; set; }
+        public bool Graveyard { get; set; }
+        public bool MayorsHouse { get; set; }
 
         //People Met
         public int PamCount { get; set; }
