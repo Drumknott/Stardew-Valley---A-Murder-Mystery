@@ -8,9 +8,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 {
     abstract class Location : Program
     {
-     public abstract void Enter();
-
-    public abstract void Forage();
-        
+        public abstract void Enter();
+        public abstract void Forage();        
     }
 }

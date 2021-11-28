@@ -5,48 +5,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stardew_Valley___A_Murder_Mystery
+namespace Stardew_Valley___A_Murder_Mystery.Locations
 {
-    class Mine : Location
+    class Sewers : Location
     {
         private SaveData SaveData { get; set; }
+        private List<Items> ForagableItems = new[] { Items.Amethyst, Items.BatteryPack, Items.Clam, Items.Coal, Items.Coral, Items.Diamond, Items.Emerald, Items.FrozenTear, Items.JojaCola, Items.Octopus, Items.PrismaticShard, Items.Quartz, Items.Seaweed, Items.VoidEgg }.ToList();
 
-        private List<Items> ForagableMineItems = new[] { Items.Amethyst, Items.BatteryPack, Items.Clay, Items.Coal, Items.Diamond, Items.Emerald, Items.FrozenTear, Items.JojaCola, Items.PrismaticShard, Items.Quartz, Items.VoidEssence}.ToList();
-        public Mine (SaveData saveData)
+        public Sewers(SaveData saveData)
         {
             SaveData = saveData;
         }
 
-
         public override void Enter()
-        {          
-            Console.WriteLine("You are at the Mine\n");
-
-            if (SaveData.MineCount == 0)
+        {
+            if (SaveData.SewerKey != true)
             {
-                Console.WriteLine("It's dark, but through the gloom you can just make out the shape of a ladder descending into the earth.\n");
-                SaveData.MineCount++;
+                Console.WriteLine("You need a key to get down to the sewers.");
+                SaveData.FindSewerKey = true;
+                return;
             }
-            else Console.WriteLine("You can here a faint dripping noise, but otherwise it's eerily quiet.");
-            Console.WriteLine("E > Explore the Mine");
-            Console.WriteLine("L > Leave");
 
-            switch (Console.ReadLine())
+            Console.WriteLine("You are in the sewers.\n");
+
+            if (SaveData.DayCount < 6)
             {
-                case "E":
-                    MineMinigame minigame = new(SaveData);
-                    minigame.ExploreTheMine();
-                    break;
-                case "L": return;
-                default: return;
+                Console.WriteLine("You can just make out Krobus through the mist.");
+                SaveData.npc1 = "Krobus";
+            }
+            else
+            {
+                Console.WriteLine("There's no sign of anyone here.");
             }
         }
 
         public override void Forage()
         {
             var random = new Random();
-            var Index = random.Next(0, ForagableMineItems.Count - 1);
-            var randomItem = ForagableMineItems[Index];
+            var Index = random.Next(0, ForagableItems.Count - 1);
+            var randomItem = ForagableItems[Index];
 
             RandomForageDialogue(randomItem);
 

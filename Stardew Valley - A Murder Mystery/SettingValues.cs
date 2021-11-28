@@ -44,13 +44,13 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData.MarnieCount = 0;
             SaveData.ShaneCount = 0;
             SaveData.LeahCount = 0;
-            SaveData.ElliotCount = 0;
+            SaveData.ElliottCount = 0;
             SaveData.FarmerCount = 0;
             SaveData.MarlonCount = 0;
 
             SaveData.AbigailFriendship = 0;
             SaveData.AlexFriendship = 0;
-            SaveData.ElliotFriendship = 0;
+            SaveData.ElliottFriendship = 0;
             SaveData.EmilyFriendship = 0;
             SaveData.HaleyFriendship = 0;
             SaveData.HarveyFriendship = 0;

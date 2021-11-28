@@ -26,7 +26,8 @@ namespace Stardew_Valley___A_Murder_Mystery
             }
             else
             {
-                Console.WriteLine("It's been a busy day. You should go and get some rest.\n");
+                Console.WriteLine("It's been a busy day. You should get some rest.");
+                if (SaveData.LastVisited == "Cabin") Console.WriteLine("You lie down in your bed, and before you know it you're drifting off to sleep...");
             }
            
             Console.WriteLine("Enter > Continue\n");            
@@ -62,7 +63,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                     break;
                 case 6:
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("***********************\n* DAY 7: Election Day *\n***********************\n");
+                    Console.WriteLine("***********************\n* DAY 7: ELECTION DAY *\n***********************\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
             }

@@ -23,12 +23,18 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("A path next to Pierre's leads further north. To the east is a tavern, a small graveyard and a couple of houses and a trailer.");
             Console.WriteLine("Beyond the tavern is a bridge leading further east.");
             SaveData.StardropSaloon = true;
+            SaveData.Graveyard = true;
+            SaveData.EvelynGeorgeAlexsHouse = true;
+            SaveData.MayorsHouse = true;
             Console.WriteLine("To the south are some more houses and a path that looks like it heads towards the beach.");
             Console.WriteLine("A path in the south west leads towards the forest.");
             Console.WriteLine("");
             Console.WriteLine("[Doctors] Surgery added to location list");
             Console.WriteLine("[Pierres] General Store added to location list");
             Console.WriteLine("Stardrop [Saloon] added to location list");
+            Console.WriteLine("[Graveyard] added to location list");
+            Console.WriteLine("[Georges] House added to location list");
+            Console.WriteLine("[Mayors] House added to location list");
 
             while (SaveData.TownFirstVisit == false)
             {
@@ -96,11 +102,16 @@ namespace Stardew_Valley___A_Murder_Mystery
                         break;
                     case "W":
                         Console.WriteLine("You head to the west, past a couple of houses and then along a forest path.");
-                        Console.WriteLine("On your right you see a Farmstead. On your left, a small cottage with a nice garden. Ahead of you is a forest, with a tower in the distance.");
+                        Console.WriteLine("On your right you see a Farmstead. On your left, a small cottage with a nice garden. Ahead of you is a forest, with a tower in the distance.\n");
                         SaveData.MarniesHouse = true;
                         SaveData.LeahsHouse = true;
-                        Console.WriteLine("[Marnies] added to location list");
-                        Console.WriteLine("[Leahs] added to location list");
+                        SaveData.JodisHouse = true;
+                        SaveData.EmilysHouse = true;
+                        SaveData.Cindersap = true;
+                        Console.WriteLine("[Emilys] House added to location list");
+                        Console.WriteLine("[Jodis] House added to location list");
+                        Console.WriteLine("[Marnies] Ranch added to location list");
+                        Console.WriteLine("[Leahs] House added to location list");
                         Console.WriteLine("[Cindersap] Forest added to location list");
                         CindersapForest travel = new(SaveData);
                         travel.Enter();

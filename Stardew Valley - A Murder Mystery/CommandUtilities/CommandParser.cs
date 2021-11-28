@@ -59,7 +59,7 @@ namespace Stardew_Valley___A_Murder_Mystery.CommandUtilities
             
             if(commandType == Commands.Go)
             {
-                return Enum.Parse(typeof(Locations), commandArgumentPart).ToString();
+                return Enum.Parse(typeof(Enums.Locations), commandArgumentPart).ToString();
             }
 
             if (commandType == Commands.Check)
