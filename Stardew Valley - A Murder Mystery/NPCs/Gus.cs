@@ -47,7 +47,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                 ChooseNPC chat = new();
                 chat.ChatOptions();
                 Console.WriteLine("S > Shop"); //buy stuff
-                
+                if (SaveData.FindSewerKey == true) Console.WriteLine("K > Do you know where I'd find a key for the Sewers?");
+
                 var dialogue1 = Console.ReadLine();
 
                 switch (dialogue1)
@@ -66,6 +67,9 @@ namespace Stardew_Valley___A_Murder_Mystery
                     case "S":
                         Console.WriteLine("Me > I was hoping to buy something from you Gus");
                         Buy();
+                        break;
+                    case "K":
+                        Console.WriteLine("Gus > For the sewers? Goodness, why would you want to go down there? \nGus > Mayor Lewis had a key, but I don't know where it would be now.");
                         break;
                     case "L": SaveData.GusCount++;
                         return;

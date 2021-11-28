@@ -17,6 +17,8 @@ namespace Stardew_Valley___A_Murder_Mystery.Locations
 
         public override void Enter()
         {
+            Console.WriteLine("You are in \n");
+
             switch (SaveData.DayCount)
             {
                 case 0: break;

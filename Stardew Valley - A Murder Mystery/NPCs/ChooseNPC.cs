@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Stardew_Valley___A_Murder_Mystery
 {
     class ChooseNPC
-    {
+    {       
         public NPC ChooseNPCMethod(string chosenNPC, SaveData saveData)
         {
             var parsedNPC = (People)Enum.Parse(typeof(People), chosenNPC);
@@ -59,7 +59,6 @@ namespace Stardew_Valley___A_Murder_Mystery
         public void ChatOptions()
         {
             Console.WriteLine("\nC > Chat\nG > Gift\nI > Investigate\nL > Leave\n");           
-        }
-            
+        }    
     }
 }

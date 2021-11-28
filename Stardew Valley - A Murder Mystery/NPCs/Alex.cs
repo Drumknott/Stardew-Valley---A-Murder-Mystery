@@ -23,12 +23,12 @@ namespace Stardew_Valley___A_Murder_Mystery
                 if (SaveData.AlexCount == 0)
                 {
                     //first meeting
-                    Console.WriteLine("Alex > ");
+                    Console.WriteLine("Alex > Oh, hey. So you're the Detective, huh? Cool. I'm Alex. I'll see you around.");
                 }
                 else
                 {
                     Random dialogue = new();
-                    int random = dialogue.Next(0, 7);
+                    int random = dialogue.Next(0, 6);
 
                     switch (random) // generic chat
                     {

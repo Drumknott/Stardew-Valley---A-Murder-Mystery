@@ -20,7 +20,6 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Enter()
         {          
-            SaveData.LastVisited = "Mine";
             Console.WriteLine("You are at the Mine\n");
 
             if (SaveData.MineCount == 0)
@@ -28,7 +27,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("It's dark, but through the gloom you can just make out the shape of a ladder descending into the earth.\n");
                 SaveData.MineCount++;
             }
-
+            else Console.WriteLine("You can here a faint dripping noise, but otherwise it's eerily quiet.");
             Console.WriteLine("E > Explore the Mine");
             Console.WriteLine("L > Leave");
 

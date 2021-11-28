@@ -40,6 +40,8 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool Monster { get; set; }
         public string MonsterType { get; set; }
         public bool MineDemetrius { get; set; }
+        public bool SewerKey { get; set; }
+        public bool FindSewerKey { get; set; }
 
 
         //Places Visited
@@ -150,6 +152,14 @@ namespace Stardew_Valley___A_Murder_Mystery
         public string npc3 {get; set;}
         public string npc4 { get; set; }
         public string npc5 { get; set; }
+        public string npc6 { get; set; }
+        public string npc7 { get; set; }
+        public string npc8 { get; set; }
+        public string npc9 { get; set; }
+        public string npc10 { get; set; }
+        public string npc11 { get; set; }
+        public string npc12 { get; set; }
+        public string npc13 { get; set; }
 
         //increase time
         public bool Autopsy { get; set; }

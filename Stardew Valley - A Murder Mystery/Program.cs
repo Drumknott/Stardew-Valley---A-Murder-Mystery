@@ -179,12 +179,15 @@ namespace Stardew_Valley___A_Murder_Mystery
                 if (commandType == Commands.Chat)
                 {
                     ChooseNPC chooseNPC = new();
-                    var chatNPC = chooseNPC.ChooseNPCMethod(commandArgument, saveData);                                 
-                                    
-                    string[] presentNPCs = {saveData.npc1, saveData.npc2, saveData.npc3, saveData.npc4, saveData.npc5};
+                    var chatNPC = chooseNPC.ChooseNPCMethod(commandArgument, saveData);
+                    string[] presentNPCs = { saveData.npc1, saveData.npc2, saveData.npc3, saveData.npc4, saveData.npc5, saveData.npc6, saveData.npc7, saveData.npc8, saveData.npc9, saveData.npc10, saveData.npc11, saveData.npc12, saveData.npc13 };                   
                     bool availableNPCs = presentNPCs.Contains(commandArgument);
 
-                    if (availableNPCs)
+                    if (availableNPCs && saveData.DayCount <6)
+                    {
+                        chatNPC.Chat();
+                    }
+                    else if (saveData.DayCount == 6 && commandArgument != "Krobus")
                     {
                         chatNPC.Chat();
                     }
