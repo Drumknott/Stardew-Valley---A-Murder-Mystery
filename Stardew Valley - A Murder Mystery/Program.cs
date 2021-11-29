@@ -117,7 +117,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                             break;
                     }
                     ChosenLocation.Enter();
-                }
+                }               
 
                 if (commandType == Commands.Check)
                 {
@@ -145,6 +145,12 @@ namespace Stardew_Valley___A_Murder_Mystery
                     {
                         Achievements view = new(saveData);
                         view.ViewAchievements();
+                    }
+
+                    if (parsedcheckable == Checkables.HatCollection)
+                    {
+                        Inventory checkList = new(saveData);
+                        checkList.HatCollectionList();
                     }
                 }
 
@@ -198,9 +204,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                 }
 
                 if (commandType == Commands.AdminHack)
-                {
-                    string murderer = saveData.TheMurderer;
-                    Console.WriteLine(murderer);
+                {                    
+                    Console.WriteLine(saveData.TheMurderer);                    
                 }
             }
         }

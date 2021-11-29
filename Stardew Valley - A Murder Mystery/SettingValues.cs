@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Stardew_Valley___A_Murder_Mystery.Enums;
 
 namespace Stardew_Valley___A_Murder_Mystery
 {
@@ -65,7 +66,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData.ShopGus = 0;
             SaveData.MineCount = 0;
             
-
+          
         }
     }
 }

@@ -57,7 +57,12 @@ namespace Stardew_Valley___A_Murder_Mystery
             {
                 SaveData.AchievementHoarder = true;
                 Console.WriteLine("Achievement Unlocked: Unlocked all Achievements");
-            }           
+            }    
+            
+            //if (SaveData.MyHatCollection.Count == 20)
+            //{
+            //    Console.WriteLine("Achievement Unlocked: Collected all 20 hats from Hat Mouse");
+            //}
         }
 
         public void ViewAchievements()

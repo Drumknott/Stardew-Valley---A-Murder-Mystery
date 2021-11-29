@@ -18,6 +18,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             PlayerHelp Tips = new(SaveData);
             Tips.Help();
+
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("*********");

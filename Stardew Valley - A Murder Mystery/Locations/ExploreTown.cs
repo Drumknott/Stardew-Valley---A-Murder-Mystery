@@ -112,9 +112,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                         Console.WriteLine("[Jodis] House added to location list");
                         Console.WriteLine("[Marnies] Ranch added to location list");
                         Console.WriteLine("[Leahs] House added to location list");
-                        Console.WriteLine("[Cindersap] Forest added to location list");
-                        CindersapForest travel = new(SaveData);
-                        travel.Enter();
+                        Console.WriteLine("[Cindersap] Forest added to location list");                       
                         SaveData.ExploredWest = true;
                         break;
                     default: break;

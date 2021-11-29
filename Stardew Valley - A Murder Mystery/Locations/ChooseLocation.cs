@@ -39,7 +39,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case Enums.Locations.Graveyard when saveData.Graveyard == true: location = new Graveyard(saveData); break;
                 case Enums.Locations.Tower when saveData.WizardsTower == true: location = new WizardsTower(saveData); break;
                 case Enums.Locations.Mayors when saveData.MayorsHouse == true: location = new MayorsHouse(saveData); break;
-                case Enums.Locations.Hat when saveData.HatMausHaus == true: location = new HatMausHaus(saveData); break;
+                case Enums.Locations.Haus when saveData.HatMausHaus == true: location = new HatMausHaus(saveData); break;
                 case Enums.Locations.Leahs when saveData.LeahsHouse == true: location = new LeahsHouse(saveData); break;
                 case Enums.Locations.North when saveData.ExploredNorth == true: location = new NorthOfTown(saveData); break;
                 case Enums.Locations.Emilys when saveData.EmilysHouse == true: location = new HaleyEmilysHouse(saveData); break;

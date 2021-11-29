@@ -1,4 +1,5 @@
-﻿using Stardew_Valley___A_Murder_Mystery.NPCs;
+﻿using Stardew_Valley___A_Murder_Mystery.Locations;
+using Stardew_Valley___A_Murder_Mystery.NPCs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case 4:
                 case 6:
                     Console.WriteLine("There's a travelling lady waving at you from a cute little caravan. It's pulled by a... pig?");
+                    SaveData.npc1 = "TravellingLady";
                     break;
                 case 5:
                     Console.WriteLine("Willy and the Wizard are up to THINGS"); // totally sus dark ritual to yoba
@@ -43,7 +45,28 @@ namespace Stardew_Valley___A_Murder_Mystery
                     SaveData.npc2 = "Wizard";
                     break;
                 default: break;
-            }            
+            }          
+        }
+
+        public void Explore()
+        {
+            Console.WriteLine("\nE > Explore the Forest");
+            if (SaveData.npc1 == "TravellingLady") Console.WriteLine("T > Speak to the travelling lady");
+            Console.WriteLine("G > Go back");
+
+            switch (Console.ReadLine())
+            {
+                case "E":
+                    ExploreCindersap();
+                    break;
+                case "T" when (SaveData.npc1 == "TravellingLady"):
+                    TravellingLady travellingLady = new(SaveData);
+                    travellingLady.Chat();
+                    break;
+                case "G":
+                    return;
+                default: break;
+            }
         }
 
         public override void Forage()
@@ -62,7 +85,9 @@ namespace Stardew_Valley___A_Murder_Mystery
                 randomItemCount = 1;
             }
             SaveData.MyInventory[randomItem] = randomItemCount;
-            Console.WriteLine(randomItem + " added to Inventory");
+            Console.WriteLine(randomItem + " added to Inventory\n");
+            Console.WriteLine("This really is a lovely forest. Do you want to explore it further?\n");
+            Explore();            
         }
 
         private static void RandomForageDialogue(Enums.Items randomItem)
@@ -78,5 +103,35 @@ namespace Stardew_Valley___A_Murder_Mystery
                 default: break;
             }
         }
+
+        void ExploreCindersap()
+        {
+            WizardsTower wizardsTower = new WizardsTower(SaveData);
+            HatMausHaus hatMausHaus = new HatMausHaus(SaveData);
+
+            Console.WriteLine("The forest is beautiful. There's a slight breeze, and you can hear birds singing all around.");
+            Console.WriteLine("There's a lake with a fishing pier to the west, with that mysterious tower further behind it.");
+            Console.WriteLine("A river winds its way south, with a path alongside it.\n");
+            Console.WriteLine("Where would you like to go?\n");
+            Console.WriteLine("W > West\nS > South\nG > Go back");
+
+            switch (Console.ReadLine())
+            {
+                case "W":
+                    Console.WriteLine("You wander around the lake and find yourself heading towards the tower.");
+                    Console.WriteLine("There's smoke coming from the chimney - someone must be home. Tentatively you knock on the door and go in.\n");
+                    wizardsTower.Enter();
+                    break;
+                case "S":
+                    Console.WriteLine("You stroll along the riverbank for a while. After a few minutes you come to a wooden bridge, which you decide to cross.");
+                    Console.WriteLine("Other the other side you can see what looks like an abandoned house hiden by some trees.");
+                    Console.WriteLine("You decide to go in for a closer look.\n");
+                    hatMausHaus.Enter();
+                    break;
+                case "G":
+                    return;
+                default: break;
+            }
+        }       
     }
 }

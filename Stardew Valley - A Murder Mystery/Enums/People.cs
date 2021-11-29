@@ -36,10 +36,11 @@ namespace Stardew_Valley___A_Murder_Mystery.Enums
         Leah,
         Elliott,
         Farmer,
-        HatMaus,
+        HatMouse,
         Marlon,
         Harvey,
         Clint,
         Hatmaus,
+        TravellingLady,
     }
 }

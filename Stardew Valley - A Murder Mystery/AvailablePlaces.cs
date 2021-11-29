@@ -43,6 +43,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             if (SaveData.Sewers) Console.WriteLine("[Sewers]");
             if (SaveData.StardropSaloon == true) Console.WriteLine("Stardrop [Saloon]");
             if (SaveData.WizardsTower == true) Console.WriteLine("Wizards [Tower]");
+            if (SaveData.HatMausHaus == true) Console.WriteLine("Hat Mouse's [Haus]");
 
 
         }         
