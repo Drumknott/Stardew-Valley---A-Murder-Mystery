@@ -22,8 +22,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Go [Location] > Go to a known location (Locations have one word names i.e. 'Saloon' for Stardrop Saloon or 'Marnies' for Marnie's House.");
             Console.WriteLine("\tLocations will become available to travel to once you have discovered them.");
             Console.WriteLine("Forage > Search the location you're currently in");
-            Console.WriteLine("Chat [Person] > Speak with a person in your location");
-            //Console.WriteLine("Gift > Give a gift to the person you're talking to");
+            Console.WriteLine("Chat [Person] > Speak with a person in your location");           
             Console.WriteLine("Check Inventory > View your items");
             Console.WriteLine("Check Casefile > Review the clues you've collected");
             Console.WriteLine("Check Locations > See which locations you can visit");
@@ -31,6 +30,10 @@ namespace Stardew_Valley___A_Murder_Mystery
             if (SaveData.Unlocked == true)
             {
                 Console.WriteLine("Check Achievements > See which achievements you've unlocked");
+            }
+            if (SaveData.CollectAllTheHats == true)
+            {
+                Console.WriteLine("Check [HatCollection] > See which hats you've collected!");
             }
             Console.WriteLine("Help > review commands");
             Console.WriteLine("");

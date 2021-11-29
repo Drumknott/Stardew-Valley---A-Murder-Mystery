@@ -134,6 +134,7 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         //Items Collected
         public Dictionary<Items, int> MyInventory { get; set; } = new Dictionary<Items, int>();
+        public Dictionary<Hats, int> MyHatCollection { get; set; } = new Dictionary<Hats, int>();
 
 
         //Information Learned
@@ -171,6 +172,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool HotShot { get; set; } //correctly identify the murderer
         public bool HatMaus { get; set; } //find HatMaus in the forest
         public bool AchievementHoarder { get; set; } //complete every other achievement
+        public bool CollectAllTheHats { get; set; }
 
     }
 }

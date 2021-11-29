@@ -19,6 +19,12 @@ namespace Stardew_Valley___A_Murder_Mystery.Locations
         {
             Console.WriteLine("You are in the Wizard's Tower.\n");
 
+            if (SaveData.WizardsTower != true)
+            {
+                Console.WriteLine("There is a circle of candles on the floor, and lots of dusty books on the shelves.\n");
+                SaveData.WizardsTower = true;
+            }
+
             switch (SaveData.DayCount)
             {                
                 case <=4:

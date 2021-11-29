@@ -22,6 +22,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 if (SaveData.LinusCount == 0) //first meeting
                 {
+                    NPCDialogue("Linus > A stranger?... Hello. Don't mind me. I just live out here alone.");
                     Console.WriteLine("Linus > A stranger?... Hello. Don't mind me. I just live out here alone.");
                     SaveData.LinusCount++;
                 }
@@ -62,7 +63,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                     case "C":
                         Console.WriteLine("Me > Hey, Linus. How are you doing today?");                        
                         break;
-                    case "G":
+                    case "G":                        
                         Console.WriteLine("Me > Hi Linus. Would you like this?");
                         Gift();
                         break;
