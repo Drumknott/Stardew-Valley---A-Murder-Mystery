@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stardew_Valley___A_Murder_Mystery.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Stardew_Valley___A_Murder_Mystery
     class MineMinigame
     {
         private SaveData SaveData { get; set; }
+        private List<Items> ForagableMineItems = new[] { Items.Amethyst, Items.BatteryPack, Items.Clay, Items.Coal, Items.Diamond, Items.Emerald, Items.FrozenTear, Items.JojaCola, Items.PrismaticShard, Items.Quartz, Items.VoidEssence }.ToList();
 
         public MineMinigame(SaveData saveData)
         {
@@ -65,7 +67,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                     if (SaveData.Monster == true) Console.WriteLine("M > Fight the monster");
                     Console.WriteLine("L > Leave the mine\n");
 
-                    switch (Console.ReadLine())
+                    switch (Console.ReadLine().Substring(0, 1).ToUpper())
                     {
                         case "F":
                             if (SaveData.Monster == true)
@@ -133,7 +135,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Demetrius > Detective! Fancy meeting you here! Are you mushroom hunting too?");
             Console.WriteLine("F > You frightened me!\nM > ...Mushrooms?\nH > I'm hunting monsters\n");
 
-            switch (Console.ReadLine())
+            switch (Console.ReadLine().Substring(0, 1).ToUpper())
             {
                 case "F":
                     Console.WriteLine("Me > Oh my god Demetrius you scared me half to death. I... wasn't expecting you to be down here.");
@@ -189,8 +191,9 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public void Forage()
         {
-            Forage_Randomiser randomiser = new(SaveData);
-            var randomItem = randomiser.ForageRandomiser();
+            var random = new Random();
+            var Index = random.Next(0, ForagableMineItems.Count - 1);
+            var randomItem = ForagableMineItems[Index];
 
             RandomForageDialogue(randomItem);
 

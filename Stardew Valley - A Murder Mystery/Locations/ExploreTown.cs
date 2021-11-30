@@ -66,7 +66,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                         Console.WriteLine("N > Explore further up the path.");
                         Console.WriteLine("R > Return to the town square.");
 
-                        var UserInput = Console.ReadLine();
+                        var UserInput = Console.ReadLine().Substring(0, 1).ToUpper();
                         if (UserInput == "N")
                         {
                             ExploreNorth exploreNorth = new(SaveData);

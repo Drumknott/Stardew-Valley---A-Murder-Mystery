@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stardew_Valley___A_Murder_Mystery.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Stardew_Valley___A_Murder_Mystery
     class BusStop : Location
     {
         private SaveData SaveData { get; set; }
+        private List<Items> ForagableItems = new[] {Items.Amaranth, Items.BatteryPack, Items.BeanHotpot, Items.Beer, Items.Bread, Items.ChocolateCake, Items.Clay, Items.Cloth, Items.Coffee, Items.Coleslaw, Items.CompleteBreakfast, Items.Corn, Items.CrabCakes, Items.Daffodil, Items.FarmersLunch, Items.FishTaco, Items.FriedCalamari, Items.GoatCheese, Items.Holly, Items.Honey, Items.Horseradish, Items.JojaCola, Items.Leek, Items.MapleBar, Items.RedMushroom, Items.Risotto, Items.VoidEgg }.ToList();
 
         public BusStop(SaveData saveData)
         {
@@ -55,8 +57,9 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Forage()
         {
-            Forage_Randomiser randomiser = new(SaveData);
-            var randomItem = randomiser.ForageRandomiser();
+            var random = new Random();
+            var Index = random.Next(0, ForagableItems.Count - 1);
+            var randomItem = ForagableItems[Index];
 
             RandomForageDialogue(randomItem);
 

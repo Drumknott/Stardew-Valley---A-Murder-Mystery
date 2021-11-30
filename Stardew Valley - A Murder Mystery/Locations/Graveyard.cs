@@ -29,7 +29,7 @@ namespace Stardew_Valley___A_Murder_Mystery.Locations
 
         public override void Forage()
         {
-
+            Console.WriteLine("...Really?");
         }
     }
 }

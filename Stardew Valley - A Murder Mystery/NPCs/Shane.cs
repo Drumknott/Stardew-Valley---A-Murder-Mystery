@@ -33,7 +33,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 {
 
                     Random dialogue = new();
-                    int random = dialogue.Next(1, 15);
+                    int random = dialogue.Next(1, 14);
 
                     switch (random)
                     {
@@ -58,7 +58,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 ChooseNPC chat = new();
                 chat.ChatOptions();
 
-                var dialogue1 = Console.ReadLine();
+                var dialogue1 = Console.ReadLine().Substring(0, 1).ToUpper();
 
                 switch (dialogue1)
                 {
@@ -111,7 +111,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("M > You live with Marnie? Can you tell me about her relationship with Mayor Lewis?");
                 Console.WriteLine("L > Leave");
                 Console.WriteLine("");
-                var question = Console.ReadLine();
+                var question = Console.ReadLine().Substring(0, 1).ToUpper();
                 switch (question)
                 {
                     case "W":

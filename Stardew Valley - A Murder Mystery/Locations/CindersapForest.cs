@@ -1,4 +1,5 @@
-﻿using Stardew_Valley___A_Murder_Mystery.Locations;
+﻿using Stardew_Valley___A_Murder_Mystery.Enums;
+using Stardew_Valley___A_Murder_Mystery.Locations;
 using Stardew_Valley___A_Murder_Mystery.NPCs;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Stardew_Valley___A_Murder_Mystery
     class CindersapForest : Location
     {
         private SaveData SaveData { get; set; }
+        private List<Items> ForagableItems = new[] { Items.Amaranth, Items.BatteryPack, Items.BeanHotpot, Items.Beer, Items.Bread, Items.ChocolateCake, Items.Clay, Items.Cloth, Items.Coffee, Items.Coleslaw, Items.CompleteBreakfast, Items.Corn, Items.CrabCakes, Items.Daffodil, Items.FarmersLunch, Items.FishTaco, Items.FriedCalamari, Items.GoatCheese, Items.Holly, Items.Honey, Items.Horseradish, Items.JojaCola, Items.Leek, Items.MapleBar, Items.RedMushroom, Items.Risotto, Items.VoidEgg }.ToList();
 
         public CindersapForest(SaveData saveData)
         {
@@ -54,7 +56,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             if (SaveData.npc1 == "TravellingLady") Console.WriteLine("T > Speak to the travelling lady");
             Console.WriteLine("G > Go back");
 
-            switch (Console.ReadLine())
+            switch (Console.ReadLine().Substring(0, 1).ToUpper())
             {
                 case "E":
                     ExploreCindersap();
@@ -71,8 +73,9 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Forage()
         {
-            Forage_Randomiser randomiser = new(SaveData);
-            var randomItem = randomiser.ForageRandomiser();
+            var random = new Random();
+            var Index = random.Next(0, ForagableItems.Count - 1);
+            var randomItem = ForagableItems[Index];
 
             RandomForageDialogue(randomItem);
 
@@ -85,7 +88,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 randomItemCount = 1;
             }
             SaveData.MyInventory[randomItem] = randomItemCount;
-            Console.WriteLine(randomItem + " added to Inventory\n");
+            Console.WriteLine(randomItem + " added to Inventory");
             Console.WriteLine("This really is a lovely forest. Do you want to explore it further?\n");
             Explore();            
         }
@@ -115,7 +118,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Where would you like to go?\n");
             Console.WriteLine("W > West\nS > South\nG > Go back");
 
-            switch (Console.ReadLine())
+            switch (Console.ReadLine().Substring(0, 1).ToUpper())
             {
                 case "W":
                     Console.WriteLine("You wander around the lake and find yourself heading towards the tower.");

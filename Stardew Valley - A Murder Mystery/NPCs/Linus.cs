@@ -56,7 +56,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 ChooseNPC chat = new();
                 chat.ChatOptions();
 
-                var dialogue1 = Console.ReadLine();
+                var dialogue1 = Console.ReadLine().Substring(0, 1).ToUpper();
 
                 switch (dialogue1)
                 {
@@ -109,7 +109,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 if (Enums.Items.LewisStatue > 0) Console.WriteLine("S > Have you ever seen this statue before?");
                 Console.WriteLine("L > Leave");
                                
-                switch (Console.ReadLine())
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
                 {
                     case "W":
                         if (SaveData.TheMurderer == "Pierre")
@@ -162,7 +162,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 Console.WriteLine("D > Did you see them come back?");
                 Console.WriteLine("L > Leave\n");
 
-                switch (Console.ReadLine())
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
                 {
                     case "Y": Console.WriteLine("Linus > Oh, very sure. No mistake.");
                         if (SaveData.TheMurderer == "Pierre")

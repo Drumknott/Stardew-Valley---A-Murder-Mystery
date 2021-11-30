@@ -55,7 +55,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 ChooseNPC chat = new();
                 chat.ChatOptions();
 
-                var choice = Console.ReadLine();
+                var choice = Console.ReadLine().Substring(0, 1).ToUpper();
 
                 if (choice == "L")
                 {
@@ -131,7 +131,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 }
                 Console.WriteLine("L > Leave");
 
-                var askAbigail = Console.ReadLine();
+                var askAbigail = Console.ReadLine().Substring(0, 1).ToUpper();
                 if (askAbigail == "L")
                 {
                     return;

@@ -59,7 +59,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 ChooseNPC chat = new();
                 chat.ChatOptions();
 
-                var dialogue1 = Console.ReadLine();
+                var dialogue1 = Console.ReadLine().Substring(0, 1).ToUpper();
 
                 switch (dialogue1)
                 {
@@ -127,7 +127,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
             Console.WriteLine("P > Podcast?");
             Console.WriteLine("W > Who's 'we'?\n");
-            Console.ReadLine();
+            Console.ReadLine().Substring(0, 1).ToUpper();
             Console.WriteLine("Sebastian > Yeah! It's called 'True Crime Hang Time with Seb and Abby', and Sam's our producer and does audio stuff. We talk about true crime cases. This one is such a scoop, right in our town!");
             Console.WriteLine("Me > Look Sebastian, I'm glad you have a hobby you enjoy but a man is dead here. And I need to figure out who did it, ok?");
             Console.WriteLine("Sebastian > Absoloutely, Detective. Fire away.");

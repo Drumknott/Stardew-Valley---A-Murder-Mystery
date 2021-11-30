@@ -15,14 +15,12 @@ namespace Stardew_Valley___A_Murder_Mystery
 			SaveData = saveData;
 		}
 		public void InventoryList()
-		{
-			Console.WriteLine("");
-			Console.WriteLine("INVENTORY");
-			Console.WriteLine("");
+		{			
+			Console.WriteLine("\nINVENTORY\n");			
 
 			foreach(var (item, count) in SaveData.MyInventory.Where(x => x.Value > 0))
             {
-				Console.WriteLine($"\t{item}: {count}\n");				
+				Console.WriteLine($"\t{item}: {count}");				
             }					
 		}
 

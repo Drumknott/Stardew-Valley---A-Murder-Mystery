@@ -24,7 +24,7 @@ namespace Stardew_Valley___A_Murder_Mystery.Locations
             Console.WriteLine("S > Sleep until tomorrow");
             Console.WriteLine("L > Leave");
 
-            switch(Console.ReadLine())
+            switch(Console.ReadLine().Substring(0, 1).ToUpper())
             {
                 case "R":
                     CaseFile caseFile = new(SaveData);

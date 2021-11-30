@@ -31,7 +31,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("E > Explore the Mine");
             Console.WriteLine("L > Leave");
 
-            switch (Console.ReadLine())
+            switch (Console.ReadLine().Substring(0, 1).ToUpper())
             {
                 case "E":
                     MineMinigame minigame = new(SaveData);

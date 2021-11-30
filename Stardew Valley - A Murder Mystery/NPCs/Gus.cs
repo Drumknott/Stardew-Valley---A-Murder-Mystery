@@ -49,7 +49,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 Console.WriteLine("S > Shop"); //buy stuff
                 if (SaveData.FindSewerKey == true) Console.WriteLine("K > Do you know where I'd find a key for the Sewers?");
 
-                var dialogue1 = Console.ReadLine();
+                var dialogue1 = Console.ReadLine().Substring(0, 1).ToUpper();
 
                 switch (dialogue1)
                 {
@@ -115,9 +115,9 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("F > Fish Taco");
             Console.WriteLine("R > Risotto");
 
-            var order = Console.ReadLine();
+            var order = Console.ReadLine().Substring(0, 1).ToUpper();
 
-            switch(order)
+            switch (order)
             {
                 case "B":
                     Console.WriteLine("Gus > Beer it is. Here you go.");

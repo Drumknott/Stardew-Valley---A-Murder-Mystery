@@ -58,7 +58,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case Enums.Locations.Marus when saveData.Robins == true: location = new RobinDemetriusSebastianMarusHouse(saveData); break;
 
                 default:
-                    throw new Exception("Oops, something went wrong. Try that again.");
+                    Console.WriteLine("Oops, something went wrong. Let's drop you in town instead.");
+                    return location = new PelicanTown(saveData);
             }
 
             saveData.LastVisited = chosenLocation;
