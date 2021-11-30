@@ -59,7 +59,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 ChooseNPC chat = new();
                 chat.ChatOptions();
 
-                var dialogue1 = Console.ReadLine();
+                var dialogue1 = Console.ReadLine().Substring(0, 1).ToUpper();
 
                 switch (dialogue1)
                 {
@@ -130,7 +130,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 }
                 Console.WriteLine("L > Leave");
 
-                var answer = Console.ReadLine();
+                var answer = Console.ReadLine().Substring(0, 1).ToUpper();
                 if (answer == "L") break;
 
                 else switch (answer)
@@ -162,7 +162,6 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                         caseK = true;
                         break;
-
                     case "I":
                         Console.WriteLine("Is it true that you and Lewis were in a relationship? Why was it a secret?");
                         Console.WriteLine("Marnie gasps.");

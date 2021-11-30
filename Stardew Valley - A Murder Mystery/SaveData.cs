@@ -24,6 +24,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public string PlayerName { get; set; }
         public string FarmerName { get; set; }
         public string TheMurderer { get; set; }
+        public string NewMayor { get; set; }
         public bool TravellingLady { get; set; }
         public bool Homeless { get; set; }
         public bool ExploredNorth { get; set; }

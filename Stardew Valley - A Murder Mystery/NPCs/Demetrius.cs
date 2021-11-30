@@ -49,7 +49,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 ChooseNPC chat = new();
                 chat.ChatOptions();
 
-                var dialogue1 = Console.ReadLine();
+                var dialogue1 = Console.ReadLine().Substring(0, 1).ToUpper();
 
                 switch (dialogue1)
                 {
@@ -119,7 +119,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 if (SaveData.SuspectDemetrius == true) Console.WriteLine("U > Linus says he saw you go into the mines on Friday night, about midnight. Can you tell me about that?");
                 Console.WriteLine("L > Leave\n");
 
-                switch (Console.ReadLine())
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
                 {
                     case "W":
                         Console.WriteLine("Demetrius > I had a late night in my lab. I've been looking at the mineral content of various mushroom growths, and-");

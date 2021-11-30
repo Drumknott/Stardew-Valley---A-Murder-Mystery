@@ -29,13 +29,13 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 Console.WriteLine("Hat Mouse > You want hat?\n");
                 Console.WriteLine("Y > Yes\nN > No\n");
 
-                switch (Console.ReadLine())
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
                 {
                     case "Y":
                         Console.WriteLine("Me > Yes, but I don't have any money.\n");
                         Console.WriteLine("Hat Mouse > We trade, poke. You give gift, I give hat.\n");
                         Console.WriteLine("Trade for a hat?\nY > Yes\nN > No");
-                        var tradeForHat = Console.ReadLine();
+                        var tradeForHat = Console.ReadLine().Substring(0, 1).ToUpper();
                         if (tradeForHat == "Y")
                         {
                             Gift();
@@ -67,7 +67,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
-            var gift = Console.ReadLine();
+            var gift = Console.ReadLine().Substring(0, 1).ToUpper();
             Gift giftMethod = new(SaveData);
             int validGift = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
             if (validGift == 0)

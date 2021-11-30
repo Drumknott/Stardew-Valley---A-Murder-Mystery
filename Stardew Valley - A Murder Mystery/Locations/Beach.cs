@@ -1,4 +1,5 @@
-﻿using Stardew_Valley___A_Murder_Mystery.NPCs;
+﻿using Stardew_Valley___A_Murder_Mystery.Enums;
+using Stardew_Valley___A_Murder_Mystery.NPCs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Stardew_Valley___A_Murder_Mystery
     class Beach : Location
     {
         private SaveData SaveData { get; set; }
+        private List<Items> ForagableItems = new[] { Items.Clam, Items.Coal, Items.Coral, Items.JojaCola, Items.Octopus, Items.Seaweed, Items.VoidEgg, Items.Beer, Items.Clay, Items.Coconut, Items.Daffodil, Items.MapleBar, Items.VoidEgg }.ToList();
 
         public Beach(SaveData saveData)
         {
@@ -53,8 +55,9 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         public override void Forage()
         {
-            Forage_Randomiser randomiser = new(SaveData);
-            var randomItem = randomiser.ForageRandomiser();
+            var random = new Random();
+            var Index = random.Next(0, ForagableItems.Count - 1);
+            var randomItem = ForagableItems[Index];
 
             RandomForageDialogue(randomItem);
 

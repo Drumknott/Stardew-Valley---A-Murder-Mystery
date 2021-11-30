@@ -39,7 +39,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                     Console.WriteLine("The door to the back room is open, and you can hear voices and laughter from inside.\n");                    
                     Console.WriteLine("I > Investigate the back room");
                     Console.WriteLine("S > Stay in the store");
-                    var investigate = Console.ReadLine();
+                    var investigate = Console.ReadLine().Substring(0, 1).ToUpper();
 
                     if (investigate == "I")
                     {

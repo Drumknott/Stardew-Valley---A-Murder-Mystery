@@ -38,15 +38,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                 }
 
 
-                Random Murderer = new();
-                int random = Murderer.Next(0, 2);
-
-                switch (random)
-                {
-                    case 0: saveData.TheMurderer = "Pierre"; break;
-                    case 1: saveData.TheMurderer = "Marnie"; break;
-                    case 2: saveData.TheMurderer = "Kent"; break;
-                }
+                Randomiser randomiser = new(saveData);
+                randomiser.RandomMurderer();
 
                 Intro Opening = new(saveData);
                 Opening.Opening();
@@ -205,7 +198,17 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                 if (commandType == Commands.AdminHack)
                 {                    
-                    Console.WriteLine(saveData.TheMurderer);                    
+                    Console.WriteLine(saveData.TheMurderer);
+                    if (saveData.MyInventory.TryGetValue(Items.Amethyst, out var amethystCount) == true)
+                    {
+                        amethystCount += 3;
+                    }
+                    else
+                    {
+                        amethystCount = 3;
+                    }
+                    saveData.MyInventory[Items.Amethyst] = amethystCount;
+                    saveData.DayCount = 5;
                 }
             }
         }

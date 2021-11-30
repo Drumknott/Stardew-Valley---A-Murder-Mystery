@@ -55,7 +55,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 ChooseNPC chat = new();
                 chat.ChatOptions();
 
-                var dialogue1 = Console.ReadLine();
+                var dialogue1 = Console.ReadLine().Substring(0, 1).ToUpper();
 
                 switch (dialogue1)
                 {
