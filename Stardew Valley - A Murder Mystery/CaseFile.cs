@@ -28,10 +28,18 @@ namespace Stardew_Valley___A_Murder_Mystery
             {
                 Console.WriteLine($"\nLinus saw {SaveData.TheMurderer} go into the mine in the middle of the night. What were they doing there?");
             }
-            if (SaveData.SuspectDemetrius == true)
+            else if (SaveData.SuspectDemetrius == true)
             {
                 Console.WriteLine($"\nLinus saw Demetrius go into the mine in the middle of the night. What were they doing there?");
             }
+
+            if (SaveData.CrypticNote == true)
+            {
+                Console.WriteLine("\nYou found a cryptic note in Mayor Lewis' house, with a large amount of money that could be considered a bribe;\n");
+                Console.WriteLine("Lewis, I know you're having reservations about selling the Community Centre. Please let me reassure you, it will be used for the good of the community.");
+                Console.WriteLine("As a token of our goodwill, I have enclosed a little gift for you. I hope you make the right decision. -M\n");
+            }
+
             if (SaveData.MyInventory[Enums.Items.LewisStatue] == 1)
             {
                 Console.WriteLine("You found a bloodstained statue of Lewis that someone had tried to hide in the mine. Could it be the murder weapon?");

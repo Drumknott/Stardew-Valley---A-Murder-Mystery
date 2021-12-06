@@ -42,9 +42,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                     SaveData.npc1 = "TravellingLady";
                     break;
                 case 5:
-                    Console.WriteLine("Willy and the Wizard are up to THINGS"); // totally sus dark ritual to yoba
-                    SaveData.npc1 = "Willy";
-                    SaveData.npc2 = "Wizard";
+                    Ritual ritual = new(SaveData);
+                    ritual.SecretRitual();
                     break;
                 default: break;
             }          
@@ -123,12 +122,14 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case "W":
                     Console.WriteLine("You wander around the lake and find yourself heading towards the tower.");
                     Console.WriteLine("There's smoke coming from the chimney - someone must be home. Tentatively you knock on the door and go in.\n");
+                    Console.WriteLine("Wizard's [Tower] added to Location List");
                     wizardsTower.Enter();
                     break;
                 case "S":
                     Console.WriteLine("You stroll along the riverbank for a while. After a few minutes you come to a wooden bridge, which you decide to cross.");
                     Console.WriteLine("Other the other side you can see what looks like an abandoned house hiden by some trees.");
                     Console.WriteLine("You decide to go in for a closer look.\n");
+                    Console.WriteLine("Hat Mouse's [Haus] added to Location List");
                     hatMausHaus.Enter();
                     break;
                 case "G":

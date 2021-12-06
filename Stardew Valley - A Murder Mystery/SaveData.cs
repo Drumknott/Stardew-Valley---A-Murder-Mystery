@@ -149,6 +149,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool podcast { get; set; }
         public bool Suspect { get; set; }
         public bool SuspectDemetrius { get; set; }
+        public bool CrypticNote { get; set; } 
         public string npc1 { get; set; }
         public string npc2 { get; set; }
         public string npc3 {get; set;}
@@ -162,6 +163,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public string npc11 { get; set; }
         public string npc12 { get; set; }
         public string npc13 { get; set; }
+        public int PodcastCount { get; set; }
 
         //increase time
         public bool Autopsy { get; set; }

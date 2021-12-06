@@ -23,6 +23,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 if (SaveData.HarveyCount == 0) //first meeting
                 {
                     Console.WriteLine("Harvey > It's a pleasure to meet you. I'm Harvey, the local doctor.");
+                    SaveData.HarveyCount++;
                 }
 
                 else
@@ -54,18 +55,20 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > How are you doing, Harvey?");
                         SaveData.HarveyFriendship++;
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Would you like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Can I ask you about Mayor Lewis?");
                         Investigate();
+                        Console.WriteLine("Me > Ok, thank you Harvey. You've been very helpful.");
                         break;
-                    case "L": SaveData.HarveyCount++;
+                    case "L": 
+                        SaveData.HarveyCount++;
                         return;
                     default: break;
                 }               
@@ -84,28 +87,112 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
-            var gift = Console.ReadLine();
+            var gift = Console.ReadLine().Substring(0, 1).ToUpper();
             Gift giftMethod = new(SaveData);
             int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
             SaveData.HarveyFriendship += friendshipChange;            
         }
 
+        bool CaseH;
+        bool CaseR;
+        bool CaseI;
+
         void Investigate()
         {
-            Console.WriteLine("A > Autopsy");
-            var investigate = Console.ReadLine();
-            if (investigate == "A")
+            Console.WriteLine("Harvey > Of course, Detective. What can I halp you with?\n");
+
+            while (true)
             {
-                Autopsy();
+                if (CaseH == true && CaseI == true && CaseR == true)
+                {
+                    return;
+                }
+
+                Console.WriteLine("\nH > You must know everyone in town pretty well, Doctor. How well did you know Lewis?");
+                Console.WriteLine("R > I understand you have Mayor Lewis' remains at your clinic?");
+                Console.WriteLine("B > How was the body when you found it?");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "H":
+                        Console.WriteLine("Harvey > I knew him pretty well. He was a nice man, always had time to say hello to everyone around town.");
+                        Console.WriteLine("Me > Do you know if he had any enemies?");
+                        Console.WriteLine("Harvey > Not enemies, no. Pierre wasn't happy about Lewis' idea to turn the old Community Centre in a Joja Mart warehouse,");
+                        Console.WriteLine("Harvey > but it's not something he'd kill over.");
+                        CaseH = true;
+                        break;
+                    case "R":
+                        Console.WriteLine("Harvey > That's correct Detective. Do you want to see it?");
+                        Console.WriteLine("Me > Well I'm more interested in the findings of the autopsy. Do you know how he died??");
+                        Console.WriteLine("Harvey looks uncomfortable.");
+                        Console.WriteLine("Harvey > Um, I've not actually had a chance to do it yet I'm afraid.");
+                        Console.WriteLine("Me > Well, we'd better get started then hadn't we?\n");
+                        Console.WriteLine("A > Do the Autopsy now");
+                        Console.WriteLine("T > Another Time");
+
+                        var investigate = Console.ReadLine().Substring(0, 1).ToUpper();
+                        if (investigate == "A")
+                        {
+                            Autopsy();
+                            CaseR = true;
+                        }
+                        else break;
+                        break;
+                    case "B":
+                        Console.WriteLine("Harvey looks alarmed.");
+                        Console.WriteLine("Oh, I didn't find the body, Detective, Marnie-");
+                        Console.WriteLine("Me > My apologies. I should have said, 'How was the body when you attended the scene?'");
+                        Console.WriteLine("Harvey > Well, he was face down on the living room floor. He was still warm but there was no pulse or breathing.");
+                        Console.WriteLine("Harvey > Of course I started CPR but it was too late, and after thirty minutes we had to stop.");
+                        Console.WriteLine("Me > 'We'?");
+                        Console.WriteLine("Harvey > Well Marnie called me, and as soon as I got there I sent her to run to the saloon for help, as it's right next door.");
+                        Console.WriteLine("Harvey > Gus came, with Willy and Shane. Shane comforted Marnie while Gus and Willy helped me.");
+                        Console.WriteLine("Me > Marnie is the one who found the body?");
+                        Console.WriteLine("Harvey > Yes sir.");
+                        Console.WriteLine("Me > Do you know what she was doing at his house?");
+                        Console.WriteLine("Harvey > No idea I'm afraid.");
+                        Console.WriteLine("And what about the others?");
+                        if (SaveData.ShaneCount == 0)
+                        {
+                            Console.WriteLine("Me > Shane?");
+                            Console.WriteLine("Harvey > Shane is Marnie's nephew. He lives with her.");
+                        }
+                        if (SaveData.GusCount == 0)
+                        {
+                            Console.WriteLine("Me > Willy?");
+                            Console.WriteLine("Harvey > Willy's a fisherman. He's got a little shack down on the quay.");
+                        }
+                        if (SaveData.WillyCount == 0)
+                        {
+                            Console.WriteLine("Me > Gus?");
+                            Console.WriteLine("Harvey > Gus runs the saloon. ");
+                        }
+                        Console.WriteLine("Harvey > They're all good people, Detective. I don't believe any of them would have killed Mayor Lewis.");
+
+                        CaseI = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
             }
         }
 
         void Autopsy()
         {
-            Console.WriteLine("Do Autopsy");
+            Console.WriteLine("Harvey takes you to one of the prive rooms at the back of his clinic. Here he proceeds to set up various medical equipment,");
+            Console.WriteLine("before opening a stainless stell door and pulling out a trolley with a body bag on it.");
+            Console.WriteLine("Harvey > Are you ready?");
+            Console.WriteLine("You nod. Harvey unzips the body bag, and you can see the body of Mayor Lewis. His skin is grey, and his mouth gapes open, completely still.");
+            Console.WriteLine("Harvey points.");
+            Console.WriteLine("Harvey > Look at these bruises and swelling around his head. That looks like a blunt force trauma. I'm going to do a full examination,");
+            Console.WriteLine("but I have a feeling that will be the answer to your question.");
+            Console.WriteLine("Harvey works away for nearly two hours, inspecting and taking samples. Finally he sighs, takes off his gloves, and looks at you.");
+            Console.WriteLine("Harvey > It's as I thought. All his blood tests are normal, and I cant find any other evidence of injury or disease.");
+            Console.WriteLine("Harvey > Mayor Lewis was killed by a blow to the back of his head. His occipital skull is fractured, so it was probably something heavy.\n");
+            Console.WriteLine("Blunt force trauma to the back of the head. So he didn't even see it coming. Well that's something to think about.");
             SaveData.Autopsy = true;
-            SaveData.Vivisection = true;
-            
+            SaveData.Vivisection = true;            
         }
     }
 }

@@ -66,18 +66,18 @@ namespace Stardew_Valley___A_Murder_Mystery
                 switch (choice)
                 {
                     case "C":
-                        Console.WriteLine("Hi Abigail, just wanted to see how you're doing.");
+                        Console.WriteLine("Me > Hi Abigail, just wanted to see how you're doing.");
                         SaveData.AbigailFriendship++;
                         break;
                     case "G":
-                        Console.WriteLine("Oh here, I wanted to give you this.");
+                        Console.WriteLine("Me > Oh here, I wanted to give you this.");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("I was hoping I could ask you about Mayor Lewis?");
+                        Console.WriteLine("Me > I was hoping I could ask you about Mayor Lewis?");
                         Console.WriteLine("Abigail > Oh, sure. What about him?");
                         Investigate();
-                        Console.WriteLine("Ok, I think I've got what I need. Thanks, Abigail.");
+                        Console.WriteLine("Me > Ok, I think I've got what I need. Thanks, Abigail.");
                         break;
                     default: break;
                 }
@@ -130,6 +130,10 @@ namespace Stardew_Valley___A_Murder_Mystery
                     Console.WriteLine("S > Have you ever seen this statue before?");
                 }
                 Console.WriteLine("L > Leave");
+                if (SaveData.podcast == true)
+                {
+                    Console.WriteLine("T > Sebastian told me you guys are doing a podcast together?");
+                }
 
                 var askAbigail = Console.ReadLine().Substring(0, 1).ToUpper();
                 if (askAbigail == "L")
@@ -140,23 +144,27 @@ namespace Stardew_Valley___A_Murder_Mystery
                 else switch (askAbigail)
                 {
                     case "H":
-                            Console.WriteLine("How well did you know him?");                          
+                            Console.WriteLine("Me > How well did you know him?");
+                            Console.WriteLine("Abigail > Kinda well? I knew him from town events and stuff, but I never really spent much time with him apart from that.");
                             break;
                     case "W":
-                            Console.WriteLine("Where were you on the night he was murdered?");                       
+                            Console.WriteLine("Me > Where were you on the night he was murdered?");
+                            Console.WriteLine("Abigail > I was at home playing videogames. I suck at Junimo Kart, I can't even get past the first level.");
                             break;
-                    case "P":
-                        if (SaveData.PierreLied == true)
-                            Console.WriteLine("Abigail > Yeah, we were playing Journey of the Prairie King together.");                            
-                        if (SaveData.AbigailFriendship > 4)
-                            Console.WriteLine("Abigail pauses.");
-                            Console.WriteLine("Abigail > Well… um, that wasn't true about my dad being home actually.");
-                            Console.WriteLine("I was playing Journey of the Prairie King, but he wasn't there. He only got home about midnight. ");
+                    case "P" when SaveData.PierreLied == true:                           
+                            Console.WriteLine("Abigail > Yeah, we were playing Journey of the Prairie King together.");
+                            if (SaveData.AbigailFriendship > 4)
+                            {
+                                Console.WriteLine("Abigail pauses.");
+                                Console.WriteLine("Abigail > Well… um, that wasn't true about my dad being home actually.");
+                                Console.WriteLine("I was playing Journey of the Prairie King, but he wasn't there. He only got home about midnight. ");
+                            }
                             break;
                     case "S":
                         if (lewisStatue > 0) Console.WriteLine("Abigail > Let's see. No, I don't think so. Ha, it looks like Lewis, that's funny.");                       
                             break;
-                        case "L": 
+                        case "T" when SaveData.podcast == true:
+                            Console.WriteLine("Abigail > Oh yeah! It's called True Crime Hang Time, we drink coffee and talk about all different serial killers. It's fun. \nSam does our audio production. We're hoping to do a feature on MAyor Lewis when the case is solved...");
                             break;
                     default: break;
                 }
