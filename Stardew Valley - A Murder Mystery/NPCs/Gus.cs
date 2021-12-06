@@ -68,7 +68,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                         Console.WriteLine("Me > I was hoping to buy something from you Gus");
                         Buy();
                         break;
-                    case "K":
+                    case "K" when SaveData.FindSewerKey == true:
                         Console.WriteLine("Gus > For the sewers? Goodness, why would you want to go down there? \nGus > Mayor Lewis had a key, but I don't know where it would be now.");
                         break;
                     case "L": SaveData.GusCount++;

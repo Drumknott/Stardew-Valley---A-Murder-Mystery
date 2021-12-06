@@ -97,7 +97,10 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            if (SaveData.CrypticNote == true)
+            {
 
+            }
         }
     }
 }

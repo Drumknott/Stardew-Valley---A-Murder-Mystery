@@ -33,37 +33,45 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Enter > Continue\n");            
             Console.ReadKey();
             SaveData.DayCount++;
+            Podcast podcast = new(SaveData);
+
             
             switch (SaveData.DayCount)
             {
                 case 1:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("*********\n* DAY 2 *\n*********\n");
+                    podcast.PodcastIntro();
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case 2:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("*********\n* DAY 3 *\n*********\n");
+                    podcast.PodcastIntro();
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case 3:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("*********\n* DAY 4 *\n*********\n");
+                    podcast.PodcastIntro();
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case 4:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("*********\n* DAY 5 *\n*********\n");
+                    podcast.PodcastIntro();
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case 5:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("*********\n* DAY 6 *\n*********\n");
+                    podcast.PodcastIntro();
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case 6:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("***********************\n* DAY 7: ELECTION DAY *\n***********************\n");
+                    podcast.PodcastIntro();
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
             }
