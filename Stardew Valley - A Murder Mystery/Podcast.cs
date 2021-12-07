@@ -25,7 +25,12 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         string PodcastDialogue()
         {
-            switch (SaveData.DayCount)
+            if (SaveData.MysterySolved == true)
+            {
+                return $"{SaveData.TheMurderer}, the Pelican Town Murderer. We're here to give you the inside scoop on this one, \nas it happened right under our noses. Stay tuned for the full details...'";
+            }
+
+           else switch (SaveData.DayCount)
             {
                 case 0:
                     return "Ed Kemper. Did you know he narrated audiobooks while he was in prison? I know, wild right?\nImagine your kids listening to a serial killer telling them bedtime stories. Creepy...'";
@@ -42,7 +47,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 case 6:
                     return "Pedro Lopez. Despite confessing to the murder of more than three HUNDRED people, \nhe was released from prison in 1998, and his current whereabouts are unknown...'";
                 default:
-                    if (SaveData.HotShot == true)
+                    if (SaveData.MysterySolved == true)
                     {
                         return $"{SaveData.TheMurderer}, the Pelican Town Murderer. We're here to give you the inside scoop on this one, \nas it happened right under our noses. Stay tuned for the full details...'";
                     }

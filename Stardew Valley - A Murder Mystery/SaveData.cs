@@ -163,7 +163,10 @@ namespace Stardew_Valley___A_Murder_Mystery
         public string npc11 { get; set; }
         public string npc12 { get; set; }
         public string npc13 { get; set; }
-        public int PodcastCount { get; set; }
+        public bool ElectionStart { get; set; }
+        public bool MysterySolved { get; set; }
+        public string AccusedMurderer { get; set; }
+        public bool NPCaccused { get; set; }
 
         //increase time
         public bool Autopsy { get; set; }

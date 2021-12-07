@@ -65,7 +65,8 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("          ,,, ***###******##################***,,,       ");
             Console.WriteLine("             ,,,,,, ***,,, ***#########***,,,,,,         ");
             Console.WriteLine("                   ,,,###,,,,,,,,,,,,,,,                 ");
-            Console.WriteLine("                   ,,,###&&&&&&,,,&&&,,,                 \n\n");
+            Console.WriteLine("                   ,,,###&&&&&&,,,&&&,,,                 ");
+            Console.WriteLine("                           THE END                       ");
         }
     }
 }
