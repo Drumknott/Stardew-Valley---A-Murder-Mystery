@@ -65,6 +65,15 @@ namespace Stardew_Valley___A_Murder_Mystery
 
             void DoStuffMethod()
             {
+                if (saveData.NPCaccused == true)
+                {
+                    Podcast podcast = new(saveData);
+                    podcast.PodcastIntro();
+                    graphic.EndGraphic();
+                    Console.ReadKey();
+                    return;
+                }
+
                 Achievements achievements = new(saveData);
                 achievements.CheckAchievements();
 

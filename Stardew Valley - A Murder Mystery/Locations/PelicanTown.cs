@@ -73,8 +73,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                         SaveData.npc1 = "Kent";
                         break;
                     case 6:
-                        Console.WriteLine("It's Election Day!");
-                        //ELECTION DAY
+                        ElectionDay election = new(SaveData);
+                        election.Election();
                         break;
                     default: break;
                 }
