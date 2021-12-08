@@ -56,19 +56,21 @@ namespace Stardew_Valley___A_Murder_Mystery
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("Hi Caroline, how are you doing?");
+                        Console.WriteLine("Me > Hi Caroline, how are you doing?");
                         Console.WriteLine("Caroline > Not bad, all this campaigning busness is stressful though. Vote for Pierre!");
                         SaveData.CarolineCount++;
                         break;
                     case "G":
-                        Console.WriteLine("Hey Caroline, I thought you might like this?");
+                        Console.WriteLine("Me > Hey Caroline, I thought you might like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("Hi Caroline, I was wondering if I could ask you a few questions about Mayor Lewis?");
+                        Console.WriteLine("Me > Hi Caroline, I was wondering if I could ask you a few questions about Mayor Lewis?");
                         Investigate();
+                        Console.WriteLine("Me > Great. Thanks for your help, Caroline.");
                         break;
                     case "L": SaveData.CarolineCount++;
+                        Console.WriteLine("Me > Bye, Caroline!");
                         return;
                     default: break;
                 }
@@ -96,6 +98,57 @@ namespace Stardew_Valley___A_Murder_Mystery
         void Investigate()
         {
             //mention M. Rasmodius
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
+
+            Console.WriteLine("Caroline > Oh, of course. I'll help any way I can.\n");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3)
+                {
+                    Console.WriteLine("Caroline > Oh, Detective? I think I know someone who might be able to help. If you head down to the forst, you'll see a tower out west.");
+                    Console.WriteLine("Caroline > Go there, and say Caroline sent you.");
+                    return;
+                }
+
+                Console.WriteLine("W > Where were you the night he was killed?");
+                Console.WriteLine("H > How is Pierre feeling about the election?");
+                Console.WriteLine("D > Do you know if there was anyone who might want to harm Lewis?");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Caroline > I was at home. Catching up on some of my gossip magazines I think.");
+                        Console.WriteLine("Me > And what about Pierre and Abigail?");
+                        Console.WriteLine("Caroline > Oh, Abby was playing more of those silly videogames. I wish she would grow up a bit.");
+                        Console.WriteLine("Me > And Pierre?");
+                        Console.WriteLine("Caroline > I... I think he was doing stock check in the shop?");
+                        Console.WriteLine("Me > You're sure?");
+                        Console.WriteLine("Caroline > Well he wasn't in the house so can't think where else he'd be. Don't worry Detective, he would never harm a fly.");
+                        Case1 = true;
+                        break;
+                    case "H":
+                        Console.WriteLine("Caroline > He's a bit stressed about it, I think. That's to be expected though. He's worried that Morris might win and the shop will go out of business.");
+                        if (SaveData.CrypticNote == true)
+                        {
+                            Console.WriteLine("Me > Do you think he's running for Mayor to stop that from happening? To stop Morris from winning?");
+                            Console.WriteLine("Caroline > It's definitely a big factor, yes. What does this have to do with Lewis, though?");
+                            Console.WriteLine("Me > I'm just trying to establish what lengths Pierre would go to to protect his business.");
+                            Console.WriteLine("Caroline > ...");
+                        }
+                        Case2 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Caroline > Not harm him, no. I know Demetrius had some disagreements with him about what the town was doing to protect the local ecosystem, \nbut it was never serious enough to lead to violence.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

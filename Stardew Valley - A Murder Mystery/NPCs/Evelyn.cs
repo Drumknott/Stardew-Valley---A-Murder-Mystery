@@ -53,14 +53,14 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hello, Evelyn. Lovely day, isn't it?");
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > I found this and thought of you.");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Do you mind if I ask you a few questions?");
                         Investigate();
                         break;
                     case "L":
@@ -91,7 +91,39 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Evelyn > Of course you can, dear. What is it?");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("H > How well did you know Lewis?");
+                Console.WriteLine("W > Where were you the night Lewis was attacked?");
+                Console.WriteLine("D > Do you know if anyone was angry with him?");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "H":
+                        Console.WriteLine("Evelyn > Oh, I've known Lewis since he was a boy! Very well behaved child. I taught him how to look after his garden");
+                        Case1 = true;
+                        break;
+                    case "W":
+                        Console.WriteLine("Evelyn > I was at home, dear. I'm not one for late nights any more! George and I are usually in bed by nine.");
+                        Case2 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Evelyn > Angry with him? Oh goodness, why would anyone be angry with him? He always looked out for everyone. No, certainly not.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

@@ -43,6 +43,7 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool MineDemetrius { get; set; }
         public bool SewerKey { get; set; }
         public bool FindSewerKey { get; set; }
+        public bool Blackmail { get; set; }
 
 
         //Places Visited

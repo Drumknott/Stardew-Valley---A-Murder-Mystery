@@ -61,20 +61,20 @@ namespace Stardew_Valley___A_Murder_Mystery
             else
             {
                 Random dialogue = new();
-                int random = dialogue.Next(0, 10);
+                int random = dialogue.Next(0, 9);
 
                 switch (random) //random dialogue
-                {
-                    case 0: Console.WriteLine(""); break;
-                    case 1: Console.WriteLine(""); break;
-                    case 2: Console.WriteLine(""); break;
-                    case 3: Console.WriteLine(""); break;
-                    case 4: Console.WriteLine(""); break;
-                    case 5: Console.WriteLine(""); break;
-                    case 6: Console.WriteLine(""); break;
-                    case 7: Console.WriteLine(""); break;
-                    case 8: Console.WriteLine(""); break;
-                    case 9: Console.WriteLine(""); break;
+                {                    
+                    case 0: Console.WriteLine($"Farmer {SaveData.FarmerName} > I love Spring time - the new blossoms on the trees give me life!"); break;
+                    case 1: Console.WriteLine($"Farmer {SaveData.FarmerName} > My cows hate the rain - the chickens love it though!"); break;
+                    case 2: Console.WriteLine($"Farmer {SaveData.FarmerName} > I'm growing potatoes down on the bottom field at the moment. You can have some when they're ready!"); break;
+                    case 3: Console.WriteLine($"Farmer {SaveData.FarmerName} > Have you met my horse? I call her Reneigh"); break;
+                    case 4: Console.WriteLine($"Farmer {SaveData.FarmerName} > I've got white chickens, brown chickens, a black chicken and... blue. Please don't ask."); break;
+                    case 5: Console.WriteLine($"Farmer {SaveData.FarmerName} > My grandfather left me this farm. I'm doing my best to bring it back to it's former glory in his memory."); break;
+                    case 6: Console.WriteLine($"Farmer {SaveData.FarmerName} > Look out for fruit bushes - it's nearly salmonberry season!"); break;
+                    case 7: Console.WriteLine($"Farmer {SaveData.FarmerName} > Have you heard Sebastian and Abigail's podcast? It's pretty morbid..."); break;
+                    case 8: Console.WriteLine($"Farmer {SaveData.FarmerName} > The egg festival is next week. My chickens are working overtime on those eggs! "); break;
+                    case 9: Console.WriteLine($"Farmer {SaveData.FarmerName} > Poor Lewis. I don't know what we'll do without him."); break;
                     default: break;
                 }
                 ChooseNPC chat = new();
@@ -85,15 +85,16 @@ namespace Stardew_Valley___A_Murder_Mystery
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hi, can we chat?");
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Would you like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Do you mind answering a few questions for me...?");
                         Investigate();
+                        Console.WriteLine($"Me > Ok, thanks {SaveData.FarmerName}.");
                         break;
                     default: break;
                 }
@@ -123,7 +124,41 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine($"Farmer {SaveData.FarmerName} > No problem - ask away.\n");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("W > Where were you last Friday night?");
+                Console.WriteLine("T > Tell me about Mayor Lewis?");
+                Console.WriteLine("E > Is there anyone else in particular you think I should be talking to?");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine($"Farmer { SaveData.FarmerName} > I was at the Saloon. I'm sure you've already heard about the commotion, or you will.");
+                        Console.WriteLine($"Farmer { SaveData.FarmerName} > I left soon after that though. I always have to be up early to feed the animals, so I like to get an early night. ");
+                        Case1 = true;
+                        break;
+                    case "T":
+                        Console.WriteLine($"Farmer { SaveData.FarmerName} > Well, I've only lived in town just over a year, so I don't know him as well as a lot of the other townsfolk would.");
+                        Console.WriteLine($"Farmer { SaveData.FarmerName} > But he always seemed ok to me. Never forgot to check my shipping bin, always punctual with payments. Decent man.");
+                        Case2 = true;
+                        break;
+                    case "E":
+                        Console.WriteLine($"Farmer { SaveData.FarmerName} > I'd chat to Gus at the saloon. He always seems to know what's going on around town.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

@@ -51,14 +51,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");                        
+                        Console.WriteLine("Me > Hi George, how are you doing?");
+                        Console.WriteLine("George > What? Speak up, I can't hear you!");
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Would you like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > George, can I ask you some questions?");
                         Investigate();
                         break;
                     case "L": SaveData.GeorgeCount++;
@@ -88,7 +89,39 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("George > If you must. But don't take too long, you're interrupting my television time!");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("W > Where were you the night Lewis was killed?");
+                Console.WriteLine("D > Did you know Lewis very well?");
+                Console.WriteLine("C > Is there anything you can tell me?");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("George > What? Lewis is dead? Oh, wait, yes I remember now. My memory isn't what it once was. I was here probably. I don't go outside very often.");
+                        Case1 = true;
+                        break;
+                    case "2":
+                        Console.WriteLine("George > Lewis? I don't know the boy that well, you'll have to ask Evelyn.");
+                        Case2 = true;
+                        break;
+                    case "3":
+                        Console.WriteLine("George > Yes. Next time you see him, tell him to stop making such a racket at all hours of the night. Some of us are trying to sleep!");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

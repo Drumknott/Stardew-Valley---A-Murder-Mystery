@@ -69,7 +69,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 {
                     Podcast podcast = new(saveData);
                     podcast.PodcastIntro();
-                    graphic.EndGraphic();
+                    Graphic.EndGraphic();
                     Console.ReadKey();
                     return;
                 }

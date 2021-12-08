@@ -56,15 +56,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hi Emily.");
                         SaveData.EmilyFriendship++;
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Emily, I thought you might like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > May I ask you a few questions?");
                         Investigate();
                         break;
                     case "L": SaveData.EmilyCount++;
@@ -95,7 +95,42 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Emily > Sure! What's on your mind?");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("F > Can you tell me about Friday night?");
+                Console.WriteLine("H > How did you like Lewis?");
+                Console.WriteLine("W > What do you think happened?");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "F":
+                        Console.WriteLine("Emily > Well I was working at the saloon as usual. Marnie came rushing in screaming something about Lewis, so Gus, Shane and Willy went to help her.");
+                        Console.WriteLine("Emily > Gus told me to stay and mind the bar.");
+                        Console.WriteLine("Me > And what happened next?");
+                        Console.WriteLine("Well Gus came back after about an hour and said Lewis was dead! It's so awful.");
+                        Case1 = true;
+                        break;
+                    case "H":
+                        Console.WriteLine("Emily > I mean I didn't know him too well but he seemed like a nice man. I can't imagine why anyone would want to kill him.");
+                        Case2 = true;
+                        break;
+                    case "W":
+                        Console.WriteLine("Emily > Oh, goodness. I don't know. It feels mean to say, but I'm a big believer in karma. Maybe he had it coming?");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
 
     }

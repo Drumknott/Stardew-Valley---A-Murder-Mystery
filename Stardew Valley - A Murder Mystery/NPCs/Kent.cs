@@ -53,7 +53,14 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");                        
+                        if (SaveData.DayCount == 6)
+                        {
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("");
+                        }
                             break;
                     case "G":
                         Console.WriteLine("");

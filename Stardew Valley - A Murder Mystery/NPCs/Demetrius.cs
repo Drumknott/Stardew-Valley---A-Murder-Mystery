@@ -56,25 +56,24 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                     case "C":
                         if (SaveData.Flashlight == false)
                         {
-                            Console.WriteLine("Demetrius > I like to go foraging for mushrooms in the mines sometimes. HEre, I've got a spare flashlight if you ever fancy giving it a go.");
+                            Console.WriteLine("Demetrius > I like to go foraging for mushrooms in the mines sometimes. Here, I've got a spare flashlight if you ever fancy giving it a go.");
                             Console.WriteLine("Gained Flashlight");
                             SaveData.Flashlight = true;
                         }
                         else
                         {
-                            Console.WriteLine("Me > How are things, Demterius?");
+                            Console.WriteLine("Me > How are things, Demetrius?");
                             Console.WriteLine("Demetrius > Good thank you, Detective. I always have plenty of research to keep me busy.");
                         }
-                        Console.WriteLine("");
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Is this of any use to you?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("Hi Demetrius. Could I ask you a few questions as part of my investigation?");
+                        Console.WriteLine("Me > Hi Demetrius. Could I ask you a few questions as part of my investigation?");
                         Investigate();
-                        Console.WriteLine("Thanks, Demetrius. I think that answers all my questions for now.");
+                        Console.WriteLine("Me > Thanks, Demetrius. I think that answers all my questions for now.");
                         break;
                     case "L": SaveData.DemetriusCount++;
                         return;
@@ -112,10 +111,10 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
             while (caseW == false && caseM == false && caseS == false && caseD == false)
             {
-                Console.WriteLine("W > Where were you on Friday night?");
+                Console.WriteLine("\nW > Where were you on Friday night?");
                 Console.WriteLine("M > Was Mayor Lewis well liked around town? Do you know if anyone had a problem with him?");
                 if (SaveData.MineDemetrius == true) Console.WriteLine("S > When I spoke to you in the mines you said you go there a lot. Would you say you know them better than most people in town?");
-                if (SaveData.MyInventory[Enums.Items.LewisStatue] == 1) Console.WriteLine("D > Have you ever seen this statue before, Demetrius?");
+                if (SaveData.MyInventory[Enums.Items.LewisStatue] >0) Console.WriteLine("D > Have you ever seen this statue before, Demetrius?");
                 if (SaveData.SuspectDemetrius == true) Console.WriteLine("U > Linus says he saw you go into the mines on Friday night, about midnight. Can you tell me about that?");
                 Console.WriteLine("L > Leave\n");
 
@@ -128,11 +127,12 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         caseW = true;
                         break;
                     case "M":
-                        Console.WriteLine("");
+                        Console.WriteLine("Demetrius > He and I disagreed on a few things - I thought we should be doing more to sustain the local ecosystems, but he was all about expanding.");
+                        Console.WriteLine("Demetrius > It was never something we fell out over though.");
                         caseM = true;
                         break;
                     case "S":
-                        Console.WriteLine("");
+                        Console.WriteLine("Demetrius > I know the surface levels fairly well, yes. If you're looking for a true expert though I'd recommend Marlon or maybe Linus.");
                         caseS = true;
                         break;
                     case "D":
@@ -145,6 +145,8 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                             Console.WriteLine("Demetrius > *sigh*\nMe > Out with it. When have you seen this statue?");
                             Console.WriteLine("Demetrius > I... I hid it. I threw it into the mine on Friday night. I didn't kill Lewis though, I swear!");
                             Console.WriteLine("Me > Well you'd better have a good explanation. Who did? How did you end up with the statue? And why did you hide it?");
+                            Console.WriteLine("Demetrius > ...Pierre asked me to hide it. He blackmailed me.");
+                            SaveData.Blackmail = true;
                         }
                         else
                         {
@@ -154,6 +156,9 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         caseD = true;
                         break;
                     case "U":
+                        Console.WriteLine("Demetrius > I, uh, certain mushrooms only bloom at night, so I-");
+                        Console.WriteLine("Me > Demetrius. Come on.");
+                        Console.WriteLine("I was helping a friend. That's all I'll say.");
                         break;
                     case "L":                       
                         break;
