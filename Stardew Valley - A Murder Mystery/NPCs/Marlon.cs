@@ -61,11 +61,11 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         }
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Would you like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Marlon, can I ask a few questions?");
                         Investigate();
                         break;
                     case "L": SaveData.MarlonCount++;
@@ -96,7 +96,64 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;      
 
+            Console.WriteLine("Marlon > Fire away.");
+
+            while (true)
+            {
+                if (Case1 && Case2) return;
+
+                Console.WriteLine("\nW > Where were you the night Lewis was attacked?");
+                Console.WriteLine("D > Did you get on well with Mayor Lewis?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Marlon > I was here, Detective. The guild stays open late, 'til 10pm usually.");
+                        Case1 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Marlon > ...Honestly, no. He wasn't a bad mayor, but he never treated Miss Marnie right, and I didn't like that.");
+                        Console.WriteLine("Me > What do you mean?");
+                        Console.WriteLine("Marlon > Well, Marnie and Lewis were, you know... together. ");
+                        Console.WriteLine("Marlon > She didn't want to hide it, but he wouldn't tell folks and wanted to keep it a secret.");
+                        Console.WriteLine("Marlon > Like he was ashamed of her. Miss Marnie deserves better than that is all, a lovely lady like her.");
+                        SaveData.MarnieAndLewis = true;
+
+                        bool J = false;
+                        bool K = false;
+
+                        while (true)
+                        {                            
+                            if (J && K) break;
+                            Console.WriteLine("\nJ > Am I detecting a bit of jealousy here, Marlon?");
+                            Console.WriteLine("K > Are you saying you killed Lewis for a chance to be with Marnie?\n");
+
+                            switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                            {
+                                case "J":
+                                    Console.WriteLine("Marlon > I won't deny it, no. Miss Marnie is a wonderful lady and I've had a soft spot for her for many a year now.");
+                                    Console.WriteLine("Marlon > She deserves a man what will treat her right.");
+                                    SaveData.MarnieAndMarlon = true;
+                                    J = true;
+                                    break;
+                                case "K":
+                                    Console.WriteLine("Marlon> Now hold on. I never liked the man, that's true, but that's doesn't mean I'd do that.");
+                                    Console.WriteLine("Marlon > I ain't sad about it, but it wasn't me that killed him.");
+                                    K = true;
+                                    break;
+                                default: break;
+                            }
+                        }
+                        Case2 = true;
+                        break;                   
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

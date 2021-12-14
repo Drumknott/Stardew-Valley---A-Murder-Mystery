@@ -59,9 +59,9 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             string NPCName = "Hat Mouse";
             var FavGift = Enums.Items.Cloth;
             var DislikedGift = Enums.Items.BatteryPack;
-            string LoveGift = "Love gift! Thank for bizzness, poke.";
+            string LoveGift = "Love gift! Thank for bizzniss, poke.";
             string HateGift = "Bad trade! More time bring coines, okay poke?";
-            string NeutralGift = "Thank for bizzness, poke!";
+            string NeutralGift = "Thank for bizzniss, poke!";
 
             Console.WriteLine($"What would you like to trade to {NPCName}?\n");
             Inventory inventory = new(SaveData);

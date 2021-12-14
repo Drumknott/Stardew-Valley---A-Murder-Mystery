@@ -23,7 +23,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 if (SaveData.MaruCount == 0) //first meeting
                 {
                     Console.WriteLine("Maru > Oh! Aren't you the Detective? I'm Maru. I've been looking forward to meeting you!"); 
-                    Console.WriteLine("You know, with a small town like this, a new face can really alter the community dynamic.It's exciting!");
+                    Console.WriteLine("You know, with a small town like this, a new face can really alter the community dynamic. It's exciting!");
                     SaveData.MaruCount++;
                 }
 
@@ -54,15 +54,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "chat":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > What's happening, Maru?");
                         SaveData.MaruFriendship++;
                         break;
                     case "gift":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Would you find this useful, Maru?");
                         Gift();
                         break;
                     case "investigate":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Do you mind if I ask a few questions as part of my investigation?");
                         Investigate();
                         break;
                     case "L": SaveData.MaruCount++;
@@ -92,7 +92,46 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Maru > Not at all. Go for it!");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("W > Where were you on Friday night?");
+                Console.WriteLine("H > How did you get on with Mayor Lewis?");
+                if (SaveData.SuspectDemetrius) Console.WriteLine("D > Was Demetrius home last Friday night?");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "w":
+                        if (SaveData.SuspectDemetrius)
+                        {
+                            Console.WriteLine("Maru > I had a late night in the lab. I'm working on a project right now that's pretty time sensitive.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Maru > I was just chilling at home. Fridays I like to catch up on my tv shows.");
+                        }
+                        Case1 = true;
+                        break;
+                    case "H":
+                        Console.WriteLine("Maru > Oh, fine I guess. I didn't really know him that well. I saw him gardening sometimes, he seemed nice.");
+                        Case2 = true;
+                        break;
+                    case "D" when (SaveData.SuspectDemetrius):
+                        Console.WriteLine("Maru > Oh, I'm not sure. He wasn't in the lab, but he was probably home.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

@@ -40,6 +40,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         case 4: Console.WriteLine("Haley > I'm feeling an urge to go shopping. Ugh! I wish there was a mall here."); break;
                         case 5: Console.WriteLine("Haley > My sister is so weird. Sometimes I wonder if we're actually related."); break;
                         case 6: Console.WriteLine("Haley > Did you know that my sister hates FishTaco? She finds it absolutely revolting. I guess everyone has their hang-ups."); break;
+                        case 7: Console.WriteLine("Haley > Psst... I need a Super Cucumber... you know what it's for. Keep it secret, ok?"); break;
                         default: break;
                     }
                 }
@@ -52,15 +53,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hi Haley.");
                         SaveData.HaleyFriendship++;
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Would you like this, Haley?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Haley, can I ask you some questions?");
                         Investigate();
                         break;
                     case "L": SaveData.HaleyCount++;
@@ -84,14 +85,67 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             inventory.InventoryList();
 
             var gift = Console.ReadLine();
+
+            if (gift == "SuperCucumber")
+            {
+                FavGift = Enums.Items.SuperCucumber;
+                LoveGift = "Haley > Oh my god! Yes. This big enough. Thanks!";
+            }            
+            
             Gift giftMethod = new(SaveData);
             int friendshipChange = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
-            SaveData.HaleyFriendship += friendshipChange;
+            SaveData.HaleyFriendship += friendshipChange;            
         }
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Haley > If you really have to...");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("\nW > Where were you last Friday night?");
+                Console.WriteLine("D > Did you know Mayor Lewis well?");
+                Console.WriteLine("M > Do you know anything about the murder, Haley?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Haley > I was at home.");
+                        Console.WriteLine("Me > Was anyone else there?");
+                        Console.WriteLine("Haley > No. Emily was working at the saloon. I was watching TV. Do you watch Love Island? I think-");
+                        Console.WriteLine("Me > Nevermind, Haley. Thank you.");
+                        Case1 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Haley > Who?");
+                        Console.WriteLine("Me > Lewis? The Mayor?");
+                        Console.WriteLine("Haley > Oh, the old guy? Huh, I always thought Gus was the Mayor.");
+                        Case2 = true;
+                        break;
+                    case "M":
+                        if (SaveData.HaleyFriendship > 2)
+                        {
+                            Console.WriteLine("Haley > I know Kent is a freak who keeps having mental breakdowns about the people he killed. Weirdo.");
+                            SaveData.PTSD = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Haley > Ugh, Abigail and Sebastian do that gross podcast about murders, you should ask them.");
+                            Console.WriteLine("Haley > They're all into people being raped and dismembered. And Abby hangs out in the graveyard. They're such ghouls.");
+                        }
+                            Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

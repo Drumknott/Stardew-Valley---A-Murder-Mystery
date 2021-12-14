@@ -10,7 +10,7 @@ namespace Stardew_Valley___A_Murder_Mystery.Locations
     class Sewers : Location
     {
         private SaveData SaveData { get; set; }
-        private List<Items> ForagableItems = new[] { Items.Amethyst, Items.BatteryPack, Items.Clam, Items.Coal, Items.Coral, Items.Diamond, Items.Emerald, Items.FrozenTear, Items.JojaCola, Items.Octopus, Items.PrismaticShard, Items.Quartz, Items.Seaweed, Items.VoidEgg }.ToList();
+        private List<Items> ForagableItems = new[] { Items.Amethyst, Items.BatteryPack, Items.Clam, Items.SuperCucumber, Items.Coal, Items.Coral, Items.Diamond, Items.Emerald, Items.FrozenTear, Items.JojaCola, Items.Octopus, Items.PrismaticShard, Items.Quartz, Items.Seaweed, Items.VoidEgg }.ToList();
 
         public Sewers(SaveData saveData)
         {

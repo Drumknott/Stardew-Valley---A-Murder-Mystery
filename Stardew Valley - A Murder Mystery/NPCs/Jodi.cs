@@ -57,14 +57,14 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");                        
+                        Console.WriteLine("Me > Hi Jodi, how are things?");                        
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Here, thought you'd like this");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hey Jodi, can I ask you something?");
                         Investigate();
                         break;
                     case "L": SaveData.JodiCount++;
@@ -94,7 +94,51 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Jodi > Sure, what's up?");
+
+            while (true)
+            {
+                if (SaveData.PTSD == true)
+                {
+                    if (Case1 && Case2 && Case3) return;
+                }
+                else if (Case1 && Case2) return;
+
+                Console.WriteLine("\nW > Where were you the night Lewis was attacked?");
+                Console.WriteLine("I > What was your impression of Lewis?");
+                if (SaveData.PTSD == true) Console.WriteLine("K > How has Kent been since he returned from the army?");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Jodi > I was at home. I like having the house to myself, it makes it easier to get the housework done.");
+                        Console.WriteLine("Me > So Kent and Sam were out?");
+                        Console.WriteLine("Jodi > Yes, they were both at the saloon I think.");
+                        SaveData.WhereWasKent = true;
+                        Case1 = true;
+                        break;
+                    case "K" when (SaveData.PTSD == true):
+                        Console.WriteLine("Jodi > He had a hard time, but he's adjusting back to normal life.");
+                        Console.WriteLine("Jodi > I think winning this election would be a great way for him to integrate back into the community fully.");
+                        Console.WriteLine("Me > Has he ever shown any sort of violent behaviour?");
+                        Console.WriteLine("Jodi > No. How dare you! I know what he's done, what he's had to do, but that doesn't make him a killer.");
+                        Console.WriteLine("Me > I'm sorry. I just have to investigate every avenue.");
+                        Case2 = true;
+                        break;
+                    case "3":
+                        Console.WriteLine("Jodi > Lewis was a decent man. He wasn't perfect, but who is? ");
+                        Console.WriteLine("He worked hard for the town, he did his best for us.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

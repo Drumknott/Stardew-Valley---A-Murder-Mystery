@@ -96,6 +96,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         bool CaseH;
         bool CaseR;
         bool CaseI;
+        bool Case4;
 
         void Investigate()
         {
@@ -103,7 +104,11 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
             while (true)
             {
-                if (CaseH == true && CaseI == true && CaseR == true)
+                if (SaveData.PTSD == true)
+                {
+                    if (CaseH && CaseI && CaseR && Case4) return;
+                }
+                else if (CaseH == true && CaseI == true && CaseR == true)
                 {
                     return;
                 }
@@ -111,6 +116,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 Console.WriteLine("\nH > You must know everyone in town pretty well, Doctor. How well did you know Lewis?");
                 Console.WriteLine("R > I understand you have Mayor Lewis' remains at your clinic?");
                 Console.WriteLine("B > How was the body when you found it?");
+                if (SaveData.PTSD == true) Console.WriteLine("K > Have you ever seen Kent for PTSD?");
                 Console.WriteLine("L > Leave");
 
                 switch (Console.ReadLine().Substring(0, 1).ToUpper())
@@ -169,8 +175,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                             Console.WriteLine("Harvey > Gus runs the saloon. ");
                         }
                         Console.WriteLine("Harvey > They're all good people, Detective. I don't believe any of them would have killed Mayor Lewis.");
-
                         CaseI = true;
+                        break;
+                    case "K":
+                        Console.WriteLine("Harvey > Well, without breaching Doctor/Patient confidentiality, all I can say is that Kent has suffered through");
+                        Console.WriteLine("Harvey > some traumatic experiences while in the army, and is recieving support in dealing with that.");
+                        Console.WriteLine("Me > Would you say he's capable of killing a man?");
+                        Console.WriteLine("Harvey > We're all capable of it, Detective, if we really wanted to.");
+                        Console.WriteLine("Harvey > But I wouldn't say Kent is any more likely to have killed Mayor Lewis than you or I.");
+                        Case4 = true;
                         break;
                     case "L": return;
                     default: break;

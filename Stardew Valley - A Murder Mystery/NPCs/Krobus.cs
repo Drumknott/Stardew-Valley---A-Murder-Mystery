@@ -55,15 +55,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hi, Krobus!");
                         SaveData.KrobusFriendship++;
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Would you like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hey Krobus, can I ask you some questions?");
                         Investigate();
                         break;
                     case "L": SaveData.KrobusCount++;
@@ -93,8 +93,41 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         }
 
         void Investigate()
-        {
-            //Krobus sees all
+        {            
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
+
+            Console.WriteLine("Krobus > But of course. What do you wish to know?");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("A > Are you friendly with any of the townsfolk?");
+                Console.WriteLine("D > Do you know who killed Mayor Lewis?");
+                Console.WriteLine("I > Is there anything else I should know?");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "A":
+                        Console.WriteLine("Krobus > No, I try and keep hidden from most humans. I watch them though. Their lives are... interesting.");
+                        Case1 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Krobus > I do not. Though I can tell you the lady from the ranch liked to visit his house a lot...");
+                        SaveData.MarnieAndLewis = true;
+                        Case2 = true;
+                        break;
+                    case "I":
+                        Console.WriteLine("Krobus > You should look in the mine. One can find some very useful things down there.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

@@ -103,11 +103,10 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
             while (true)
             {
-                Console.WriteLine("");
-                Console.WriteLine("W > Where were you the night of the murder?");
+                Console.WriteLine("\nW > Where were you the night of the murder?");
                 Console.WriteLine("M > How well did you know Mayor Lewis?");
                 if (Enums.Items.LewisStatue > 0) Console.WriteLine("S > Have you ever seen this statue before?");
-                Console.WriteLine("L > Leave");
+                Console.WriteLine("L > Leave\n");
                                
                 switch (Console.ReadLine().Substring(0, 1).ToUpper())
                 {

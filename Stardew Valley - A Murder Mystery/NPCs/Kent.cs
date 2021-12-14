@@ -22,7 +22,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 if (SaveData.KentCount == 0) //first meeting
                 {
-                    Console.WriteLine("Kent > Um, hello there. My name's Kent. I'm running for MAyor of Pelican Town. Well, I just wanted to introduce myself... I'll see you around.");
+                    Console.WriteLine("Kent > Um, hello there. My name's Kent. I'm running for Mayor of Pelican Town. Well, I just wanted to introduce myself... I'll see you around.");
                     SaveData.KentCount++;
                 }
 
@@ -38,7 +38,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         case 2: Console.WriteLine("Kent > I've been up since 4 o'clock... sometimes I wonder if I'll ever get back into a normal routine."); break;
                         case 3: Console.WriteLine("Kent > Sam has really grown up since I left. He's a man now. I wish I could've been there for him."); break;
                         case 4: Console.WriteLine("Kent > It looks like a decent day for fishing, doesn't it?"); break;
-                        case 5: Console.WriteLine("Kent > I'm running for Mayor - "); break;
+                        case 5: Console.WriteLine("Kent > I'm running for Mayor - Would you like to discuss my manifesto?"); break;
                         case 6: Console.WriteLine("Kent > Vote Kent to serve the community!"); break;
                         case 7: Console.WriteLine("Kent > Vote for Kent!"); break;
                         default: break;
@@ -55,19 +55,19 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                     case "C":
                         if (SaveData.DayCount == 6)
                         {
-
+                            Console.WriteLine("Me > Good luck, Kent!");
                         }
                         else
                         {
-                            Console.WriteLine("");
+                            Console.WriteLine("Me > Hi Kent, how are you doing?");
                         }
                             break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Here, would you like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hey Kent, do you mind if I ask you a few questions?");
                         Investigate();
                         break;
                     case "L": SaveData.KentCount++;
@@ -97,7 +97,50 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Kent > No problem, Detective. What can I help you with?");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("\nW > Where were you last Friday night?");
+                Console.WriteLine("H > How did you get on with Lewis?");
+                if (SaveData.PTSD == true) Console.WriteLine("A > How was your time in the army?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        if (SaveData.TheMurderer == "Kent")
+                        {
+                            Console.WriteLine("Kent > I was fishing down at the river. There's some fish that only come out at night.");
+                            Console.WriteLine("Kent > You should ask Willy about it, I'm sure he'd be happy to tell you all about it!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Kent > I was at the Saloon. I was chatting to Willy about night fishing before he had to rush off.");
+                            Console.WriteLine("Kent > Horrible, what happened. *Shudder*");
+                        }
+                        Case1 = true;
+                        break;
+                    case "H":
+                        Console.WriteLine("Kent > Oh, ok I guess? He wasn't best pleased about me running for Mayor against him, ");
+                        Console.WriteLine("Kent > but he was Mayor of Pelican Town for a long time, and we need change.");
+                        Case2 = true;
+                        break;
+                    case "A" when (SaveData.PTSD == true):
+                        Console.WriteLine("Kent > I'd rather not talk about it if that's ok with you.");
+                        Console.WriteLine("Me > I'm sorry, I know it must have been a difficult time.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

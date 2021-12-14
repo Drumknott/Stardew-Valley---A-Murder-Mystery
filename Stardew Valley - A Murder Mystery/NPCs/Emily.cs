@@ -98,16 +98,22 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             bool Case1 = false;
             bool Case2 = false;
             bool Case3 = false;
+            bool Case4 = false;
 
             Console.WriteLine("Emily > Sure! What's on your mind?");
 
             while (true)
             {
-                if (Case1 && Case2 && Case3) return;
+                if (SaveData.WhereWasKent)
+                {
+                    if (Case1 && Case2 && Case3 && Case4) return;
+                }
+                else if (Case1 && Case2 && Case3) return;
 
                 Console.WriteLine("F > Can you tell me about Friday night?");
                 Console.WriteLine("H > How did you like Lewis?");
                 Console.WriteLine("W > What do you think happened?");
+                if (SaveData.WhereWasKent == true) Console.WriteLine("K > Were Kent and Sam at the Saloon that night?");
                 Console.WriteLine("L > Leave");
 
                 switch (Console.ReadLine().Substring(0, 1).ToUpper())
@@ -126,6 +132,17 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                     case "W":
                         Console.WriteLine("Emily > Oh, goodness. I don't know. It feels mean to say, but I'm a big believer in karma. Maybe he had it coming?");
                         Case3 = true;
+                        break;
+                    case "K":
+                        if (SaveData.TheMurderer == "Kent")
+                        {
+                            Console.WriteLine("Emily > Sam was, he was playing pool with Sebastian and Abigail. I didn't see Kent though.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Emily > Yes - Sam always hangs out with Sebastian and Abigail, and Kent was chatting to Willy before he had to run off.");
+                        }
+                        Case4 = true;
                         break;
                     case "L": return;
                     default: break;

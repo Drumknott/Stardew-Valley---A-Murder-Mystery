@@ -44,7 +44,9 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool SewerKey { get; set; }
         public bool FindSewerKey { get; set; }
         public bool Blackmail { get; set; }
-
+        public bool StayAtLewis { get; set; }
+        public bool WhereWasKent { get; set; }
+        public bool PTSD { get; set; }
 
         //Places Visited
         public string LastVisited { get; set; }
@@ -146,7 +148,6 @@ namespace Stardew_Valley___A_Murder_Mystery
         public int DayCount { get; set; }
 
         //Investigations
-        public int AbigailInvestigated { get; set; }
         public bool podcast { get; set; }
         public bool Suspect { get; set; }
         public bool SuspectDemetrius { get; set; }

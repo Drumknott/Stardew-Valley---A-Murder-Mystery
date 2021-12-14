@@ -19,23 +19,30 @@ namespace Stardew_Valley___A_Murder_Mystery.Locations
         {
             SaveData.LastVisited = "Cabin";
 
-            Console.WriteLine("You are back in your cabin at the farm. What would you like to do?\n");
-            Console.WriteLine("R > Review your casefile");
-            Console.WriteLine("S > Sleep until tomorrow");
-            Console.WriteLine("L > Leave");
-
-            switch(Console.ReadLine().Substring(0, 1).ToUpper())
+            if (SaveData.StayAtLewis == true)
             {
-                case "R":
-                    CaseFile caseFile = new(SaveData);
-                    caseFile.Notes();
-                    break;
-                case "S":
-                    DayManager dayManager = new(SaveData);
-                    dayManager.IncreaseDayCount();
-                    break;
-                case "L": return;
-                default: break;
+                Console.WriteLine("You are at the cabin on Stardew Farm. There's no one here.");
+            }
+            else
+            {
+                Console.WriteLine("You are back in your cabin at the farm. What would you like to do?\n");
+                Console.WriteLine("R > Review your casefile");
+                Console.WriteLine("S > Sleep until tomorrow");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "R":
+                        CaseFile caseFile = new(SaveData);
+                        caseFile.Notes();
+                        break;
+                    case "S":
+                        DayManager dayManager = new(SaveData);
+                        dayManager.IncreaseDayCount();
+                        break;
+                    case "L": return;
+                    default: break;
+                }
             }
         }
 
