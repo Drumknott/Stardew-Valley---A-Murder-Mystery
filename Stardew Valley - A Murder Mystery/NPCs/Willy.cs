@@ -28,7 +28,6 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 else
                 {
-
                     Random dialogue = new();
                     int random = dialogue.Next(0, 7);
 
@@ -56,14 +55,14 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hi Willy, how are the fish biting today?");
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Say, do you think you'd have any use for this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Mind if I ask a couple of questions, Willy?");
                         Investigate();
                         break;
                     case "L":
@@ -94,7 +93,42 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Willy > Not a problem. What's on your mind?");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("\nW > Where were you last Friday night?");
+                Console.WriteLine("D > Did you like Mayor Lewis?");
+                if (SaveData.Ritual) Console.WriteLine("R > Where did you learn to do that... thing... you were doing in the forest?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Willy > I was anchored up in the saloon 'til poor Marnie came rushing in like that.");
+                        Console.WriteLine("Willy > Terrible business. Never seen the likes of it before.");
+                        Case1 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Willy > He was a good man making his way, same as us all. He weren't much for fishing, though.");
+                        Case2 = true;
+                        break;
+                    case "R":
+                        Console.WriteLine("Willy > Oh, Ol' Rasmodius helps me with the fishing from time to time.");
+                        Console.WriteLine("Willy > Summoning shoals, making the sacrifice to the sea god, that sort of thing...");
+                        Console.WriteLine("Willy > I've picked up a few things from him over time.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

@@ -110,6 +110,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                 {
                     Console.WriteLine("Caroline > Oh, Detective? I think I know someone who might be able to help. If you head down to the forst, you'll see a tower out west.");
                     Console.WriteLine("Caroline > Go there, and say Caroline sent you.");
+                    SaveData.CarolineSentMe = true;
                     return;
                 }
 

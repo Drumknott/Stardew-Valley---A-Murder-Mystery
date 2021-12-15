@@ -29,11 +29,9 @@ namespace Stardew_Valley___A_Murder_Mystery
                     SaveData.npc1 = "Pierre";
                     SaveData.npc2 = "Marnie";
                     SaveData.npc3 = "Leah";
-                    SaveData.npc4 = "Abigail";
-                    //Abby is home
+                    SaveData.npc4 = "Abigail";                
                     break;
                 case 1: //Day 2
-                    //aerobics day
                     Console.WriteLine("Pierre is minding the shop, but there are no customers today.");
                     SaveData.npc1 = "Pierre";
                     Console.WriteLine("The door to the back room is open, and you can hear voices and laughter from inside.\n");                    
@@ -43,6 +41,9 @@ namespace Stardew_Valley___A_Murder_Mystery
 
                     if (investigate == "I")
                     {
+                        Console.WriteLine("You find Caroline, Robin, Jodi, Emily and Marnie doing aerobics in front of a tv.");
+                        Console.WriteLine("The instructor is bobbing up and down very excitedly, and the girls are following along as best they can.");
+                        Console.WriteLine("They all seem to be having fun.");
                         //aerobics class
                         SaveData.npc1 = "Caroline";
                         SaveData.npc2 = "Robin";

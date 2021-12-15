@@ -47,6 +47,8 @@ namespace Stardew_Valley___A_Murder_Mystery
         public bool StayAtLewis { get; set; }
         public bool WhereWasKent { get; set; }
         public bool PTSD { get; set; }
+        public bool Ritual { get; set; }
+        public bool CarolineSentMe { get; set; }
 
         //Places Visited
         public string LastVisited { get; set; }
