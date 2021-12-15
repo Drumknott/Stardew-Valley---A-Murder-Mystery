@@ -135,7 +135,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         Console.WriteLine("Demetrius > I know the surface levels fairly well, yes. If you're looking for a true expert though I'd recommend Marlon or maybe Linus.");
                         caseS = true;
                         break;
-                    case "D":
+                    case "D" when (SaveData.MyInventory[Enums.Items.LewisStatue] > 0):
                         if (SaveData.TheMurderer == "Pierre")
                         {
                             Console.WriteLine("Demetrius looks nervous.\nDemetrius > No, er... no. Never seen it before. What are those markings, it that rust...?");

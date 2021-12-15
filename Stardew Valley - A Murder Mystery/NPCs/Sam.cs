@@ -59,15 +59,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 switch (dialogue1)
                 {
-                    case "chat":
+                    case "C":
                         Console.WriteLine("");
                         SaveData.SamFriendship++;
                         break;
-                    case "gift":
+                    case "G":
                         Console.WriteLine("");
                         Gift();
                         break;
-                    case "investigate":
+                    case "I":
                         Console.WriteLine("");
                         Investigate();
                         break;
@@ -100,6 +100,54 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         void Investigate()
         {
             //where was kent
+
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
+            bool Case4 = false;
+
+            Console.WriteLine("");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3 && Case4) return;
+
+                Console.WriteLine("\nW > Where were you on Friday night?");
+                Console.WriteLine("D > Did you like Mayor Lewis?");
+                if (SaveData.WhereWasKent) Console.WriteLine("S > Was Kent at the saloon that night?");
+                if (SaveData.podcast) Console.WriteLine("P > Sebastian says you're helping him with a murder podcast?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Sam > I was hanging at the saloon with Seb and Abby. Got a few rounds of Junimo Kart in. It was a good night!");
+                        Console.WriteLine("Sam > Oh, well, I mean it was a good night for me, not-");
+                        Console.WriteLine("Sam > It's ok Sam, I know what you meant.");
+                        Case1 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Sam > I mean, I didn't really know him that well? I saw him at town festivals and stuff, but that was about it.");
+                        Console.WriteLine("Sam > Other than that I only know what my dad used to say about him.");
+                        Console.WriteLine("Me > Like what?");
+                        Console.WriteLine("Sam > Like, he was a useless waste of space and we need a new mayor who will actually do stuff.");
+                        Console.WriteLine("Sam > I guess he's going to get his wish...");
+                        Case2 = true;
+                        break;
+                    case "S" when (SaveData.WhereWasKent):
+                        if (SaveData.TheMurderer == "Kent") Console.WriteLine("Sam > No, I thought he was home with Mom.");                       
+                        else Console.WriteLine("Sam > Yeah he was chatting to Willy I think.");
+                        Case3 = true;
+                        break;
+                    case "P" when (SaveData.podcast):
+                        Console.WriteLine("Sam > Yeah, it's going to be really cool! I'm doing all the music, audio effects and production.");
+                        Console.WriteLine("Sam > You should give it a listen, it#s great.");
+                        Case4 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

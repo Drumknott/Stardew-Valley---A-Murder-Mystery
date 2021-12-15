@@ -195,7 +195,7 @@ namespace Stardew_Valley___A_Murder_Mystery
                             if (SaveData.TheMurderer != "Marnie") Console.WriteLine("Marnie > It doesn't mean I killed him though. All couples fight.");
                             caseI = true;
                         break;
-                    case "S" when (Enums.Items.LewisStatue > 0): // lewis statue
+                    case "S" when (SaveData.MyInventory [Enums.Items.LewisStatue] > 0): // lewis statue
                             if (SaveData.TheMurderer == "Marnie")
                             {
                                 Console.WriteLine("Marnie > No, never. Is that Lewis?");

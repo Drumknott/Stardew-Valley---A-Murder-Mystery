@@ -69,17 +69,19 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 switch (dialogue1)
                 {
-                    case "chat":
-                        Console.WriteLine("");
+                    case "C":
+                        Console.WriteLine("Me > Hi Penny. Nice day, isn't it?");
                         SaveData.PennyFriendship++;
                         break;
-                    case "gift":
-                        Console.WriteLine("");
+                    case "G":
+                        Console.WriteLine("Me > Penny, I found this and thought of you.");
                         Gift();
                         break;
-                    case "investigate":
-                        Console.WriteLine("");
+                    case "I":
+                        Console.WriteLine("Me > Do you mind if I ask a couple of question?");
                         Investigate();
+                        Console.WriteLine("Me > Ok, thank you Penny.");
+                        Console.WriteLine("Penny > Sorry I couldn't be more help.");
                         break;
                     case "L":
                         SaveData.PennyCount++;
@@ -110,7 +112,44 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Penny > Not at all. What can I help you with?");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("\nW > Where were you on Friday night?");
+                Console.WriteLine("Y > You were Lewis' neighbor - did you like him?");
+                Console.WriteLine("D > Do you know if Lewis argued with anyone?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Penny > Oh, I was at home. Mother is usually at the saloon in the evenings so I get the place to myself.");
+                        Console.WriteLine("Me > Can anyone verify that?");
+                        Console.WriteLine("Penny > Just my book and my mp3 player!");
+                        Case1 = true;
+                        break;
+                    case "Y":
+                        Console.WriteLine("Penny > Oh, um, he was ok. I'd asked him a few times, um, about our living situation.");
+                        Console.WriteLine("Penny > See, Mother and I live in a trailer, and I'd asked him if maybe we could move into a room in the old community centrem you know?");
+                        Console.WriteLine("Penny > I offered to pay rent of course. I thought it would be better than the trailer, but he said no. And rather rudely too...");
+                        Console.WriteLine("Penny > So I can't say I was his biggest fan, to be honest.");
+                        Case2 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Penny > Not that I know of, but I wasn't close to him really. So he might have been and I wouldn't know anything about it.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

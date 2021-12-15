@@ -54,18 +54,19 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hi, Morris. How's business?");
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Is this any good to you?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > I know you're busy but can I ask you a few questions?");
                         Investigate();
                         break;
                     case "L":
                         SaveData.MorrisCount++;
+                        Console.WriteLine("Me > Thanks Morris. Good luck in the election!");
                         return;
                     default: break;
                 }                
@@ -93,38 +94,42 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
-            if (SaveData.CrypticNote == true)
-            {
-
-            }
-
             bool Case1 = false;
             bool Case2 = false;
             bool Case3 = false;
 
-            Console.WriteLine("");
+            Console.WriteLine("Morris > Of course Detective, I'll do anything I can to help.");
 
             while (true)
             {
                 if (Case1 && Case2 && Case3) return;
 
-                Console.WriteLine("");
-                Console.WriteLine("");
-                if (SaveData.CrypticNote) Console.WriteLine("");
-                Console.WriteLine("L > Leave");
+                Console.WriteLine("\nW > What were you doing last Friday evening?");
+                Console.WriteLine("H > How did you get on with Mayor Lewis?");
+                if (SaveData.CrypticNote) Console.WriteLine("N > Can you tell me anything about this note?");
+                Console.WriteLine("L > Leave\n");
 
                 switch (Console.ReadLine().Substring(0, 1).ToUpper())
                 {
-                    case "1":
-                        Console.WriteLine("");
+                    case "W":
+                        Console.WriteLine("Morris > Nothing exciting unfortunately. Friday evening is when we do our stock check. I can show you the inventory lists if that's of any help?");
                         Case1 = true;
                         break;
-                    case "2":
-                        Console.WriteLine("");
+                    case "H":
+                        Console.WriteLine("Morris > Lewis and I had different visions for Pelican Town. He liked to maintain the status quo, while");
+                        Console.WriteLine("Morris > I have a wonderful vision for the future, to really help the town grow and prosper.");
+                        Console.WriteLine("Me > Did you ever argue about it?");
+                        Console.WriteLine("Morris > Not at all. We had an agreement to disagree.");
                         Case2 = true;
                         break;
-                    case "3" when (SaveData.CrypticNote):
-                        Console.WriteLine("");
+                    case "N" when (SaveData.CrypticNote):
+                        Console.WriteLine("Morris peers at the paper.");
+                        Console.WriteLine("Morris > No, I can't say I can. It looks like someone was trying to buy the Community Centre.");
+                        Console.WriteLine("Me > And you wouldn't be 'M' here, would you?");
+                        Console.WriteLine("Morris > What are you saying, Detective? Accusing me of bribery, or blackmail?");
+                        Console.WriteLine("Me > The word around town is you want to turn the community centre into a warehouse.");
+                        Console.WriteLine("Morris > Is it wrong to use an empty, unused building to benefit the community, create jobs? No.");
+                        Console.WriteLine("Morris > But I can assure you, I neither wrote that note, nor did I murder Lewis.");
                         Case3 = true;
                         break;
                     case "L": return;

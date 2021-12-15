@@ -118,7 +118,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                         if (SaveData.TheMurderer == "Kent")
                         {
                             Console.WriteLine("Kent > I was fishing down at the river. There's some fish that only come out at night.");
-                            Console.WriteLine("Kent > You should ask Willy about it, I'm sure he'd be happy to tell you all about it!");
+                            Console.WriteLine("Kent > You should ask Willy about it, I'm sure he'd be happy to tell you all about night fishing!");
                         }
                         else
                         {

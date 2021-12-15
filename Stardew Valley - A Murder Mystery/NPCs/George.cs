@@ -99,10 +99,10 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             {
                 if (Case1 && Case2 && Case3) return;
 
-                Console.WriteLine("W > Where were you the night Lewis was killed?");
+                Console.WriteLine("\nW > Where were you the night Lewis was killed?");
                 Console.WriteLine("D > Did you know Lewis very well?");
                 Console.WriteLine("C > Is there anything you can tell me?");
-                Console.WriteLine("L > Leave");
+                Console.WriteLine("L > Leave\n");
 
                 switch (Console.ReadLine().Substring(0, 1).ToUpper())
                 {

@@ -63,18 +63,18 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 switch (dialogue1)
                 {
-                    case "chat":
+                    case "C":
                         Console.WriteLine("Sebastian > Do you like True Crime?\nY> Yes\nN > No");
                         var choice = Console.ReadLine();                        
                         if (choice == "Y") Console.WriteLine("Sebastian > Did you know that you can dissolve the body of a frog in Mountain Dew? I wonder if that would work for a person...");
                         else Console.WriteLine("Sebastian > No? Oh, ok. Kind of weird that you're a cop then.");                                                    
                         SaveData.SebastianFriendship++;
                         break;
-                    case "gift":
+                    case "G":
                         Console.WriteLine("Hey Sebastian. Would you like this?");
                         Gift();
                         break;
-                    case "investigate":
+                    case "I":
                         Console.WriteLine("Hi Sebastian. Can I ask you some questions about Mayor Lewis?");
                         Investigate();
                         break;
@@ -111,10 +111,39 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             {
                 Podcast();
             }
+            else Console.WriteLine("Sebastian > ");
+
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
             while (true)
             {
-                Console.WriteLine("");
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("\nW > Where were you last Friday night?");
+                Console.WriteLine("M > Did you like Mayor Lewis?");
+                if (SaveData.SuspectDemetrius) Console.WriteLine("D > Was Demetrius home that night?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Sebastian > Oh I was at home, think I was writing some notes for the next podcast episode.");
+                        Case1 = true;
+                        break;
+                    case "M":
+                        Console.WriteLine("Sebastian > I guess? I didn't know him that well. I tend to keep to myself, so I don't know many of the townspeople well to be honest.");
+                        Case2 = true;
+                        break;
+                    case "D" when (SaveData.SuspectDemetrius):
+                        Console.WriteLine("Sebastian > I don't think so. I went up to the kitchen to get a snack and I saw Maru in the lab but no one else.");
+                        Console.WriteLine("Sebastian > My parents are usually at the saloon on Fridays.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
             }
         }
 
