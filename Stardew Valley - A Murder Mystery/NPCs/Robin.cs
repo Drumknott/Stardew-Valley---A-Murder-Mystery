@@ -28,7 +28,6 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 else
                 {
-
                     Random dialogue = new();
                     int random = dialogue.Next(0, 10);
 
@@ -62,15 +61,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 switch (dialogue1)
                 {
-                    case "chat":
-                        Console.WriteLine("");
+                    case "C":
+                        Console.WriteLine("Me > What's up, Robin?");
                         break;
-                    case "gift":
-                        Console.WriteLine("");
+                    case "G":
+                        Console.WriteLine("Hey, this is for you.");
                         Gift();
                         break;
-                    case "investigate":
-                        Console.WriteLine("");
+                    case "I":
+                        Console.WriteLine("Can I interuppt you for a few minutes?");
                         Investigate();
                         break;
                     case "L":
@@ -101,7 +100,44 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("\nW > Where were you on Friday night?");
+                Console.WriteLine("D > Did you like Lewis?");
+                if (SaveData.SuspectDemetrius) Console.WriteLine("H > Was Demetrius home that night?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Robin > I was at the saloon, along with everyone else. Demetrius usually goes too, but he said he had something to do in the lab.");
+                        Console.WriteLine("Robin looks annoyed about this.");
+                        Case1 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Robin > Oh sure. He was nice. Always came to me when there was work that needed doing for the town, for festivals and things like that.");
+                        Case2 = true;
+                        break;
+                    case "H" when (SaveData.SuspectDemetrius):
+                        Console.WriteLine("Robin > I mean, he said he was busy in the lab, but honestly I have no idea. Maru was home, she might know?");
+                        Console.WriteLine("Me > I'm sorry, have I upset you...?");
+                        Console.WriteLine("Robin sighs.");
+                        Console.WriteLine("Robin > It's not you Detective. Demetrius just hasn't been spending much time with me lately, and it's starting to get to me.");
+                        Console.WriteLine("Robin > I've tried talking to him about it but he insists everything is fine. I'm... I'm worried he's having an affair.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

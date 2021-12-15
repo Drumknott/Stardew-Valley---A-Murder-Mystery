@@ -54,18 +54,19 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hi Leah, what's up?");
                         SaveData.LeahFriendship++;
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Oh hey, I found this and I thought you might like it?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Leah, do you mind if I ask you about Lewis?");
                         Investigate();
                         break;
                     case "L": SaveData.LeahCount++;
+                        Console.WriteLine("Me > See you Leah, talk soon!");
                         return;
                     default: break;
                 }            
@@ -76,7 +77,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         {
             string NPCName = "Leah";
             var FavGift = Enums.Items.GoatCheese;
-            var DislikedGift = Enums.Items.Bread;
+            var DislikedGift = Enums.Items.Bread; //Leah hates bread. She's a terrible person
             string LoveGift = "Oh! This is exactly what I wanted! Thank you!";
             string HateGift = "This is a pretty terrible gift, isn't it?";
             string NeutralGift = "Thank you.";
@@ -92,7 +93,50 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Leah > Of course. What can I help you with?");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("\nw > What were you doing last Friday night?");
+                Console.WriteLine("D > Do you know if anyone might have wanted to harm Lewis?");
+                Console.WriteLine("M > You're Marnie's neighbor. Do you know why she was at Lewis' house?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Leah > I was at the saloon. It's a little town tradition to visit on Friday evenings. Half the town is usually there.");
+                        Console.WriteLine("Me > What can you tell me about the incident when Marnie came for help?");
+                        Console.WriteLine("Leah > Um... I didn't really notice if I'm honest, Detective. I was chatting to Elliott in a corner and we were a bit... distracted.");
+                        Case1 = true;
+                        break;
+                    case "D":
+                        Console.WriteLine("Leah > Not as far as I know! Lewis was always firm but fair. I don't think anyone disliked him to that degree.");
+                        Case2 = true;
+                        break;
+                    case "M":
+                        if (SaveData.LeahFriendship > 2)
+                        {
+                            Console.WriteLine("Leah > Well, I don't know for sure, but I always got the impression that Marnie and Lewis were a bit more than friends.");
+                            Console.WriteLine("Leah > They didn't talk about it though, so I never really knew exactly what was going on.");
+                            SaveData.MarnieAndLewis = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Leah > No, I'm afraid I don't. I don't see her that often really, she's always busy with something.");
+                        }
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

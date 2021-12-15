@@ -51,18 +51,20 @@ namespace Stardew_Valley___A_Murder_Mystery
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hey Alex, what's up?");
                         SaveData.AlexCount++;
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hey, would you like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Alex, do you mind if I ask you about Mayor Lewis?");
                         Investigate();
+                        Console.WriteLine("Me > Thanks Alex, I think I've got what I need.\n");
                         break;
                     case "L":
+                        Console.WriteLine("Me > See you soon, Alex!");
                         SaveData.AlexCount++;
                         return;
                     default: break;
@@ -91,7 +93,45 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         void Investigate()
         {
+            bool CaseN = false;
+            bool CaseW = false;
+            bool CaseH = false;
 
+            Console.WriteLine("Alex > Sure thing. What do you want to know?");
+
+            while (true)
+            {
+                if (CaseN && CaseH && CaseW) return;
+
+               
+                Console.WriteLine("\nN > Lewis was your neighbor - how did you like him?");
+                Console.WriteLine("W > Where were you last Friday night?");
+                Console.WriteLine("H > Have you ever heard any arguments or disagreements from Lewis' house?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "N":
+                        Console.WriteLine("Alex > He was fine, I guess. I didn't talk to him much. I tried talking to him about football one time but he said he didn't like sports...");
+                        CaseN = true;
+                        break;
+                    case "W":
+                        Console.WriteLine("Alex > I was hanging out at Haley's. Emily works at the Saloon in the evenings so we usually have the place to ourselves.");
+                        Console.WriteLine("Me > Did you see or hear anything unusual on your walk home?");
+                        Console.WriteLine("Alex > Uh... haha, my walk home was early Saturday morning, if you get my meaning...");
+                        CaseW = true;
+                        break;
+                    case "H":
+                        Console.WriteLine("Alex > Sometimes, yeah. I've heard him argue with a woman a couple of times. Don't know who it was though.");
+                        Console.WriteLine("Me > Could you hear what they were arguing about?");
+                        Console.WriteLine("Alex > Nah, sorry Detective. I could just hear raised voices, that's all.");
+                        CaseH = true;
+                        break;
+                    case "L":
+                        return;
+                    default: break;
+                }
+            }
         }
     }
 }

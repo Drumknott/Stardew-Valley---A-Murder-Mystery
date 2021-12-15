@@ -34,25 +34,14 @@ namespace Stardew_Valley___A_Murder_Mystery
                 farmer.Chat();
                 SaveData.FarmFirstVisit = true;
             }
-
-            else switch (SaveData.DayCount)
+            else
             {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6: 
-                    break;
-                default: break;
+                Console.WriteLine("You are at Stardew Farm.\n");
+                Console.WriteLine($"Farmer {SaveData.FarmerName} is here, tending to the animals.");
+                SaveData.npc1 = "Farmer";
+                SaveData.npc2 = SaveData.FarmerName;
             }
+            
         }
 
         public override void Forage()

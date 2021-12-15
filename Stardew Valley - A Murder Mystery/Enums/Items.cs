@@ -49,5 +49,6 @@ namespace Stardew_Valley___A_Murder_Mystery.Enums
         RedMushroom, //Wizard hates
         JojaCola,
         LewisStatue,
+        SuperCucumber,
     }
 }

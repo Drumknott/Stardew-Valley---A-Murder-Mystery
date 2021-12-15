@@ -32,7 +32,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                     if (SaveData.DayCount == 1) //aerobics day
                     {
-                        //chat about aerobics day
+                        Console.WriteLine("Pierre > The girls are doing their aerobics back there. I wouldn't disturb them if I was you, it's not a pretty sight.");
                     }
 
                     else
@@ -64,21 +64,17 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 switch (dialogue1)
                 {
-                    case "chat":
-                        Console.WriteLine("");
+                    case "C":
+                        Console.WriteLine("Me > Hi Pierre, how are you?");
                         break;
-                    case "gift":
-                        Console.WriteLine("");
+                    case "G":
+                        Console.WriteLine("Me > Would you like this?");
                         Gift();
                         break;
-                    case "investigate":
-                        Console.WriteLine("");
+                    case "I":
+                        Console.WriteLine("Me > Can I borrow you for a few minutes?");
                         Investigate();
-                        break;
-                    case "buy":
-                        Console.WriteLine("");
-                        Buy();
-                        break;
+                        break;                 
                     case "L":
                         SaveData.PierreCount++;
                         return;
@@ -134,12 +130,77 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
+            bool Case4 = false;
 
-        }
+            if (SaveData.TheMurderer == "Pierre")
+            {
+                Console.WriteLine("Pierre > I'm a bit busy right now Detective, could we do this later?\n");
+                Console.WriteLine("Y > Sure, I'll come another time");
+                Console.WriteLine("N > This is important Pierre. It won't take long.");
 
-        void Buy()
-        {
+                if (Console.ReadLine().Substring(0, 1).ToUpper() == "Y") return;
+            }
+            else Console.WriteLine("Pierre > Of course Detective. What can I help with?");
 
+            while (true)
+            {
+                if (Case1 && Case2 && Case3 && Case4) return;
+
+                Console.WriteLine("W > Where were you the night Mayor Lewis was attcked?");
+                Console.WriteLine("M > Did you like Lewis?");
+                if (SaveData.CrypticNote) Console.WriteLine("N > Did you write this note?");
+                if (SaveData.Blackmail == true) Console.WriteLine("D > Demetrius says you blackmailed him.");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        if (SaveData.TheMurderer == "Pierre")
+                        {
+                            Console.WriteLine("Pierre > I was at home. I was playing one of Abby's videogames with her.");
+                            Console.WriteLine("Pierre > Prarie Prince, or somthing like that.");
+                            SaveData.PierreLied = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Pierre > I went down to the beach for a walk. It's lovely down there in the evenings.");
+                        }
+                        Case1 = true;
+                        break;
+                    case "M":
+                        Console.WriteLine("Pierre > No. Not if I'm honest. He wasn't interested in protecting small local businesses like mine.");
+                        Console.WriteLine("Pierre > He was more interested in getting handouts from big corporations like Joja Mart.");
+                        Console.WriteLine("Me > Handouts?");
+                        Console.WriteLine("Pierre > Yes! These big corporations think they can just throw money at problems and then they can do whatever they want.");
+                        Console.WriteLine("Me > Are you saying Lewis was accepting bribes from Joja Mart? Do you have any proof of that?");
+                        Console.WriteLine("Pierre > No, I don't have any proof. Morris told me, but he was careful not to say anything specific.");
+                        Case2 = true;
+                        break;
+                    case "N" when (SaveData.CrypticNote):
+                        Console.WriteLine("Pierre's eyes widen.");
+                        Console.WriteLine("Pierre > This is it! This is proof that Joja was paying him off! Don't you see?");
+                        Console.WriteLine("Me > You're saying this is from Joja Mart?");
+                        Console.WriteLine("Pierre > One million percent. I'd bet my store Morris wrote this.");
+                        Case3 = true;
+                        break;
+                    case "D" when (SaveData.Blackmail):
+                        Console.WriteLine("Pierre looks nervous.");
+                        Console.WriteLine("Pierre > Um, what? No. Why would I do that?");
+                        Console.WriteLine("Me > He says you gave him this blood covered statue of Lewis and asked him to hide it on the night Lewis was murdered.");
+                        Console.WriteLine("Me > Now, where did you get it from? Did you kill him?");
+                        Console.WriteLine("Pierre > Absoloutely not. No. I've never seen that before in my life.");
+                        Console.WriteLine("Pierre > Demetrius must be lying. I bet it was him! He must have done it!");
+                        Console.WriteLine("Me > What do you have on Demetrius, Pierre? What did you say to threaten him?");
+                        Console.WriteLine("Pierre > I didn't. I didn't kill Lewis, and I didn't blackmail Demetrius. I refuse to say anything more.");
+                        Case4 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

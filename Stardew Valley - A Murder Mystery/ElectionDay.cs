@@ -105,13 +105,13 @@ namespace Stardew_Valley___A_Murder_Mystery
                 switch (SaveData.AccusedMurderer)
                 {
                     case "Pierre":
-                        epilogue.PierreIsTheMurderer();
+                        Epilogue.PierreIsTheMurderer();
                         break;
                     case "Marnie":
-                        epilogue.MarnieIsTheMurderer();
+                        Epilogue.MarnieIsTheMurderer();
                         break;
                     case "Kent":
-                        epilogue.KentIsTheMurderer();
+                        Epilogue.KentIsTheMurderer();
                         break;
                 }                
             }

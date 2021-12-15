@@ -15,7 +15,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             SaveData = saveData;
         }
 
-        public void PierreIsTheMurderer()
+        public static void PierreIsTheMurderer()
         {
             Console.WriteLine("\nPierre's eyes widen.");
             Console.WriteLine("Pierre > What!? No! I, I didn't, I-");
@@ -30,7 +30,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Pierre > Fine. I was really trying to help though...");
         }
 
-        public void MarnieIsTheMurderer()
+        public static void MarnieIsTheMurderer()
         {
             Console.WriteLine("\nMarnie bursts into tears. Marlon moves to comfort her.");
             Console.WriteLine("Marnie > Yes, I did it. I wanted to tell everyone about us, but he wouldn't.");
@@ -42,7 +42,7 @@ namespace Stardew_Valley___A_Murder_Mystery
             Console.WriteLine("Shane... look after the animals for me.");
         }
 
-        public void KentIsTheMurderer()
+        public static void KentIsTheMurderer()
         {
             Console.WriteLine("\nJodi is the first to react, making a noise of disbelief. Kent stares at you calmly, before nodding and bowing his head.");
             Console.WriteLine("Kent > I knew the election was coming up, and I really thought I could make a difference.");
@@ -79,18 +79,18 @@ namespace Stardew_Valley___A_Murder_Mystery
         {
             if (SaveData.AccusedMurderer == SaveData.TheMurderer) WinGame();
             else LoseGame();
-            Console.WriteLine("\nThank you for playing\n");
+            Console.WriteLine("\nThank you for playing.\n");
             Console.WriteLine("Stardew Valley: A Murder Mystery developed by Matthew Kennedy, based on Stardew Valley by Concerned Ape.");
             Console.WriteLine("Special Thanks to Benjamin for all his help.");
             Console.WriteLine("For Mel <3\n");
         }
 
-        void WinGame()
+        static void WinGame()
         {
             Console.WriteLine("Congratulations, you correctly identified the Murderer!");
             Console.WriteLine("YOU WIN");
         }
-        void LoseGame()
+        static void LoseGame()
         {
             Console.WriteLine("You did not correctly identify the Murderer.");
             Console.WriteLine("GAME OVER");

@@ -101,14 +101,14 @@ namespace Stardew_Valley___A_Murder_Mystery
                     switch (dialogue1)
                     {
                         case "C":
-                            Console.WriteLine("");
+                            Console.WriteLine("Hi Pam, how's it going?");
                             break;
                         case "G":
-                            Console.WriteLine("");
+                            Console.WriteLine("Would you like this?");
                             Gift();
                             break;
                         case "I":
-                            Console.WriteLine("");
+                            Console.WriteLine("Hi Pam, mind if I ask you a couple of questions?");
                             Investigate();
                             break;
                         case "L": SaveData.PamCount++;
@@ -139,7 +139,40 @@ namespace Stardew_Valley___A_Murder_Mystery
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Pam > Sure, kiddo. What's up?");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("\nW > Where were you the night Lewis was attacked?");
+                Console.WriteLine("H > How did you get on with Lewis?");
+                Console.WriteLine("D > Do you know of anyone who might want him to come to harm?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Pam > Oh easy, I was at my usual spot in the Saloon. Gus and Emily will attest to that, no problem.");
+                        Case1 = true;
+                        break;
+                    case "H":
+                        Console.WriteLine("Pam > Oh, nice feller, good mustache. I'll bet it tickled, hehe *hic*");
+                        Case2 = true;
+                        break;
+                    case "3":
+                        Console.WriteLine("Pam > No, Lewis was harmless. No-one's perfect, mind. But Lewis was a good egg.");
+                        Console.WriteLine("Pam > Can't imagine as how anyone would want to hurt him.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

@@ -29,6 +29,11 @@ namespace Stardew_Valley___A_Murder_Mystery.Locations
                 Console.WriteLine("You are in Mayor Lewis' house.\n");
                 Console.WriteLine("E > Examine the scene");
                 Console.WriteLine("F > Forage");
+                if (SaveData.StayAtLewis == true)
+                {
+                    Console.WriteLine("R > Review your casefile");
+                    Console.WriteLine("S > Sleep until tomorrow");                  
+                }
                 Console.WriteLine("L > Leave");
 
                 switch (Console.ReadLine().Substring(0, 1).ToUpper())
@@ -41,6 +46,14 @@ namespace Stardew_Valley___A_Murder_Mystery.Locations
                         break;
                     case "L":
                         return;
+                    case "R" when (SaveData.StayAtLewis == true):
+                        CaseFile caseFile = new(SaveData);
+                        caseFile.Notes();
+                        break;
+                    case "S" when (SaveData.StayAtLewis == true):
+                        DayManager dayManager = new(SaveData);
+                        dayManager.IncreaseDayCount();
+                        break;
                     default: break;
                 }
             }

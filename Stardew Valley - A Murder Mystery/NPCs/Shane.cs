@@ -63,15 +63,15 @@ namespace Stardew_Valley___A_Murder_Mystery
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Hi Shane, how's it going?");
                         SaveData.ShaneFriendship++;
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Me > Would you like this?");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("HEy, do you mind if I ask you a few questions?");
                         Investigate();
                         break;
                     case "L":
@@ -115,8 +115,8 @@ namespace Stardew_Valley___A_Murder_Mystery
                 switch (question)
                 {
                     case "W":
-                        Console.WriteLine("Me > What were you doing the evening Mayor Lewis was found dead?");
-                        Console.WriteLine("Shane > I'd had a busy day at work, you know? So I was just chilling at home with a few beers.");
+                        //Console.WriteLine("Me > What were you doing the evening Mayor Lewis was found dead?");
+                        //Console.WriteLine("Shane > I'd had a busy day at work, you know? So I was just chilling at home with a few beers.");
                         caseW = true;
                         break;
                     case "H":

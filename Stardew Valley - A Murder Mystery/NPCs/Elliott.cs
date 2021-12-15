@@ -57,18 +57,19 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
                 switch (dialogue1)
                 {
                     case "C":
-                        Console.WriteLine("");
+                        Console.WriteLine("Hello, Elliott. How are you doing today?");
                         SaveData.ElliottFriendship++;
                         break;
                     case "G":
-                        Console.WriteLine("");
+                        Console.WriteLine("Elliott, I have a gift for you.");
                         Gift();
                         break;
                     case "I":
-                        Console.WriteLine("");
+                        Console.WriteLine("May I ask you a few questions?");
                         Investigate();
                         break;
                     case "L":
+                        Console.WriteLine("Thank you, Elliott. Talk to you soon.");
                         SaveData.ElliottCount++;
                         return;
                     default: break;
@@ -97,7 +98,42 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
         void Investigate()
         {
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
 
+            Console.WriteLine("Elliott > Why of course, Detective. Fire away.\n");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3) return;
+
+                Console.WriteLine("\nI > What was your impression of Lewis?");
+                Console.WriteLine("W > Where were you the night he was attacked?");
+                Console.WriteLine("A > Is there anything else you think I should know?");
+                Console.WriteLine("L > Leave\n");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "I":
+                        Console.WriteLine("Elliott > He was a nice man. Always working on some town project or other. I can't imagine why anyone would wish him harm.");
+                        Case1 = true;
+                        break;
+                    case "W":
+                        Console.WriteLine("Elliott > I was at home. A nice fire, the sound of the waves, and a good book.");
+                        Console.WriteLine("Me > That sounds lovely.");
+                        Console.WriteLine("Elliott > It truely is. You should consider it for yourself, Detective. The country life can be very rewarding.");
+                        Case2 = true;
+                        break;
+                    case "A":
+                        Console.WriteLine("Elliott > This is a small town. Everyone knows each others business, and it's hard to keep secrets.");
+                        Console.WriteLine("Elliott > If you speak to the right people, and ask the right questions, you'll find out what you need to know.");
+                        Case3 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

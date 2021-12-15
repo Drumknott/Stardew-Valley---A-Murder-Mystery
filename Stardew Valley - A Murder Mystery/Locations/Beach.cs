@@ -11,7 +11,7 @@ namespace Stardew_Valley___A_Murder_Mystery
     class Beach : Location
     {
         private SaveData SaveData { get; set; }
-        private List<Items> ForagableItems = new[] { Items.Clam, Items.Coal, Items.Coral, Items.JojaCola, Items.Octopus, Items.Seaweed, Items.VoidEgg, Items.Beer, Items.Clay, Items.Coconut, Items.Daffodil, Items.MapleBar, Items.VoidEgg }.ToList();
+        private List<Items> ForagableItems = new[] { Items.Clam, Items.Coal, Items.Coral, Items.JojaCola, Items.Octopus, Items.Seaweed, Items.SuperCucumber, Items.Beer, Items.Clay, Items.Coconut, Items.Daffodil, Items.MapleBar, Items.VoidEgg }.ToList();
 
         public Beach(SaveData saveData)
         {
