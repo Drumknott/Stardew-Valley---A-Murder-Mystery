@@ -53,15 +53,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 switch (dialogue1)
                 {
-                    case "chat":
-                        Console.WriteLine("");
+                    case "C":
+                        Console.WriteLine(" Me > Good day.");
                         break;
-                    case "gift":
-                        Console.WriteLine("");
+                    case "G":
+                        Console.WriteLine("Me > Would you like this?");
                         Gift();
                         break;
-                    case "investigate":
-                        Console.WriteLine("");
+                    case "I":
+                        Console.WriteLine("Me > Do you mind if I ask a few questions?");
                         Investigate();
                         break;
                     case "L":
@@ -93,6 +93,61 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
         void Investigate()
         {
             //Caroline sent me
+            bool Case1 = false;
+            bool Case2 = false;
+            bool Case3 = false;
+            bool Case4 = false;
+
+            Console.WriteLine("");
+
+            while (true)
+            {
+                if (Case1 && Case2 && Case3 && Case4) return;
+
+                Console.WriteLine("W > Where were you the night Mayor Lewis was killed?");
+                Console.WriteLine("N > What's your name?");
+                if (SaveData.Ritual) Console.WriteLine("R > What was that... thing you did in the forest?");
+                if (SaveData.CarolineSentMe) Console.WriteLine("C > Caroline sent me.");
+                Console.WriteLine("L > Leave");
+
+                switch (Console.ReadLine().Substring(0, 1).ToUpper())
+                {
+                    case "W":
+                        Console.WriteLine("Wizard > Not that it concerns you, but I was elsewhere. I do not worry myself with the affairs of mortals.");
+                        Console.WriteLine("Me > Uh... Elsewhere?");
+                        Console.WriteLine("Wizard > Yes, elsewhere. Away. Not here. Incorporeal.");
+                        Case1 = true;
+                        break;
+                    case "R" when (SaveData.Ritual):
+                        Console.WriteLine("Wizard > You would call it... magic. That's not at all true, but I doubt I could properly explain it to you.");
+                        Case2 = true;
+                        break;
+                    case "C" when (SaveData.CarolineSentMe):
+                        Console.WriteLine("Wizard > C-Caroline...? That's a name I've not heard in a long while.");
+                        Console.WriteLine("Wizard > How is she? I mean, why did she send you to me?");
+                        Console.WriteLine("Me > She seemed to think you could help me discover the identity of Lewis' killer...?");
+                        if (SaveData.DayCount < 5)
+                        {
+                            Console.WriteLine("Wizard > Ah, I see. Yes. Find me in the forest on the fifth day, and we shall see what we can find out.");
+                        }
+                        else Console.WriteLine("Wizard > Ah. Sadly, the time has past. If only you had come to me earlier...");
+                        Console.WriteLine("Me > Uh, ok... How do you know Caroline?");
+                        Console.WriteLine("Wizard > Caroline and I... Well. Let's just say that even when we make mistakes, there are some that we do not regret.");
+                        Case3 = true;
+                        break;
+                    case "N":
+                        Console.WriteLine("Wizard > I sometimes go by M. Rasmodius, when I have cause to deal with mortals.");
+                        if (SaveData.CrypticNote == true)
+                        {
+                            Console.WriteLine("Me > Are you the 'M' who signed this note?");
+                            Console.WriteLine("Wizard > Hmm? No. I only use purple ink.");
+                        }
+                        Case4 = true;
+                        break;
+                    case "L": return;
+                    default: break;
+                }
+            }
         }
     }
 }

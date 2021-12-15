@@ -106,17 +106,16 @@ namespace Stardew_Valley___A_Murder_Mystery
             {
                 if (caseH == true && caseM == true && caseW == true) break;
 
-                Console.WriteLine("W > What were you doing the evening Mayor Lewis was found dead?");
+                Console.WriteLine("\nW > What were you doing the evening Mayor Lewis was found dead?");
                 Console.WriteLine("H > How well did you know Mayor Lewis?");
                 Console.WriteLine("M > You live with Marnie? Can you tell me about her relationship with Mayor Lewis?");
-                Console.WriteLine("L > Leave");
-                Console.WriteLine("");
+                Console.WriteLine("L > Leave\n");
                 var question = Console.ReadLine().Substring(0, 1).ToUpper();
                 switch (question)
                 {
                     case "W":
-                        //Console.WriteLine("Me > What were you doing the evening Mayor Lewis was found dead?");
-                        //Console.WriteLine("Shane > I'd had a busy day at work, you know? So I was just chilling at home with a few beers.");
+                        Console.WriteLine("Shane > I was at the saloon, then Marnie came running in screaming for help.");
+                        Console.WriteLine("Shane > Me and Gus and Willy went to help. Harvey was already there so I looked after MArnie while they helped him.");
                         caseW = true;
                         break;
                     case "H":
