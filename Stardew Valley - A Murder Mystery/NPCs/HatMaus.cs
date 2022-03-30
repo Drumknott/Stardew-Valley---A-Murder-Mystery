@@ -67,7 +67,7 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
             Inventory inventory = new(SaveData);
             inventory.InventoryList();
 
-            var gift = Console.ReadLine().Substring(0, 1).ToUpper();
+            var gift = Console.ReadLine();
             Gift giftMethod = new(SaveData);
             int validGift = giftMethod.GiftMethod(NPCName, FavGift, DislikedGift, gift, LoveGift, HateGift, NeutralGift);
             if (validGift == 0)

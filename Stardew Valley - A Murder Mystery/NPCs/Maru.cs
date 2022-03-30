@@ -53,15 +53,15 @@ namespace Stardew_Valley___A_Murder_Mystery.NPCs
 
                 switch (dialogue1)
                 {
-                    case "chat":
+                    case "C":
                         Console.WriteLine("Me > What's happening, Maru?");
                         SaveData.MaruFriendship++;
                         break;
-                    case "gift":
+                    case "G":
                         Console.WriteLine("Me > Would you find this useful, Maru?");
                         Gift();
                         break;
-                    case "investigate":
+                    case "I":
                         Console.WriteLine("Me > Do you mind if I ask a few questions as part of my investigation?");
                         Investigate();
                         break;
